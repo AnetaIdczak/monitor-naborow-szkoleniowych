@@ -1,0 +1,95 @@
+id,category,region,operator,url,enabled
+fe_nabory,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuropejskie.gov.pl/strony/skorzystaj/nabory/,true
+fe_harmonogramy,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuropejskie.gov.pl/strony/o-funduszach/harmonogramy-naborow-wnioskow/,true
+parp_harmonogram,krajowe,Polska,PARP,https://www.parp.gov.pl/harmonogram-naborow,true
+bur_dofinansowania,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site/dofinansowania-bur/,true
+bur_aktualnosci,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/component/content/category/74-aktualnosci,true
+wup_poznan,regionalne,wielkopolskie,WUP Poznań,https://wuppoznan.praca.gov.pl/strona-glowna,true
+fe_wielkopolska,regionalne,wielkopolskie,Fundusze Europejskie dla Wielkopolski,https://wrpo.wielkopolskie.pl/nabory,true
+poznan,KFS,wielkopolskie,PUP Poznań,https://poznan.praca.gov.pl/strona-glowna,true
+chodziez,KFS,wielkopolskie,PUP Chodzież,https://chodziez.praca.gov.pl/strona-glowna,true
+czarnkow,KFS,wielkopolskie,PUP Czarnków,https://czarnkow.praca.gov.pl/strona-glowna,true
+gniezno,KFS,wielkopolskie,PUP Gniezno,https://gniezno.praca.gov.pl/strona-glowna,true
+gostyn,KFS,wielkopolskie,PUP Gostyń,https://gostyn.praca.gov.pl/strona-glowna,true
+grodzisk,KFS,wielkopolskie,PUP Grodzisk Wielkopolski,https://grodziskwielkopolski.praca.gov.pl/strona-glowna,true
+jarocin,KFS,wielkopolskie,PUP Jarocin,https://jarocin.praca.gov.pl/strona-glowna,true
+kalisz,KFS,wielkopolskie,PUP Kalisz,https://kalisz.praca.gov.pl/strona-glowna,true
+kepno,KFS,wielkopolskie,PUP Kępno,https://kepno.praca.gov.pl/strona-glowna,true
+kolo,KFS,wielkopolskie,PUP Koło,https://kolo.praca.gov.pl/strona-glowna,true
+konin,KFS,wielkopolskie,PUP Konin,https://konin.praca.gov.pl/strona-glowna,true
+koscian,KFS,wielkopolskie,PUP Kościan,https://koscian.praca.gov.pl/strona-glowna,true
+krotoszyn,KFS,wielkopolskie,PUP Krotoszyn,https://krotoszyn.praca.gov.pl/strona-glowna,true
+leszno,KFS,wielkopolskie,PUP Leszno,https://leszno.praca.gov.pl/strona-glowna,true
+miedzychod,KFS,wielkopolskie,PUP Międzychód,https://miedzychod.praca.gov.pl/strona-glowna,true
+nowytomysl,KFS,wielkopolskie,PUP Nowy Tomyśl,https://nowytomysl.praca.gov.pl/strona-glowna,true
+oborniki,KFS,wielkopolskie,PUP Oborniki,https://oborniki.praca.gov.pl/strona-glowna,true
+ostrow,KFS,wielkopolskie,PUP Ostrów Wielkopolski,https://ostrowwielkopolski.praca.gov.pl/strona-glowna,true
+ostrzeszow,KFS,wielkopolskie,PUP Ostrzeszów,https://ostrzeszow.praca.gov.pl/strona-glowna,true
+pila,KFS,wielkopolskie,PUP Piła,https://pila.praca.gov.pl/strona-glowna,true
+pleszew,KFS,wielkopolskie,PUP Pleszew,https://pleszew.praca.gov.pl/strona-glowna,true
+rawicz,KFS,wielkopolskie,PUP Rawicz,https://rawicz.praca.gov.pl/strona-glowna,true
+slupca,KFS,wielkopolskie,PUP Słupca,https://slupca.praca.gov.pl/strona-glowna,true
+szamotuly,KFS,wielkopolskie,PUP Szamotuły,https://szamotuly.praca.gov.pl/strona-glowna,true
+srem,KFS,wielkopolskie,PUP Śrem,https://srem.praca.gov.pl/strona-glowna,true
+sroda,KFS,wielkopolskie,PUP Środa Wielkopolska,https://srodawielkopolska.praca.gov.pl/strona-glowna,true
+turek,KFS,wielkopolskie,PUP Turek,https://turek.praca.gov.pl/strona-glowna,true
+wagrowiec,KFS,wielkopolskie,PUP Wągrowiec,https://wagrowiec.praca.gov.pl/strona-glowna,true
+wolsztyn,KFS,wielkopolskie,PUP Wolsztyn,https://wolsztyn.praca.gov.pl/strona-glowna,true
+wrzesnia,KFS,wielkopolskie,PUP Września,https://wrzesnia.praca.gov.pl/strona-glowna,true
+zlotow,KFS,wielkopolskie,PUP Złotów,https://zlotow.praca.gov.pl/strona-glowna,true
+wup_torun,regionalne,kujawsko-pomorskie,WUP Toruń,https://wuptorun.praca.gov.pl/strona-glowna,true
+fe_kujawsko,regionalne,kujawsko-pomorskie,Fundusze Europejskie dla Kujaw i Pomorza,https://funduszeue.kujawsko-pomorskie.pl/nabory/,true
+aleksandrow,KFS,kujawsko-pomorskie,PUP Aleksandrów Kujawski,https://aleksandrowkujawski.praca.gov.pl/strona-glowna,true
+brodnica,KFS,kujawsko-pomorskie,PUP Brodnica,https://brodnica.praca.gov.pl/strona-glowna,true
+bydgoszcz,KFS,kujawsko-pomorskie,PUP Bydgoszcz,https://bydgoszcz.praca.gov.pl/strona-glowna,true
+chelmno,KFS,kujawsko-pomorskie,PUP Chełmno,https://chelmno.praca.gov.pl/strona-glowna,true
+golub,KFS,kujawsko-pomorskie,PUP Golub-Dobrzyń,https://golub-dobrzyn.praca.gov.pl/strona-glowna,true
+grudziadz,KFS,kujawsko-pomorskie,PUP Grudziądz,https://grudziadz.praca.gov.pl/strona-glowna,true
+inowroclaw,KFS,kujawsko-pomorskie,PUP Inowrocław,https://inowroclaw.praca.gov.pl/strona-glowna,true
+lipno,KFS,kujawsko-pomorskie,PUP Lipno,https://lipno.praca.gov.pl/strona-glowna,true
+mogilno,KFS,kujawsko-pomorskie,PUP Mogilno,https://mogilno.praca.gov.pl/strona-glowna,true
+naklo,KFS,kujawsko-pomorskie,PUP Nakło nad Notecią,https://naklo.praca.gov.pl/strona-glowna,true
+radziejow,KFS,kujawsko-pomorskie,PUP Radziejów,https://radziejow.praca.gov.pl/strona-glowna,true
+rypin,KFS,kujawsko-pomorskie,PUP Rypin,https://rypin.praca.gov.pl/strona-glowna,true
+sepolno,KFS,kujawsko-pomorskie,PUP Sępólno Krajeńskie,https://sepolno.praca.gov.pl/strona-glowna,true
+swiecie,KFS,kujawsko-pomorskie,PUP Świecie,https://swiecie.praca.gov.pl/strona-glowna,true
+torun,KFS,kujawsko-pomorskie,PUP Toruń,https://torun.praca.gov.pl/strona-glowna,true
+tuchola,KFS,kujawsko-pomorskie,PUP Tuchola,https://tuchola.praca.gov.pl/strona-glowna,true
+wabrzezno,KFS,kujawsko-pomorskie,PUP Wąbrzeźno,https://wabrzezno.praca.gov.pl/strona-glowna,true
+wloclawek,KFS,kujawsko-pomorskie,PUP Włocławek,https://wloclawek.praca.gov.pl/strona-glowna,true
+znin,KFS,kujawsko-pomorskie,PUP Żnin,https://znin.praca.gov.pl/strona-glowna,true
+wup_szczecin,regionalne,zachodniopomorskie,WUP Szczecin,https://www.wup.pl/pl/dla-instytucji/krajowy-fundusz-szkoleniowy/,true
+fe_zachodniopomorskie,regionalne,zachodniopomorskie,Fundusze Europejskie dla Pomorza Zachodniego,https://funduszeue.wzp.pl/nabory,true
+bialogard,KFS,zachodniopomorskie,PUP Białogard,https://bialogard.praca.gov.pl/strona-glowna,true
+choszczno,KFS,zachodniopomorskie,PUP Choszczno,https://choszczno.praca.gov.pl/strona-glowna,true
+drawsko,KFS,zachodniopomorskie,PUP Drawsko Pomorskie,https://drawskopomorskie.praca.gov.pl/strona-glowna,true
+goleniow,KFS,zachodniopomorskie,PUP Goleniów,https://goleniow.praca.gov.pl/strona-glowna,true
+gryfice,KFS,zachodniopomorskie,PUP Gryfice,https://gryfice.praca.gov.pl/strona-glowna,true
+gryfino,KFS,zachodniopomorskie,PUP Gryfino,https://gryfino.praca.gov.pl/strona-glowna,true
+kamien,KFS,zachodniopomorskie,PUP Kamień Pomorski,https://kamienpomorski.praca.gov.pl/strona-glowna,true
+kolobrzeg,KFS,zachodniopomorskie,PUP Kołobrzeg,https://kolobrzeg.praca.gov.pl/strona-glowna,true
+koszalin,KFS,zachodniopomorskie,PUP Koszalin,https://koszalin.praca.gov.pl/strona-glowna,true
+lobez,KFS,zachodniopomorskie,PUP Łobez,https://lobez.praca.gov.pl/strona-glowna,true
+mysliborz,KFS,zachodniopomorskie,PUP Myślibórz,https://mysliborz.praca.gov.pl/strona-glowna,true
+police,KFS,zachodniopomorskie,PUP Police,https://police.praca.gov.pl/strona-glowna,true
+pyrzyce,KFS,zachodniopomorskie,PUP Pyrzyce,https://pyrzyce.praca.gov.pl/strona-glowna,true
+slawno,KFS,zachodniopomorskie,PUP Sławno,https://slawno.praca.gov.pl/strona-glowna,true
+stargard,KFS,zachodniopomorskie,PUP Stargard,https://stargard.praca.gov.pl/strona-glowna,true
+szczecin,KFS,zachodniopomorskie,PUP Szczecin,https://szczecin.praca.gov.pl/strona-glowna,true
+szczecinek,KFS,zachodniopomorskie,PUP Szczecinek,https://szczecinek.praca.gov.pl/strona-glowna,true
+swidwin,KFS,zachodniopomorskie,PUP Świdwin,https://swidwin.praca.gov.pl/strona-glowna,true
+walcz,KFS,zachodniopomorskie,PUP Wałcz,https://walcz.praca.gov.pl/strona-glowna,true
+wup_zielona,regionalne,lubuskie,WUP Zielona Góra,https://wupzielonagora.praca.gov.pl/strona-glowna,true
+fe_lubuskie,regionalne,lubuskie,Fundusze Europejskie dla Lubuskiego,https://funduszeue.lubuskie.pl/nabory,true
+gorzow,KFS,lubuskie,PUP Gorzów Wielkopolski,https://gorzow.praca.gov.pl/strona-glowna,true
+krosno,KFS,lubuskie,PUP Krosno Odrzańskie,https://krosnoodrzanskie.praca.gov.pl/strona-glowna,true
+miedzyrzecz,KFS,lubuskie,PUP Międzyrzecz,https://miedzyrzecz.praca.gov.pl/strona-glowna,true
+nowasol,KFS,lubuskie,PUP Nowa Sól,https://nowasol.praca.gov.pl/strona-glowna,true
+slubice,KFS,lubuskie,PUP Słubice,https://slubice.praca.gov.pl/strona-glowna,true
+strzelce,KFS,lubuskie,PUP Strzelce Krajeńskie,https://strzelcekrajenskie.praca.gov.pl/strona-glowna,true
+sulecin,KFS,lubuskie,PUP Sulęcin,https://sulecin.praca.gov.pl/strona-glowna,true
+swiebodzin,KFS,lubuskie,PUP Świebodzin,https://swiebodzin.praca.gov.pl/strona-glowna,true
+wschowa,KFS,lubuskie,PUP Wschowa,https://wschowa.praca.gov.pl/strona-glowna,true
+zagan,KFS,lubuskie,PUP Żagań,https://zagan.praca.gov.pl/strona-glowna,true
+zary,KFS,lubuskie,PUP Żary,https://zary.praca.gov.pl/strona-glowna,true
+zielonagora,KFS,lubuskie,PUP Zielona Góra,https://zielonagora.praca.gov.pl/strona-glowna,true

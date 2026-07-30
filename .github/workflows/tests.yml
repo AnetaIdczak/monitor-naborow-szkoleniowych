@@ -1,0 +1,34 @@
+name: Testy kodu
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "requirements.txt"
+      - "pytest.ini"
+      - ".github/workflows/tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Pobranie repozytorium
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+      - name: Instalacja zależności
+        run: pip install -r requirements.txt
+      - name: Testy
+        run: pytest -q
+
+
