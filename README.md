@@ -19,9 +19,11 @@ wyniki i publikuje czytelny panel.
 1. GitHub Actions uruchamia `python -m src.monitor` w poniedziałek i czwartek.
 2. Skrypt pobiera wyłącznie strony wskazane w `config/sources.csv`.
 3. Wyszukuje odnośniki związane z KFS, BUR, szkoleniami i dofinansowaniem.
-4. Zapisuje wyniki w `data/nabory.json` i `data/nabory.csv`.
-5. Generuje panel `docs/index.html`.
-6. GitHub Pages publikuje panel po każdej zmianie.
+4. Odrzuca archiwalne wpisy, priorytety, wyniki i informacje ogólne.
+5. Nadaje wynikom poziom wiarygodności na podstawie tytułu i terminu.
+6. Zapisuje wyniki w `data/nabory.json` i `data/nabory.csv`.
+7. Generuje panel `docs/index.html`.
+8. GitHub Pages publikuje panel po każdej zmianie.
 
 ## Uruchomienie ręczne
 
@@ -55,4 +57,3 @@ Projekt przechowuje tylko dane publiczne. Każdy rekord zawiera link do
 oficjalnego źródła oraz datę ostatniej weryfikacji. Automatyczna klasyfikacja
 jest pomocą w wyszukiwaniu, a nie potwierdzeniem kwalifikowalności firmy.
 Przed złożeniem wniosku należy przeczytać regulamin i dokumentację operatora.
-
