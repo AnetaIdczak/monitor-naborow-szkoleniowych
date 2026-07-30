@@ -1,0 +1,68 @@
+name: Monitor naborów
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1,4"
+      timezone: "Europe/Warsaw"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monitor-naborow
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Pobranie repozytorium
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Instalacja zależności
+        run: pip install -r requirements.txt
+
+      - name: Testy
+        run: pytest -q
+
+      - name: Sprawdzenie naborów
+        run: python -m src.monitor
+
+      - name: Podsumowanie
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("data/run_report.json").read_text(encoding="utf-8"))
+          summary = Path(__import__("os").environ["GITHUB_STEP_SUMMARY"])
+          summary.write_text(
+              "## Monitor naborów\n\n"
+              f"- Źródła poprawne: **{report['sources_ok']} / {report['sources_total']}**\n"
+              f"- Nowe nabory: **{report['new_items']}**\n"
+              f"- Zmienione nabory: **{report['changed_items']}**\n"
+              f"- Wszystkie rekordy: **{report['items_total']}**\n",
+              encoding="utf-8",
+          )
+          PY
+
+      - name: Zapis aktualizacji
+        run: |
+          if git diff --quiet -- data docs; then
+            echo "Brak zmian do zapisania."
+            exit 0
+          fi
+          git config user.name "monitor-naborow[bot]"
+          git config user.email "monitor-naborow[bot]@users.noreply.github.com"
+          git add data docs
+          git commit -m "Aktualizacja bazy naborów"
+          git push
+
