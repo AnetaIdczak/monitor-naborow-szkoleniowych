@@ -20,7 +20,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Pobranie repozytorium
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Python
         uses: actions/setup-python@v6
         with:
@@ -30,5 +30,3 @@ jobs:
         run: pip install -r requirements.txt
       - name: Testy
         run: pytest -q
-
-
