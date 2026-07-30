@@ -8,9 +8,13 @@ from src.monitor import (
     extract_amount,
     extract_candidates,
     extract_dates,
+    extract_relevant_dates,
     extract_percentage,
     merge_items,
     normalize_url,
+    qualifies_as_current_intake,
+    supports_employee_training,
+    title_is_intake,
 )
 
 
@@ -49,6 +53,64 @@ def test_extract_polish_dates_amount_and_percentage():
     assert extract_amount(text) == 120_000
 
 
+def test_relevant_dates_ignore_footer_and_unrelated_dates():
+    text = (
+        "Artykuł opublikowano 20.03.2025. "
+        "Nabór wniosków będzie prowadzony od 08.06.2026 do 12.06.2026. "
+        "Aktualizacja serwisu 30.07.2026."
+    )
+    assert extract_relevant_dates(text) == [
+        date(2026, 6, 8),
+        date(2026, 6, 12),
+    ]
+
+
+def test_percentage_and_amount_require_funding_context():
+    text = (
+        "Identyfikator 57377. Spotkanie 8%. "
+        "Maksymalna wartość dofinansowania na jednego pracodawcę to 50 000 zł. "
+        "Poziom dofinansowania wynosi 80%."
+    )
+    assert extract_amount(text) == 50_000
+    assert extract_percentage(text) == 80
+
+
+def test_titles_exclude_information_archives_and_old_programs():
+    assert title_is_intake("Nabór wniosków KFS 2026")
+    assert not title_is_intake("Priorytety KFS na 2026 rok")
+    assert not title_is_intake("Zakończenie naboru KFS")
+    assert not title_is_intake("Nabór wniosków w ramach POWER")
+
+
+def test_employee_training_scope_rejects_individual_education_bon():
+    assert supports_employee_training(
+        "Nabór KFS 2026",
+        "Finansowanie kształcenia ustawicznego pracowników i pracodawców.",
+    )
+    assert not supports_employee_training(
+        "Nabór bonów na kształcenie ustawiczne",
+        "Bon dla osoby bezrobotnej podejmującej naukę.",
+    )
+
+
+def test_current_intake_rejects_expired_and_accepts_future():
+    expired = (
+        "Nabór KFS dla pracodawców trwa od 01.02.2026 do 05.02.2026."
+    )
+    future = (
+        "Nabór KFS dla pracodawców trwa od 01.08.2026 do 05.08.2026."
+    )
+    assert qualifies_as_current_intake(
+        "Nabór wniosków KFS 2026", expired, today=date(2026, 7, 30)
+    )[0] is False
+    accepted, dates, confidence = qualifies_as_current_intake(
+        "Nabór wniosków KFS 2026", future, today=date(2026, 7, 30)
+    )
+    assert accepted is True
+    assert dates[-1] == date(2026, 8, 5)
+    assert confidence == "wysoka"
+
+
 def test_build_item_classifies_kfs_and_status():
     candidate = Candidate(
         title="Nabór Krajowego Funduszu Szkoleniowego",
@@ -57,7 +119,8 @@ def test_build_item_classifies_kfs_and_status():
     )
     item = build_item(
         candidate,
-        "Wnioski od 8.06.2026 do 12.06.2026. Mikro, małe i średnie firmy. 80%.",
+        "Wnioski od 8.06.2026 do 12.06.2026. Mikro, małe i średnie firmy. "
+        "Dofinansowanie wynosi 80%.",
         today=date(2026, 6, 9),
     )
     assert item["program"] == "KFS"
@@ -65,6 +128,8 @@ def test_build_item_classifies_kfs_and_status():
     assert item["do_3h_od_poznania"] == "tak"
     assert "mikro" in item["typ_firmy"]
     assert item["dofinansowanie_proc"] == 80
+    assert item["wiarygodnosc"] == "wysoka"
+    assert item["nowy"] is True
 
 
 def test_determine_status():
@@ -94,4 +159,3 @@ def test_normalize_url_removes_tracking_and_fragment():
     assert normalize_url(
         "HTTPS://Example.com//nabor?utm_source=x&id=2#details"
     ) == "https://example.com/nabor?id=2"
-

@@ -44,7 +44,7 @@ def render_dashboard(items: list[dict], report: dict) -> str:
       padding:18px; box-shadow:var(--shadow); }}
     .stat b {{ display:block; font-size:28px; color:var(--navy); }}
     .stat span {{ font-size:13px; color:var(--muted); }}
-    .filters {{ display:grid; grid-template-columns:2fr repeat(4,1fr); gap:10px;
+    .filters {{ display:grid; grid-template-columns:2fr repeat(5,1fr); gap:10px;
       background:var(--paper); padding:16px; border:1px solid var(--line); border-radius:14px;
       box-shadow:var(--shadow); position:sticky; top:8px; z-index:4; }}
     input,select {{ width:100%; padding:11px 12px; border:1px solid #cbd6e2; border-radius:9px;
@@ -106,6 +106,11 @@ def render_dashboard(items: list[dict], report: dict) -> str:
         <option value="">Wszystkie statusy</option><option>aktywny</option>
         <option>zapowiedziany</option><option>do weryfikacji</option><option>zakończony</option>
       </select>
+      <select id="confidence">
+        <option value="">Dowolna wiarygodność</option>
+        <option value="wysoka">Wysoka</option>
+        <option value="średnia">Średnia</option>
+      </select>
       <select id="drive">
         <option value="">Dowolna odległość</option>
         <option value="tak">Do ok. 3 h od Poznania</option>
@@ -120,7 +125,8 @@ def render_dashboard(items: list[dict], report: dict) -> str:
       <table>
         <thead><tr>
           <th>Nabór</th><th>Status</th><th>Program</th><th>Region</th>
-          <th>Operator</th><th>Termin</th><th>Dofinansowanie</th><th>Firmy</th><th>BUR</th>
+          <th>Operator</th><th>Termin</th><th>Wiarygodność</th>
+          <th>Dofinansowanie</th><th>Firmy</th><th>BUR</th>
         </tr></thead>
         <tbody id="rows"></tbody>
       </table>
@@ -160,14 +166,17 @@ def render_dashboard(items: list[dict], report: dict) -> str:
           && (!$("region").value || row.region === $("region").value)
           && (!$("program").value || row.program === $("program").value)
           && (!$("status").value || row.status === $("status").value)
+          && (!$("confidence").value || row.wiarygodnosc === $("confidence").value)
           && (!$("drive").value || row.do_3h_od_poznania === $("drive").value);
       }});
       $("rows").innerHTML = visible.map(row => `<tr>
         <td><a href="${{esc(row.url)}}" target="_blank" rel="noopener">${{esc(row.tytul)}}</a>
+          ${{row.nowy ? '<br><span class="badge aktywny">nowy</span>' : ""}}
           ${{row.zmieniony ? '<br><span class="badge zapowiedziany">zmieniony</span>' : ""}}</td>
         <td><span class="badge ${{slug(row.status)}}">${{esc(row.status)}}</span></td>
         <td>${{esc(row.program)}}</td><td>${{esc(row.region)}}</td><td>${{esc(row.operator)}}</td>
         <td>${{formatDate(row.data_od)}} – ${{formatDate(row.data_do)}}</td>
+        <td>${{esc(row.wiarygodnosc || "do weryfikacji")}}</td>
         <td>${{row.dofinansowanie_proc ? esc(row.dofinansowanie_proc)+"% · " : ""}}${{money(row.kwota_max)}}</td>
         <td>${{esc(row.typ_firmy)}}</td><td>${{esc(row.bur)}}</td>
       </tr>`).join("");
@@ -176,12 +185,12 @@ def render_dashboard(items: list[dict], report: dict) -> str:
       $("statAll").textContent = visible.length;
       $("statActive").textContent = visible.filter(x => x.status === "aktywny").length;
       $("statUpcoming").textContent = visible.filter(x => x.status === "zapowiedziany").length;
-      $("statNew").textContent = visible.filter(x => x.zmieniony).length;
+      $("statNew").textContent = visible.filter(x => x.nowy || x.zmieniony).length;
     }}
     document.querySelectorAll("input,select").forEach(element => element.addEventListener("input",apply));
     $("download").addEventListener("click", () => {{
       const fields = ["tytul","program","status","region","operator","data_od","data_do",
-        "dofinansowanie_proc","kwota_max","typ_firmy","bur","url"];
+        "wiarygodnosc","dofinansowanie_proc","kwota_max","typ_firmy","bur","url"];
       const quote = value => `"${{String(value ?? "").replaceAll('"','""')}}"`;
       const csv = "\\ufeff" + [fields.join(";"), ...visible.map(row => fields.map(key => quote(row[key])).join(";"))].join("\\n");
       const link = document.createElement("a");
@@ -193,4 +202,3 @@ def render_dashboard(items: list[dict], report: dict) -> str:
 </body>
 </html>
 """
-

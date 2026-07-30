@@ -1,44 +1,11 @@
 {
-  "generated_at": "2026-07-30T13:10:04+00:00",
-  "sources_total": 94,
-  "sources_ok": 90,
-  "sources_failed": 4,
-  "candidates_found": 312,
-  "items_verified": 274,
-  "items_total": 274,
-  "new_items": 274,
+  "generated_at": null,
+  "sources_total": 0,
+  "sources_ok": 0,
+  "sources_failed": 0,
+  "candidates_found": 0,
+  "new_items": 0,
   "changed_items": 0,
-  "known_urls_before_run": 0,
-  "errors": [
-    {
-      "source": "fe_harmonogramy",
-      "operator": "Portal Funduszy Europejskich",
-      "url": "https://funduszeeuropejskie.gov.pl/strony/o-funduszach/harmonogramy-naborow-wnioskow/",
-      "error": "404 Client Error: Not Found for url: https://www.funduszeunijne.gov.pl/strony/o-funduszach/harmonogramy-naborow-wnioskow/"
-    },
-    {
-      "source": "bur_dofinansowania",
-      "operator": "PARP BUR",
-      "url": "https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site",
-      "error": "404 Client Error: Not Found for url: https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site"
-    },
-    {
-      "source": "bur_aktualnosci",
-      "operator": "PARP BUR",
-      "url": "https://serwis-uslugirozwojowe.parp.gov.pl/component/content/category/74-aktualnosci",
-      "error": "404 Client Error: Not Found for url: https://serwis-uslugirozwojowe.parp.gov.pl/component/content/category/74-aktualnosci"
-    },
-    {
-      "source": "sepolno",
-      "operator": "PUP Sępólno Krajeńskie",
-      "url": "https://sepolno.praca.gov.pl/strona-glowna",
-      "error": "HTTPSConnectionPool(host='sepolno.praca.gov.pl', port=443): Max retries exceeded with url: /strona-glowna (Caused by NameResolutionError(\"HTTPSConnection(host='sepolno.praca.gov.pl', port=443): Failed to resolve 'sepolno.praca.gov.pl' ([Errno -2] Name or service not known)\"))"
-    },
-    {
-      "source": "wup_szczecin",
-      "operator": "WUP Szczecin",
-      "url": "https://www.wup.pl/pl/dla-instytucji/krajowy-fundusz-szkoleniowy/",
-      "error": "404 Client Error:  for url: https://www.wup.pl/pl/dla-instytucji/krajowy-fundusz-szkoleniowy/"
-    }
-  ]
+  "errors": []
 }
+

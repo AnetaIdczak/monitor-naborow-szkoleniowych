@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 45
     steps:
       - name: Pobranie repozytorium
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Python
         uses: actions/setup-python@v6
@@ -65,4 +65,3 @@ jobs:
           git add data docs
           git commit -m "Aktualizacja bazy naborów"
           git push
-

@@ -1,9 +1,9 @@
 id,category,region,operator,url,enabled
 fe_nabory,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuropejskie.gov.pl/strony/skorzystaj/nabory/,true
-fe_harmonogramy,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuropejskie.gov.pl/strony/o-funduszach/harmonogramy-naborow-wnioskow/,true
+fe_harmonogramy,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuropejskie.gov.pl/nabory-wnioskow/harmonogramy-naborow-fe/,true
 parp_harmonogram,krajowe,Polska,PARP,https://www.parp.gov.pl/harmonogram-naborow,true
-bur_dofinansowania,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site/dofinansowania-bur/,true
-bur_aktualnosci,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/component/content/category/74-aktualnosci,true
+bur_dofinansowania,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/,true
+bur_aktualnosci,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site/aktualnosci-i-artykuly-bur/,true
 wup_poznan,regionalne,wielkopolskie,WUP Poznań,https://wuppoznan.praca.gov.pl/strona-glowna,true
 fe_wielkopolska,regionalne,wielkopolskie,Fundusze Europejskie dla Wielkopolski,https://wrpo.wielkopolskie.pl/nabory,true
 poznan,KFS,wielkopolskie,PUP Poznań,https://poznan.praca.gov.pl/strona-glowna,true
@@ -51,14 +51,14 @@ mogilno,KFS,kujawsko-pomorskie,PUP Mogilno,https://mogilno.praca.gov.pl/strona-g
 naklo,KFS,kujawsko-pomorskie,PUP Nakło nad Notecią,https://naklo.praca.gov.pl/strona-glowna,true
 radziejow,KFS,kujawsko-pomorskie,PUP Radziejów,https://radziejow.praca.gov.pl/strona-glowna,true
 rypin,KFS,kujawsko-pomorskie,PUP Rypin,https://rypin.praca.gov.pl/strona-glowna,true
-sepolno,KFS,kujawsko-pomorskie,PUP Sępólno Krajeńskie,https://sepolno.praca.gov.pl/strona-glowna,true
+sepolno,KFS,kujawsko-pomorskie,PUP Sępólno Krajeńskie,https://sepolnokrajenskie.praca.gov.pl/strona-glowna,true
 swiecie,KFS,kujawsko-pomorskie,PUP Świecie,https://swiecie.praca.gov.pl/strona-glowna,true
 torun,KFS,kujawsko-pomorskie,PUP Toruń,https://torun.praca.gov.pl/strona-glowna,true
 tuchola,KFS,kujawsko-pomorskie,PUP Tuchola,https://tuchola.praca.gov.pl/strona-glowna,true
 wabrzezno,KFS,kujawsko-pomorskie,PUP Wąbrzeźno,https://wabrzezno.praca.gov.pl/strona-glowna,true
 wloclawek,KFS,kujawsko-pomorskie,PUP Włocławek,https://wloclawek.praca.gov.pl/strona-glowna,true
 znin,KFS,kujawsko-pomorskie,PUP Żnin,https://znin.praca.gov.pl/strona-glowna,true
-wup_szczecin,regionalne,zachodniopomorskie,WUP Szczecin,https://www.wup.pl/pl/dla-instytucji/krajowy-fundusz-szkoleniowy/,true
+wup_szczecin,regionalne,zachodniopomorskie,WUP Szczecin,https://www.wup.pl/pl/projekty_wlasne/zachodniopomorskie-bony-szkoleniowe/aktualnoci,true
 fe_zachodniopomorskie,regionalne,zachodniopomorskie,Fundusze Europejskie dla Pomorza Zachodniego,https://funduszeue.wzp.pl/nabory,true
 bialogard,KFS,zachodniopomorskie,PUP Białogard,https://bialogard.praca.gov.pl/strona-glowna,true
 choszczno,KFS,zachodniopomorskie,PUP Choszczno,https://choszczno.praca.gov.pl/strona-glowna,true
