@@ -9,7 +9,7 @@ import os
 import re
 import time
 import unicodedata
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
 from typing import Iterable
@@ -70,6 +70,49 @@ STRONG_KEYWORDS = (
     "ksztalcenie ustawiczne",
 )
 
+INTAKE_TERMS = (
+    "nabór",
+    "nabor",
+    "rekrutacja",
+    "składanie wniosków",
+    "skladanie wnioskow",
+    "wnioski o przyznanie",
+    "rusza",
+    "uruchamia",
+)
+
+DATE_CONTEXT_TERMS = (
+    "nabór",
+    "nabor",
+    "wniosk",
+    "rekrutac",
+    "termin",
+    "rozpoczę",
+    "rozpocze",
+    "zakończe",
+    "zakoncze",
+    "od dnia",
+    "do dnia",
+)
+
+EXCLUDED_TITLES = (
+    "priorytety",
+    "wyniki naboru",
+    "lista rankingowa",
+    "lista wniosków",
+    "lista wnioskow",
+    "zakończenie naboru",
+    "zakonczenie naboru",
+    "koniec naboru",
+    "unieważnienie",
+    "uniewaznienie",
+    "informacja o wysokości środków",
+    "informacja o wysokosci srodkow",
+    "co to jest",
+    "power",
+    "archiwum",
+)
+
 EXCLUDED_LINK_TEXT = (
     "logowanie",
     "polityka prywatności",
@@ -123,10 +166,12 @@ CSV_FIELDS = [
     "kwota_max",
     "typ_firmy",
     "bur",
+    "wiarygodnosc",
     "do_3h_od_poznania",
     "url",
     "pierwsze_wykrycie",
     "ostatnia_weryfikacja",
+    "nowy",
     "zmieniony",
 ]
 
@@ -261,9 +306,26 @@ def response_to_text(response: requests.Response) -> str:
         return "\n".join((page.extract_text() or "") for page in reader.pages[:80])
     response.encoding = response.encoding or response.apparent_encoding
     soup = BeautifulSoup(response.text, "html.parser")
-    for element in soup(["script", "style", "noscript", "svg"]):
+    for element in soup(
+        ["script", "style", "noscript", "svg", "nav", "header", "footer", "aside"]
+    ):
         element.decompose()
-    return clean_text(soup.get_text(" ", strip=True))
+    selectors = (
+        ".journal-content-article",
+        "[class*='journal-content']",
+        "article",
+        "main",
+    )
+    for selector in selectors:
+        blocks = soup.select(selector)
+        usable = [
+            (len(clean_text(block.get_text(" ", strip=True))), block)
+            for block in blocks
+            if len(clean_text(block.get_text(" ", strip=True))) >= 150
+        ]
+        if usable:
+            return clean_text(max(usable, key=lambda entry: entry[0])[1].get_text(" ", strip=True))
+    return clean_text((soup.body or soup).get_text(" ", strip=True))
 
 
 def extract_dates(text: str) -> list[date]:
@@ -287,16 +349,64 @@ def extract_dates(text: str) -> list[date]:
     return sorted(results)
 
 
+def relevant_date_context(text: str) -> str:
+    sentences = re.split(r"(?<=[.!?])\s+|\n+", clean_text(text))
+    selected: list[str] = []
+    for sentence in sentences:
+        normalized = simplify(sentence)
+        if any(term in normalized for term in DATE_CONTEXT_TERMS):
+            selected.append(sentence)
+    return " ".join(dict.fromkeys(selected))
+
+
+def extract_relevant_dates(text: str) -> list[date]:
+    context = relevant_date_context(text)
+    if not context:
+        return []
+    return extract_dates(context)
+
+
+def contextual_fragments(text: str, signals: tuple[str, ...]) -> str:
+    sentences = re.split(r"(?<=[.!?])\s+|\n+", clean_text(text))
+    return " ".join(
+        sentence
+        for sentence in sentences
+        if any(signal in simplify(sentence) for signal in signals)
+    )
+
+
 def extract_percentage(text: str) -> int | None:
-    values = [int(value) for value in re.findall(r"(?<!\d)(\d{1,3})\s*%", text)]
+    context = contextual_fragments(
+        text,
+        (
+            "dofinansowan",
+            "refundac",
+            "wkład własny",
+            "wklad wlasny",
+            "poziom wsparcia",
+        ),
+    )
+    values = [int(value) for value in re.findall(r"(?<!\d)(\d{1,3})\s*%", context)]
     values = [value for value in values if 1 <= value <= 100]
     return max(values) if values else None
 
 
 def extract_amount(text: str) -> int | None:
+    context = contextual_fragments(
+        text,
+        (
+            "maksymal",
+            "na jednego pracodawc",
+            "na przedsiębior",
+            "na przedsiebior",
+            "limit dofinansowania",
+            "wartość dofinansowania",
+            "wartosc dofinansowania",
+        ),
+    )
     matches = re.findall(
         r"(?<!\d)(\d{1,3}(?:[ .]\d{3})+(?:,\d{1,2})?|\d{4,7})\s*(?:zł|pln)",
-        simplify(text),
+        simplify(context),
     )
     values: list[int] = []
     for value in matches:
@@ -348,9 +458,85 @@ def determine_status(start: date | None, end: date | None, today: date) -> str:
         return "zapowiedziany"
     if end and today > end:
         return "zakończony"
-    if start or end:
+    if end:
         return "aktywny"
+    if start:
+        return "do weryfikacji"
     return "do weryfikacji"
+
+
+def title_is_intake(title: str) -> bool:
+    normalized = simplify(title)
+    return (
+        any(term in normalized for term in INTAKE_TERMS)
+        and not any(term in normalized for term in EXCLUDED_TITLES)
+    )
+
+
+def title_has_outdated_year(title: str, today: date) -> bool:
+    years = [int(year) for year in re.findall(r"\b20\d{2}\b", title)]
+    return bool(years) and max(years) < today.year
+
+
+def supports_employee_training(title: str, text: str) -> bool:
+    combined = simplify(f"{title} {text[:8000]}")
+    if (
+        "krajow" in combined
+        and "fundusz" in combined
+        and "szkoleniow" in combined
+    ) or re.search(r"\bkfs\b", combined):
+        return True
+    training_signal = any(
+        signal in combined
+        for signal in (
+            "baza uslug rozwojowych",
+            "uslugi rozwojowe",
+            "dofinansowanie szkolen",
+            "szkolenia pracownik",
+            "rozwoj kompetencji",
+            "ksztalcenie ustawiczne",
+        )
+    )
+    business_signal = any(
+        signal in combined
+        for signal in (
+            "pracodawc",
+            "pracownik",
+            "przedsiebior",
+            "firm",
+            "msp",
+            "duzych firm",
+        )
+    )
+    return training_signal and business_signal
+
+
+def qualifies_as_current_intake(
+    title: str,
+    text: str,
+    *,
+    today: date,
+) -> tuple[bool, list[date], str]:
+    if (
+        not title_is_intake(title)
+        or title_has_outdated_year(title, today)
+        or not supports_employee_training(title, text)
+    ):
+        return False, [], "niska"
+    dates = [
+        value
+        for value in extract_relevant_dates(text)
+        if today.year - 1 <= value.year <= today.year + 3
+    ]
+    if dates and dates[-1] < today:
+        return False, dates, "niska"
+    if len(dates) >= 2 and dates[-1] >= today:
+        return True, dates, "wysoka"
+    if dates and dates[0] >= today:
+        return True, dates, "wysoka"
+    if str(today.year) in f"{title} {text[:2500]}":
+        return True, dates, "średnia"
+    return False, dates, "niska"
 
 
 def content_fingerprint(item: dict) -> str:
@@ -365,6 +551,7 @@ def content_fingerprint(item: dict) -> str:
         "kwota_max",
         "typ_firmy",
         "bur",
+        "wiarygodnosc",
     )
     payload = json.dumps(
         {key: item.get(key) for key in keys},
@@ -381,10 +568,13 @@ def build_item(
     today: date | None = None,
 ) -> dict:
     today = today or date.today()
-    dates = extract_dates(text)
-    relevant_dates = [
-        value for value in dates if today.year - 1 <= value.year <= today.year + 3
-    ]
+    qualified, relevant_dates, confidence = qualifies_as_current_intake(
+        candidate.title,
+        text,
+        today=today,
+    )
+    if not qualified:
+        raise ValueError("Ogłoszenie nie jest aktualnym naborem")
     start = relevant_dates[0] if relevant_dates else None
     end = relevant_dates[-1] if len(relevant_dates) > 1 else (
         relevant_dates[0] if relevant_dates else None
@@ -421,10 +611,12 @@ def build_item(
             "baza uslug rozwojowych" in normalized
             or re.search(r"\bbur\b", normalized)
         ) else "nieokreślone",
+        "wiarygodnosc": confidence,
         "do_3h_od_poznania": drive_area,
         "url": normalize_url(candidate.url),
         "pierwsze_wykrycie": today.isoformat(),
         "ostatnia_weryfikacja": today.isoformat(),
+        "nowy": True,
         "zmieniony": False,
     }
     item["content_hash"] = content_fingerprint(item)
@@ -432,12 +624,15 @@ def build_item(
 
 
 def merge_items(existing: Iterable[dict], discovered: Iterable[dict]) -> tuple[list[dict], int, int]:
+    discovered = list(discovered)
+    discovered_ids = {item["id"] for item in discovered}
     merged = {item["id"]: dict(item) for item in existing}
     new_count = 0
     changed_count = 0
     for item in discovered:
         previous = merged.get(item["id"])
         if previous is None:
+            item["nowy"] = True
             item["zmieniony"] = False
             merged[item["id"]] = item
             new_count += 1
@@ -446,12 +641,16 @@ def merge_items(existing: Iterable[dict], discovered: Iterable[dict]) -> tuple[l
         first_seen = previous.get("pierwsze_wykrycie") or item["pierwsze_wykrycie"]
         previous.update(item)
         previous["pierwsze_wykrycie"] = first_seen
+        previous["nowy"] = False
         previous["zmieniony"] = changed
         merged[item["id"]] = previous
         changed_count += int(changed)
 
     today = date.today()
     for item in merged.values():
+        if item["id"] not in discovered_ids:
+            item["nowy"] = False
+            item["zmieniony"] = False
         start = date.fromisoformat(item["data_od"]) if item.get("data_od") else None
         end = date.fromisoformat(item["data_do"]) if item.get("data_do") else None
         item["status"] = determine_status(start, end, today)
@@ -535,7 +734,12 @@ def run() -> dict:
                 text = response_to_text(response)
                 if not is_relevant(f"{candidate.title} {text[:12000]}", strong=True):
                     continue
-                item = build_item(candidate, text)
+                try:
+                    item = build_item(candidate, text)
+                except ValueError as exc:
+                    if str(exc) == "Ogłoszenie nie jest aktualnym naborem":
+                        continue
+                    raise
                 discovered.append(item)
             except Exception as exc:
                 logging.warning("Błąd dokumentu %s: %s", candidate.url, exc)
