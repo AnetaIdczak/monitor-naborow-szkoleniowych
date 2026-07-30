@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Pobranie repozytorium
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Konfiguracja GitHub Pages
         uses: actions/configure-pages@v5
       - name: Przygotowanie panelu
@@ -35,4 +35,3 @@ jobs:
       - name: Publikacja
         id: deployment
         uses: actions/deploy-pages@v4
-
