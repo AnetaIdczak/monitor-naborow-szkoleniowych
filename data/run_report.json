@@ -1,11 +1,26 @@
 {
-  "generated_at": null,
-  "sources_total": 0,
-  "sources_ok": 0,
+  "generated_at": "2026-07-30T13:42:01+00:00",
+  "sources_total": 94,
+  "sources_ok": 94,
   "sources_failed": 0,
-  "candidates_found": 0,
-  "new_items": 0,
+  "candidates_found": 331,
+  "items_verified": 21,
+  "items_total": 21,
+  "new_items": 21,
   "changed_items": 0,
-  "errors": []
+  "known_urls_before_run": 0,
+  "errors": [
+    {
+      "source": "bur_dofinansowania",
+      "operator": "PARP BUR",
+      "url": "https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site",
+      "error": "404 Client Error: Not Found for url: https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site"
+    },
+    {
+      "source": "bur_aktualnosci",
+      "operator": "PARP BUR",
+      "url": "https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site",
+      "error": "404 Client Error: Not Found for url: https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site"
+    }
+  ]
 }
-
