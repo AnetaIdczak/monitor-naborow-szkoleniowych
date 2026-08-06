@@ -1,15 +1,21 @@
 {
-  "generated_at": "2026-08-03T14:05:13+00:00",
+  "generated_at": "2026-08-06T12:02:18+00:00",
   "sources_total": 94,
   "sources_ok": 94,
   "sources_failed": 0,
-  "candidates_found": 329,
+  "candidates_found": 324,
   "items_verified": 21,
-  "items_total": 24,
-  "new_items": 3,
+  "items_total": 26,
+  "new_items": 2,
   "changed_items": 1,
-  "known_urls_before_run": 21,
+  "known_urls_before_run": 24,
   "errors": [
+    {
+      "source": "parp_harmonogram",
+      "operator": "PARP",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "HTTPSConnectionPool(host='uslugirozwojowe.parp.gov.pl', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='uslugirozwojowe.parp.gov.pl', port=443) at 0x7ff87e107ed0>, 'Connection to uslugirozwojowe.parp.gov.pl timed out. (connect timeout=25)'))"
+    },
     {
       "source": "bur_dofinansowania",
       "operator": "PARP BUR",
