@@ -14,6 +14,7 @@ from src.monitor import (
     normalize_url,
     qualifies_as_current_intake,
     supports_employee_training,
+    title_indicates_finished_intake,
     title_is_intake,
 )
 
@@ -80,6 +81,8 @@ def test_titles_exclude_information_archives_and_old_programs():
     assert not title_is_intake("Priorytety KFS na 2026 rok")
     assert not title_is_intake("Zakończenie naboru KFS")
     assert not title_is_intake("Nabór wniosków w ramach POWER")
+    assert not title_is_intake("Podsumowanie naboru wniosków KFS 2026")
+    assert title_indicates_finished_intake("Podsumowanie naboru wniosków KFS 2026")
 
 
 def test_employee_training_scope_rejects_individual_education_bon():
@@ -148,11 +151,36 @@ def test_merge_preserves_first_seen_and_marks_change():
     )
     old = build_item(candidate, "Nabór 8.06.2026–12.06.2026. 80%.", today=date(2026, 6, 1))
     new = build_item(candidate, "Nabór 8.06.2026–15.06.2026. 80%.", today=date(2026, 6, 2))
-    merged, new_count, changed_count = merge_items([old], [new])
+    merged, new_count, changed_count = merge_items(
+        [old], [new], today=date(2026, 6, 2)
+    )
     assert new_count == 0
     assert changed_count == 1
     assert merged[0]["pierwsze_wykrycie"] == "2026-06-01"
     assert merged[0]["zmieniony"] is True
+
+
+def test_merge_removes_stale_completed_items_and_deduplicates_asset_entry():
+    old = build_item(
+        Candidate("Nabór KFS 2026", "https://test.praca.gov.pl/-/old", SOURCE),
+        "Nabór trwa od 01.01.2026 do 02.01.2026.",
+        today=date(2025, 12, 1),
+    )
+    first = build_item(
+        Candidate("Informacja o planowanym naborze KFS", "https://test.praca.gov.pl/-/a?p_r_p_assetEntryId=77", SOURCE),
+        "Nabór KFS dla pracodawców w 2026 roku.",
+        today=date(2026, 1, 1),
+    )
+    duplicate = dict(first)
+    duplicate["id"] = "inny-adres"
+    duplicate["url"] = "https://test.praca.gov.pl/-/b?p_r_p_assetEntryId=77"
+    duplicate["tytul"] = "Informacja o planowanym naborze wniosków KFS dla pracodawców"
+    merged, new_count, _ = merge_items(
+        [old], [first, duplicate], today=date(2026, 1, 1)
+    )
+    assert new_count == 1
+    assert len(merged) == 1
+    assert merged[0]["id"] == "inny-adres"
 
 
 def test_normalize_url_removes_tracking_and_fragment():

@@ -87,7 +87,7 @@ def render_dashboard(items: list[dict], report: dict) -> str:
     <div class="wrap">
       <h1>Monitor naborów szkoleniowych</h1>
       <p>KFS, BUR oraz regionalne i krajowe możliwości dofinansowania rozwoju
-      pracowników. Każdy wynik prowadzi do oficjalnego źródła.</p>
+      pracowników. Domyślnie widoczne są wyłącznie nabory aktywne i zapowiedziane.</p>
       <span class="updated">Ostatnia kontrola: {html.escape(str(generated_label))}</span>
     </div>
   </header>
@@ -167,7 +167,8 @@ def render_dashboard(items: list[dict], report: dict) -> str:
           && (!$("program").value || row.program === $("program").value)
           && (!$("status").value || row.status === $("status").value)
           && (!$("confidence").value || row.wiarygodnosc === $("confidence").value)
-          && (!$("drive").value || row.do_3h_od_poznania === $("drive").value);
+          && (!$("drive").value || row.do_3h_od_poznania === $("drive").value)
+          && ($("status").value || row.status !== 'do weryfikacji');
       }});
       $("rows").innerHTML = visible.map(row => `<tr>
         <td><a href="${{esc(row.url)}}" target="_blank" rel="noopener">${{esc(row.tytul)}}</a>

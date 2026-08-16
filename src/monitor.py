@@ -96,6 +96,11 @@ DATE_CONTEXT_TERMS = (
 )
 
 EXCLUDED_TITLES = (
+    "podsumowanie naboru",
+    "podsumowanie",
+    "rozstrzygnięcie naboru",
+    "rozstrzygniecie naboru",
+    "wyniki rekrutacji",
     "priorytety",
     "wyniki naboru",
     "lista rankingowa",
@@ -151,6 +156,14 @@ FARTHER_WEST_POMERANIA = {
     "pup koszalin",
     "pup slawno",
     "pup szczecinek",
+}
+
+# Filtr handlowy, nie kryterium udziału w programie. Dla pozostałych powiatów
+# zachodniopomorskich nie deklarujemy automatycznie przejazdu do 3 godzin.
+NEARER_WEST_POMERANIA = {
+    "pup choszczno", "pup goleniow", "pup gryfino", "pup myślibórz",
+    "pup myszliborz", "pup police", "pup pyrzyce", "pup szczecin",
+    "pup stargard", "pup walcz", "pup wałcz",
 }
 
 CSV_FIELDS = [
@@ -285,6 +298,10 @@ def extract_candidates(html: str, source: Source) -> list[Candidate]:
             continue
         url = normalize_url(urljoin(source.url, href))
         if urlsplit(url).scheme not in {"http", "https"}:
+            continue
+        # Pozycje menu BUR prowadzące do strony zbiorczej nie są ogłoszeniami.
+        path = urlsplit(url).path.rstrip("/")
+        if path.endswith("/component/site/site"):
             continue
         if len(title) < 8:
             title = clean_text(context)[:180] or source.operator
@@ -473,6 +490,17 @@ def title_is_intake(title: str) -> bool:
     )
 
 
+def title_indicates_finished_intake(title: str) -> bool:
+    normalized = simplify(title)
+    return any(
+        term in normalized
+        for term in (
+            "zakończony", "zakonczony", "zakończenie", "zakonczenie",
+            "podsumowanie", "wyniki naboru", "rozstrzygnięcie", "rozstrzygniecie",
+        )
+    )
+
+
 def title_has_outdated_year(title: str, today: date) -> bool:
     years = [int(year) for year in re.findall(r"\b20\d{2}\b", title)]
     return bool(years) and max(years) < today.year
@@ -519,6 +547,7 @@ def qualifies_as_current_intake(
 ) -> tuple[bool, list[date], str]:
     if (
         not title_is_intake(title)
+        or title_indicates_finished_intake(title)
         or title_has_outdated_year(title, today)
         or not supports_employee_training(title, text)
     ):
@@ -590,7 +619,7 @@ def build_item(
         drive_area = (
             "nie"
             if operator_simple in FARTHER_WEST_POMERANIA
-            else ("częściowo" if not operator_simple.startswith("pup ") else "tak")
+            else ("tak" if operator_simple in NEARER_WEST_POMERANIA else "częściowo")
         )
     else:
         drive_area = "nie"
@@ -623,14 +652,45 @@ def build_item(
     return item
 
 
-def merge_items(existing: Iterable[dict], discovered: Iterable[dict]) -> tuple[list[dict], int, int]:
-    discovered = list(discovered)
+def item_identity(item: dict) -> str:
+    """Stable identity for duplicates published under several URLs by one PUP."""
+    url = item.get("url", "")
+    asset = re.search(r"(?:assetentryid|asset_entry_id)=([0-9]+)", url, re.I)
+    if asset:
+        return f"{simplify(item.get('operator', ''))}:{asset.group(1)}"
+    return item["id"]
+
+
+def merge_items(
+    existing: Iterable[dict],
+    discovered: Iterable[dict],
+    *,
+    failed_operators: Iterable[str] = (),
+    today: date | None = None,
+) -> tuple[list[dict], int, int]:
+    # Prefer a complete title when one article is linked twice from the same PUP.
+    unique_discovered: dict[str, dict] = {}
+    for item in discovered:
+        key = item_identity(item)
+        previous = unique_discovered.get(key)
+        if previous is None or len(item.get("tytul", "")) > len(previous.get("tytul", "")):
+            unique_discovered[key] = item
+    discovered = list(unique_discovered.values())
     discovered_ids = {item["id"] for item in discovered}
-    merged = {item["id"]: dict(item) for item in existing}
+    failed = {simplify(value) for value in failed_operators}
+    existing_by_id = {item["id"]: dict(item) for item in existing}
+    # A working source is authoritative: old, unconfirmed and completed entries
+    # must disappear. Entries stay only for a source that failed this run.
+    merged = {
+        item["id"]: dict(item)
+        for item in existing
+        if simplify(item.get("operator", "")) in failed
+        and item.get("status") != "zakończony"
+    }
     new_count = 0
     changed_count = 0
     for item in discovered:
-        previous = merged.get(item["id"])
+        previous = existing_by_id.get(item["id"])
         if previous is None:
             item["nowy"] = True
             item["zmieniony"] = False
@@ -646,7 +706,7 @@ def merge_items(existing: Iterable[dict], discovered: Iterable[dict]) -> tuple[l
         merged[item["id"]] = previous
         changed_count += int(changed)
 
-    today = date.today()
+    today = today or date.today()
     for item in merged.values():
         if item["id"] not in discovered_ids:
             item["nowy"] = False
@@ -656,7 +716,12 @@ def merge_items(existing: Iterable[dict], discovered: Iterable[dict]) -> tuple[l
         item["status"] = determine_status(start, end, today)
 
     result = sorted(
-        merged.values(),
+        (
+            item
+            for item in merged.values()
+            if item.get("status") != "zakończony"
+            and not title_indicates_finished_intake(item.get("tytul", ""))
+        ),
         key=lambda item: (
             item.get("status") == "zakończony",
             item.get("data_do") or "9999-12-31",
@@ -752,7 +817,12 @@ def run() -> dict:
                     }
                 )
 
-    merged, new_count, changed_count = merge_items(existing, discovered)
+    failed_operators = [error["operator"] for error in errors if error.get("source")]
+    merged, new_count, changed_count = merge_items(
+        existing,
+        discovered,
+        failed_operators=failed_operators,
+    )
     report = {
         "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "sources_total": len(sources),
