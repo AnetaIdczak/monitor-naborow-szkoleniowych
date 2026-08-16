@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: monitor-naborow
@@ -65,3 +67,17 @@ jobs:
           git add data docs
           git commit -m "Aktualizacja bazy naborów"
           git push
+
+      # Commity wykonane przez GITHUB_TOKEN nie uruchamiają kolejnego workflow.
+      # Publikujemy więc panel w tym samym przebiegu, zaraz po odświeżeniu danych.
+      - name: Konfiguracja GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Przygotowanie aktualnego panelu
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Publikacja aktualnego panelu
+        id: deployment
+        uses: actions/deploy-pages@v4
