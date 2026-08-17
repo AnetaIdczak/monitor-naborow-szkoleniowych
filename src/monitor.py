@@ -198,6 +198,8 @@ class Source:
     url: str
     enabled: bool
     direct: bool = False
+    direct_title: str = ""
+    business_program: bool = False
 
 
 @dataclass
@@ -243,6 +245,9 @@ def load_sources(path: Path = SOURCES_PATH) -> list[Source]:
                 url=row["url"].strip(),
                 enabled=simplify(row.get("enabled", "true")) in {"true", "1", "tak"},
                 direct=simplify(row.get("direct", "false")) in {"true", "1", "tak"},
+                direct_title=(row.get("direct_title") or "").strip(),
+                business_program=simplify(row.get("business_program", "false"))
+                in {"true", "1", "tak"},
             )
             for row in rows
             if row.get("url", "").strip()
@@ -385,6 +390,20 @@ def extract_relevant_dates(text: str) -> list[date]:
     return extract_dates(context)
 
 
+def extract_primary_program_dates(text: str) -> list[date]:
+    """Read dates from the program card, before related offers and archive links.
+
+    PARP pages place other programmes with their own deadlines below the main
+    offer. Those dates must not become the deadline of the monitored programme.
+    """
+    header = clean_text(text)
+    marker = simplify("Szczegóły dofinansowania")
+    index = simplify(header).find(marker)
+    if index >= 0:
+        header = header[:index]
+    return extract_dates(header)
+
+
 def contextual_fragments(text: str, signals: tuple[str, ...]) -> str:
     sentences = re.split(r"(?<=[.!?])\s+|\n+", clean_text(text))
     return " ".join(
@@ -445,14 +464,16 @@ def classify_program(text: str, source: Source) -> str:
         r"\bkfs\b", normalized
     ):
         return "KFS"
+    if "fers" in normalized or "fundusze europejskie dla rozwoju spolecznego" in normalized:
+        return "FERS"
+    if "feng" in normalized or "fundusze europejskie dla nowoczesnej gospodarki" in normalized:
+        return "FENG"
     if (
         "baza uslug rozwojowych" in normalized
         or "baza usług rozwojowych" in normalized
         or re.search(r"\bbur\b", normalized)
     ):
         return "BUR"
-    if "fers" in normalized or "fundusze europejskie dla rozwoju spolecznego" in normalized:
-        return "FERS"
     if source.category == "regionalne":
         return "Regionalne"
     return source.category
@@ -544,6 +565,7 @@ def supports_employee_training(title: str, text: str) -> bool:
             "usługi rozwojowe",
             "dofinansowanie szkolen",
             "dofinansowanie szkoleń",
+            "wsparcie szkoleniow",
             "szkolenia pracownik",
             "rozwoj kompetencji",
             "ksztalcenie ustawiczne",
@@ -563,25 +585,59 @@ def supports_employee_training(title: str, text: str) -> bool:
     return training_signal and business_signal
 
 
+def supports_target_business(title: str, text: str, *, include_business_program: bool) -> bool:
+    """Keep the default monitor focused on training, with an explicit opt-in for
+    official nationwide programmes that finance a company's development."""
+    if supports_employee_training(title, text):
+        return True
+    if not include_business_program:
+        return False
+    combined = simplify(f"{title} {text[:8000]}")
+    business_signal = any(
+        signal in combined
+        for signal in ("przedsiebior", "firm", "msp", "startup", "start-up")
+    )
+    funding_signal = any(
+        signal in combined
+        for signal in ("dofinansowan", "wsparcie", "pozyczk", "grant", "akcelerac")
+    )
+    return business_signal and funding_signal
+
+
 def qualifies_as_current_intake(
     title: str,
     text: str,
     *,
     today: date,
+    direct_program: bool = False,
+    include_business_program: bool = False,
 ) -> tuple[bool, list[date], str]:
     continuous = is_continuous_intake(text)
-    if (
-        not (title_is_intake(title) or continuous)
-        or title_indicates_finished_intake(title)
-        or title_has_outdated_year(title, today)
-        or not supports_employee_training(title, text)
-    ):
-        return False, [], "niska"
+    earliest_year = today.year - (5 if direct_program else 1)
+    extracted_dates = (
+        extract_primary_program_dates(text)
+        if direct_program
+        else extract_relevant_dates(text)
+    )
     dates = [
         value
-        for value in extract_relevant_dates(text)
-        if today.year - 1 <= value.year <= today.year + 3
+        for value in extracted_dates
+        if earliest_year <= value.year <= today.year + 3
     ]
+    has_current_official_dates = (
+        direct_program
+        and len(dates) >= 2
+        and dates[-1] >= today
+    )
+    if (
+        not (title_is_intake(title) or continuous or has_current_official_dates)
+        or title_indicates_finished_intake(title)
+        or title_has_outdated_year(title, today)
+        or not supports_target_business(
+            title, text, include_business_program=include_business_program
+        )
+    ):
+        return False, [], "niska"
     if dates and dates[-1] < today and not continuous:
         return False, dates, "niska"
     if continuous:
@@ -628,6 +684,8 @@ def build_item(
         candidate.title,
         text,
         today=today,
+        direct_program=candidate.source.direct,
+        include_business_program=candidate.source.business_program,
     )
     if not qualified:
         raise ValueError("Ogłoszenie nie jest aktualnym naborem")
@@ -812,7 +870,7 @@ def run() -> dict:
                 candidates.insert(
                     0,
                     Candidate(
-                        title=f"{source.operator} — Usługi rozwojowe dla Twojego biznesu",
+                        title=source.direct_title or source.operator,
                         url=source.url,
                         source=source,
                     ),
@@ -835,7 +893,19 @@ def run() -> dict:
             try:
                 response = fetch(session, candidate.url)
                 text = response_to_text(response)
-                if not is_relevant(f"{candidate.title} {text[:12000]}", strong=True):
+                # PARP sporadycznie zwraca krótką, pustą odpowiedź. Dwie dodatkowe
+                # próby chronią zweryfikowaną ofertę przed zniknięciem z panelu.
+                for _ in range(2):
+                    if not candidate.source.direct or len(text) >= 300:
+                        break
+                    response = fetch(session, candidate.url)
+                    text = response_to_text(response)
+                if candidate.source.direct and len(text) < 300:
+                    raise ValueError("Nie udało się odczytać treści programu")
+                if not (
+                    candidate.source.direct
+                    or is_relevant(f"{candidate.title} {text[:12000]}", strong=True)
+                ):
                     continue
                 try:
                     item = build_item(candidate, text)
