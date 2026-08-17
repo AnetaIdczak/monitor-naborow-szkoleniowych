@@ -142,6 +142,23 @@ def test_continuous_warp_intake_is_active_even_when_old_start_date_is_present():
     assert item["program"] == "BUR"
 
 
+def test_merge_keeps_a_continuous_intake_active_after_its_last_page_update():
+    source = Source(
+        id="warp", category="BUR", region="wielkopolskie", operator="WARP",
+        url="https://warp.org.pl/uslugi", enabled=True, direct=True,
+    )
+    item = build_item(
+        Candidate("WARP – Usługi rozwojowe dla Twojego biznesu", source.url, source),
+        "Nabór jest realizowany w trybie ciągłym. Dofinansowanie usług "
+        "rozwojowych dla mikro, małych i średnich przedsiębiorstw. "
+        "Aktualizacja 2 czerwca 2026 r.",
+        today=date(2026, 8, 17),
+    )
+    merged, _, _ = merge_items([], [item], today=date(2026, 8, 17))
+    assert len(merged) == 1
+    assert merged[0]["status"] == "aktywny"
+
+
 def test_direct_official_akademia_hr_offer_is_accepted_with_current_dates():
     text = (
         "Fundusze Europejskie dla Rozwoju Społecznego (FERS). "

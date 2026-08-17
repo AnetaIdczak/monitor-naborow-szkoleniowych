@@ -179,6 +179,7 @@ CSV_FIELDS = [
     "kwota_max",
     "typ_firmy",
     "bur",
+    "nabor_ciagly",
     "wiarygodnosc",
     "do_3h_od_poznania",
     "url",
@@ -663,6 +664,7 @@ def content_fingerprint(item: dict) -> str:
         "kwota_max",
         "typ_firmy",
         "bur",
+        "nabor_ciagly",
         "wiarygodnosc",
     )
     payload = json.dumps(
@@ -727,6 +729,7 @@ def build_item(
             or "baza usług rozwojowych" in normalized
             or re.search(r"\bbur\b", normalized)
         ) else "nieokreślone",
+        "nabor_ciagly": continuous,
         "wiarygodnosc": confidence,
         "do_3h_od_poznania": drive_area,
         "url": normalize_url(candidate.url),
@@ -800,7 +803,11 @@ def merge_items(
             item["zmieniony"] = False
         start = date.fromisoformat(item["data_od"]) if item.get("data_od") else None
         end = date.fromisoformat(item["data_do"]) if item.get("data_do") else None
-        item["status"] = determine_status(start, end, today)
+        item["status"] = (
+            "aktywny"
+            if item.get("nabor_ciagly")
+            else determine_status(start, end, today)
+        )
 
     result = sorted(
         (

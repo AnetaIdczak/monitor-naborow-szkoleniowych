@@ -4,7 +4,7 @@ fe_harmonogramy,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuro
 parp_harmonogram,krajowe,Polska,PARP,https://www.parp.gov.pl/harmonogram-naborow,true
 bur_dofinansowania,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/,true
 bur_aktualnosci,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site/aktualnosci-i-artykuly-bur/,true
-warp_uslugi,BUR,wielkopolskie,WARP,https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/,true,true
+warp_uslugi,BUR,wielkopolskie,WARP,https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/,true,true,WARP – Usługi rozwojowe dla Twojego biznesu
 fers_akademia_hr,krajowe,Polska,PARP – Akademia HR,https://fers.parp.gov.pl/component/grants/grants/akademia-hr-oferta-dla-przedsiebiorcow,true,true,Akademia HR – oferta dla przedsiębiorców
 fers_trudnosci,krajowe,Polska,PARP – wsparcie firm,https://fers.parp.gov.pl/component/grants/grants/wsparcie-firm-w-okresowych-trudnosciach---oferta-dla-przedsiebiorcow,true,true,Wsparcie firm w okresowych trudnościach – oferta dla przedsiębiorców
 fers_goz,krajowe,Polska,PARP – GOZ,https://fers.parp.gov.pl/component/grants/grants/goz---to-sie-oplaca---oferta-dla-przedsiebiorcow,true,true,GOZ – to się opłaca – oferta dla przedsiębiorców
