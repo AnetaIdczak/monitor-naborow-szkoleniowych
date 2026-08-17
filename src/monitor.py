@@ -386,9 +386,20 @@ def relevant_date_context(text: str) -> str:
 
 def extract_relevant_dates(text: str) -> list[date]:
     context = relevant_date_context(text)
-    if not context:
-        return []
-    return extract_dates(context)
+    dates = set(extract_dates(context)) if context else set()
+    # A date such as "17.08.2026 r." ends a sentence for the generic splitter.
+    # Preserve both dates from an explicit application window nevertheless.
+    numeric_date = r"[0-3]?\d[.\-/][01]?\d[.\-/]20\d{2}"
+    range_pattern = re.compile(
+        rf"{numeric_date}\s*(?:r\.)?\s*(?:do(?:\s+dnia)?|[-–])\s*{numeric_date}",
+        re.IGNORECASE,
+    )
+    range_dates: set[date] = set()
+    for match in range_pattern.finditer(text):
+        before = simplify(text[max(0, match.start() - 160):match.start()])
+        if any(term in before for term in DATE_CONTEXT_TERMS):
+            range_dates.update(extract_dates(match.group()))
+    return sorted(range_dates or dates)
 
 
 def extract_primary_program_dates(text: str) -> list[date]:
