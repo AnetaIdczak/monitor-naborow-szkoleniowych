@@ -1,20 +1,86 @@
 {
-  "generated_at": "2026-08-17T05:08:42+00:00",
-  "sources_total": 95,
-  "sources_ok": 95,
-  "sources_failed": 0,
-  "candidates_found": 346,
-  "items_verified": 23,
-  "items_total": 22,
-  "new_items": 0,
-  "changed_items": 2,
+  "generated_at": "2026-08-17T05:45:23+00:00",
+  "sources_total": 104,
+  "sources_ok": 103,
+  "sources_failed": 1,
+  "candidates_found": 369,
+  "items_verified": 41,
+  "items_total": 36,
+  "new_items": 14,
+  "changed_items": 0,
   "known_urls_before_run": 22,
   "errors": [
     {
       "source": "warp_uslugi",
       "operator": "WARP",
-      "url": "https://uslugi.warp.org.pl:50043/CreditOne/clientzone/",
-      "error": "HTTPSConnectionPool(host='uslugi.warp.org.pl', port=50043): Max retries exceeded with url: /CreditOne/clientzone/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='uslugi.warp.org.pl', port=50043) at 0x7febe00b2210>, 'Connection to uslugi.warp.org.pl timed out. (connect timeout=25)'))"
+      "url": "https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/",
+      "error": "HTTPSConnectionPool(host='warp.org.pl', port=443): Max retries exceeded with url: /dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='warp.org.pl', port=443) at 0x7fbb1bcd0690>, 'Connection to warp.org.pl timed out. "
+    },
+    {
+      "source": "fers_akademia_hr",
+      "operator": "PARP – Akademia HR",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "Nie udało się odczytać treści programu"
+    },
+    {
+      "source": "fers_trudnosci",
+      "operator": "PARP – wsparcie firm",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "Nie udało się odczytać treści programu"
+    },
+    {
+      "source": "fers_goz",
+      "operator": "PARP – GOZ",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "Nie udało się odczytać treści programu"
+    },
+    {
+      "source": "fers_dostepnosc_eaa",
+      "operator": "PARP – Dostępność EAA",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "Nie udało się odczytać treści programu"
+    },
+    {
+      "source": "fers_dostepnosc_3",
+      "operator": "PARP – Dostępność",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "Nie udało się odczytać treści programu"
+    },
+    {
+      "source": "fers_kompetencje_sektorowe",
+      "operator": "PARP – kompetencje sektorowe",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "Nie udało się odczytać treści programu"
+    },
+    {
+      "source": "fers_kompetencje_sektorowe",
+      "operator": "PARP – kompetencje sektorowe",
+      "url": "https://www.turystyka.darr.pl/",
+      "error": "Nie udało się odczytać treści programu"
+    },
+    {
+      "source": "fers_kompetencje_sektorowe",
+      "operator": "PARP – kompetencje sektorowe",
+      "url": "http://ochrona.fundacjainicjatyw.eu/",
+      "error": "HTTPConnectionPool(host='ochrona.fundacjainicjatyw.eu', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPConnection(host='ochrona.fundacjainicjatyw.eu', port=80) at 0x7fbb1bcc3950>, 'Connection to ochrona.fundacjainicjatyw.eu timed out. (connect timeout=25)'))"
+    },
+    {
+      "source": "feng_eurogranty",
+      "operator": "PARP – FENG",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "Nie udało się odczytać treści programu"
+    },
+    {
+      "source": "feng_scale_up_green",
+      "operator": "PARP – FENG",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "Nie udało się odczytać treści programu"
+    },
+    {
+      "source": "feng_spark_4",
+      "operator": "PARP – FENG",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "Nie udało się odczytać treści programu"
     }
   ]
 }
