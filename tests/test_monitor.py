@@ -10,6 +10,7 @@ from src.monitor import (
     extract_dates,
     extract_relevant_dates,
     extract_percentage,
+    is_continuous_intake,
     merge_items,
     normalize_url,
     qualifies_as_current_intake,
@@ -112,6 +113,31 @@ def test_current_intake_rejects_expired_and_accepts_future():
     assert accepted is True
     assert dates[-1] == date(2026, 8, 5)
     assert confidence == "wysoka"
+
+
+def test_continuous_warp_intake_is_active_even_when_old_start_date_is_present():
+    text = (
+        "Nabór skierowany jest do przedsiębiorstw MŚP i ich pracowników. "
+        "Nabór jest realizowany w trybie ciągłym od 23.01.2025 r. "
+        "Dofinansowanie usług rozwojowych w Bazie Usług Rozwojowych."
+    )
+    assert is_continuous_intake(text)
+    accepted, _, confidence = qualifies_as_current_intake(
+        "WARP — Usługi rozwojowe dla Twojego biznesu", text, today=date(2026, 8, 17)
+    )
+    assert accepted is True
+    assert confidence == "wysoka"
+    source = Source(
+        id="warp", category="BUR", region="wielkopolskie", operator="WARP",
+        url="https://warp.org.pl/uslugi", enabled=True, direct=True,
+    )
+    item = build_item(
+        Candidate("WARP — Usługi rozwojowe dla Twojego biznesu", source.url, source),
+        text,
+        today=date(2026, 8, 17),
+    )
+    assert item["status"] == "aktywny"
+    assert item["program"] == "BUR"
 
 
 def test_build_item_classifies_kfs_and_status():
