@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-08-17T05:45:23+00:00",
+  "generated_at": "2026-08-17T06:08:33+00:00",
   "sources_total": 104,
-  "sources_ok": 103,
-  "sources_failed": 1,
-  "candidates_found": 369,
-  "items_verified": 41,
+  "sources_ok": 104,
+  "sources_failed": 0,
+  "candidates_found": 376,
+  "items_verified": 42,
   "items_total": 36,
-  "new_items": 14,
+  "new_items": 2,
   "changed_items": 0,
-  "known_urls_before_run": 22,
+  "known_urls_before_run": 36,
   "errors": [
     {
       "source": "warp_uslugi",
       "operator": "WARP",
-      "url": "https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/",
-      "error": "HTTPSConnectionPool(host='warp.org.pl', port=443): Max retries exceeded with url: /dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='warp.org.pl', port=443) at 0x7fbb1bcd0690>, 'Connection to warp.org.pl timed out. "
+      "url": "https://uslugi.warp.org.pl:50043/CreditOne/clientzone/",
+      "error": "HTTPSConnectionPool(host='uslugi.warp.org.pl', port=50043): Max retries exceeded with url: /CreditOne/clientzone/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='uslugi.warp.org.pl', port=50043) at 0x7f6d6f0a2490>, 'Connection to uslugi.warp.org.pl timed out. (connect timeout=25)'))"
     },
     {
       "source": "fers_akademia_hr",
@@ -57,12 +57,6 @@
       "operator": "PARP – kompetencje sektorowe",
       "url": "https://www.turystyka.darr.pl/",
       "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "fers_kompetencje_sektorowe",
-      "operator": "PARP – kompetencje sektorowe",
-      "url": "http://ochrona.fundacjainicjatyw.eu/",
-      "error": "HTTPConnectionPool(host='ochrona.fundacjainicjatyw.eu', port=80): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPConnection(host='ochrona.fundacjainicjatyw.eu', port=80) at 0x7fbb1bcc3950>, 'Connection to ochrona.fundacjainicjatyw.eu timed out. (connect timeout=25)'))"
     },
     {
       "source": "feng_eurogranty",
