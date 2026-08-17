@@ -69,6 +69,26 @@ def test_relevant_dates_ignore_footer_and_unrelated_dates():
     ]
 
 
+def test_relevant_dates_keep_both_sides_of_a_window_after_r_abbreviation():
+    text = (
+        "Wnioski przyjmowane będą od dnia 17.08.2026 r. do 21.08.2026 r. "
+        "Wnioski po terminie nie będą rozpatrywane."
+    )
+    assert extract_relevant_dates(text) == [
+        date(2026, 8, 17), date(2026, 8, 21)
+    ]
+
+
+def test_relevant_dates_prefer_application_window_over_publication_date():
+    text = (
+        "Urząd 31.07.2026 ogłasza nabór. Nabór wniosków będzie trwał "
+        "od dnia 17.08.2026 r. do dnia 21.08.2026 r."
+    )
+    assert extract_relevant_dates(text) == [
+        date(2026, 8, 17), date(2026, 8, 21)
+    ]
+
+
 def test_percentage_and_amount_require_funding_context():
     text = (
         "Identyfikator 57377. Spotkanie 8%. "
