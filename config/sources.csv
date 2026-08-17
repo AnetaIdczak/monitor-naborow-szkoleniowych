@@ -1,9 +1,10 @@
-id,category,region,operator,url,enabled
+id,category,region,operator,url,enabled,direct
 fe_nabory,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuropejskie.gov.pl/strony/skorzystaj/nabory/,true
 fe_harmonogramy,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuropejskie.gov.pl/nabory-wnioskow/harmonogramy-naborow-fe/,true
 parp_harmonogram,krajowe,Polska,PARP,https://www.parp.gov.pl/harmonogram-naborow,true
 bur_dofinansowania,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/,true
 bur_aktualnosci,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site/aktualnosci-i-artykuly-bur/,true
+warp_uslugi,BUR,wielkopolskie,WARP,https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/,true,true
 wup_poznan,regionalne,wielkopolskie,WUP Poznań,https://wuppoznan.praca.gov.pl/strona-glowna,true
 fe_wielkopolska,regionalne,wielkopolskie,Fundusze Europejskie dla Wielkopolski,https://wrpo.wielkopolskie.pl/nabory,true
 poznan,KFS,wielkopolskie,PUP Poznań,https://poznan.praca.gov.pl/strona-glowna,true

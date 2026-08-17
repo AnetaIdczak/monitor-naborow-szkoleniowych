@@ -197,6 +197,7 @@ class Source:
     operator: str
     url: str
     enabled: bool
+    direct: bool = False
 
 
 @dataclass
@@ -241,6 +242,7 @@ def load_sources(path: Path = SOURCES_PATH) -> list[Source]:
                 operator=row["operator"].strip(),
                 url=row["url"].strip(),
                 enabled=simplify(row.get("enabled", "true")) in {"true", "1", "tak"},
+                direct=simplify(row.get("direct", "false")) in {"true", "1", "tak"},
             )
             for row in rows
             if row.get("url", "").strip()
@@ -443,7 +445,11 @@ def classify_program(text: str, source: Source) -> str:
         r"\bkfs\b", normalized
     ):
         return "KFS"
-    if "baza uslug rozwojowych" in normalized or re.search(r"\bbur\b", normalized):
+    if (
+        "baza uslug rozwojowych" in normalized
+        or "baza usług rozwojowych" in normalized
+        or re.search(r"\bbur\b", normalized)
+    ):
         return "BUR"
     if "fers" in normalized or "fundusze europejskie dla rozwoju spolecznego" in normalized:
         return "FERS"
@@ -482,6 +488,21 @@ def determine_status(start: date | None, end: date | None, today: date) -> str:
     return "do weryfikacji"
 
 
+def is_continuous_intake(text: str) -> bool:
+    normalized = simplify(text)
+    return any(
+        phrase in normalized
+        for phrase in (
+            "nabor ciagly",
+            "nabor ciagły",
+            "nabor jest realizowany w trybie ciaglym",
+            "nabor jest realizowany w trybie ciagłym",
+            "nabor prowadzony w trybie ciaglym",
+            "nabor prowadzony w trybie ciagłym",
+        )
+    )
+
+
 def title_is_intake(title: str) -> bool:
     normalized = simplify(title)
     return (
@@ -518,8 +539,11 @@ def supports_employee_training(title: str, text: str) -> bool:
         signal in combined
         for signal in (
             "baza uslug rozwojowych",
+            "baza usług rozwojowych",
             "uslugi rozwojowe",
+            "usługi rozwojowe",
             "dofinansowanie szkolen",
+            "dofinansowanie szkoleń",
             "szkolenia pracownik",
             "rozwoj kompetencji",
             "ksztalcenie ustawiczne",
@@ -545,8 +569,9 @@ def qualifies_as_current_intake(
     *,
     today: date,
 ) -> tuple[bool, list[date], str]:
+    continuous = is_continuous_intake(text)
     if (
-        not title_is_intake(title)
+        not (title_is_intake(title) or continuous)
         or title_indicates_finished_intake(title)
         or title_has_outdated_year(title, today)
         or not supports_employee_training(title, text)
@@ -557,8 +582,10 @@ def qualifies_as_current_intake(
         for value in extract_relevant_dates(text)
         if today.year - 1 <= value.year <= today.year + 3
     ]
-    if dates and dates[-1] < today:
+    if dates and dates[-1] < today and not continuous:
         return False, dates, "niska"
+    if continuous:
+        return True, dates, "wysoka"
     if len(dates) >= 2 and dates[-1] >= today:
         return True, dates, "wysoka"
     if dates and dates[0] >= today:
@@ -604,6 +631,7 @@ def build_item(
     )
     if not qualified:
         raise ValueError("Ogłoszenie nie jest aktualnym naborem")
+    continuous = is_continuous_intake(text)
     start = relevant_dates[0] if relevant_dates else None
     end = relevant_dates[-1] if len(relevant_dates) > 1 else (
         relevant_dates[0] if relevant_dates else None
@@ -628,7 +656,7 @@ def build_item(
         "id": stable_id(candidate.url),
         "tytul": title,
         "program": classify_program(f"{title} {text[:8000]}", candidate.source),
-        "status": determine_status(start, end, today),
+        "status": "aktywny" if continuous else determine_status(start, end, today),
         "region": candidate.source.region,
         "operator": candidate.source.operator,
         "data_od": start.isoformat() if start else "",
@@ -638,6 +666,7 @@ def build_item(
         "typ_firmy": classify_company_type(text),
         "bur": "tak" if (
             "baza uslug rozwojowych" in normalized
+            or "baza usług rozwojowych" in normalized
             or re.search(r"\bbur\b", normalized)
         ) else "nieokreślone",
         "wiarygodnosc": confidence,
@@ -779,6 +808,15 @@ def run() -> dict:
                 listing_response.encoding or listing_response.apparent_encoding
             )
             candidates = extract_candidates(listing_response.text, source)
+            if source.direct:
+                candidates.insert(
+                    0,
+                    Candidate(
+                        title=f"{source.operator} — Usługi rozwojowe dla Twojego biznesu",
+                        url=source.url,
+                        source=source,
+                    ),
+                )
             sources_ok += 1
             candidates_total += len(candidates)
         except Exception as exc:  # każda awaria źródła jest raportowana osobno
