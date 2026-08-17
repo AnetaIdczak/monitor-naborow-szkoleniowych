@@ -1,13 +1,20 @@
 {
-  "generated_at": "2026-08-16T20:15:13+00:00",
+  "generated_at": "2026-08-17T04:38:53+00:00",
   "sources_total": 94,
   "sources_ok": 94,
   "sources_failed": 0,
   "candidates_found": 340,
   "items_verified": 23,
   "items_total": 22,
-  "new_items": 2,
+  "new_items": 0,
   "changed_items": 0,
-  "known_urls_before_run": 35,
-  "errors": []
+  "known_urls_before_run": 22,
+  "errors": [
+    {
+      "source": "parp_harmonogram",
+      "operator": "PARP",
+      "url": "https://uslugirozwojowe.parp.gov.pl/",
+      "error": "HTTPSConnectionPool(host='uslugirozwojowe.parp.gov.pl', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='uslugirozwojowe.parp.gov.pl', port=443) at 0x7ff6064e5590>, 'Connection to uslugirozwojowe.parp.gov.pl timed out. (connect timeout=25)'))"
+    }
+  ]
 }
