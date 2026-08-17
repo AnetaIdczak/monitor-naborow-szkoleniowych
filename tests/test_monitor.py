@@ -10,11 +10,13 @@ from src.monitor import (
     extract_dates,
     extract_relevant_dates,
     extract_percentage,
+    extract_primary_program_dates,
     is_continuous_intake,
     merge_items,
     normalize_url,
     qualifies_as_current_intake,
     supports_employee_training,
+    supports_target_business,
     title_indicates_finished_intake,
     title_is_intake,
 )
@@ -138,6 +140,63 @@ def test_continuous_warp_intake_is_active_even_when_old_start_date_is_present():
     )
     assert item["status"] == "aktywny"
     assert item["program"] == "BUR"
+
+
+def test_direct_official_akademia_hr_offer_is_accepted_with_current_dates():
+    text = (
+        "Fundusze Europejskie dla Rozwoju Społecznego (FERS). "
+        "Dofinansowanie wsparcia przedsiębiorców i pracowników przedsiębiorstw. "
+        "Start składania wniosków 25 marca 2024. "
+        "Koniec przyjmowania wniosków 30 listopada 2026. "
+        "Wsparcie szkoleniowe i doradcze w obszarze HR."
+    )
+    accepted, dates, confidence = qualifies_as_current_intake(
+        "Akademia HR – oferta dla przedsiębiorców",
+        text,
+        today=date(2026, 8, 17),
+        direct_program=True,
+    )
+    assert accepted is True
+    assert dates[-1] == date(2026, 11, 30)
+    assert confidence == "wysoka"
+
+
+def test_direct_feng_business_program_needs_explicit_opt_in():
+    text = (
+        "Fundusze Europejskie dla Nowoczesnej Gospodarki (FENG). "
+        "Start składania wniosków 12 sierpnia 2025. "
+        "Koniec przyjmowania wniosków 3 września 2026. "
+        "Dofinansowanie dla mikro, małych i średnich przedsiębiorstw. "
+        "Szczegóły dofinansowania Inny program kończy się 15 września 2026."
+    )
+    assert supports_target_business(
+        "Granty na Eurogranty", text, include_business_program=True
+    )
+    rejected, _, _ = qualifies_as_current_intake(
+        "Granty na Eurogranty", text, today=date(2026, 8, 17), direct_program=True
+    )
+    accepted, dates, confidence = qualifies_as_current_intake(
+        "Granty na Eurogranty",
+        text,
+        today=date(2026, 8, 17),
+        direct_program=True,
+        include_business_program=True,
+    )
+    assert rejected is False
+    assert accepted is True
+    assert dates[-1] == date(2026, 9, 3)
+    assert confidence == "wysoka"
+
+
+def test_direct_program_dates_ignore_other_offers_below_program_card():
+    text = (
+        "8 lipca 2025 Ogłoszenie konkursu 12 sierpnia 2025 "
+        "Start składania wniosków 3 września 2026 Koniec przyjmowania wniosków "
+        "Szczegóły dofinansowania Inny program kończy się 15 września 2026."
+    )
+    assert extract_primary_program_dates(text) == [
+        date(2025, 7, 8), date(2025, 8, 12), date(2026, 9, 3)
+    ]
 
 
 def test_build_item_classifies_kfs_and_status():
