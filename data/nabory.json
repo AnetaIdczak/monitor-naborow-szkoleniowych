@@ -1,25 +1,72 @@
 [
   {
-    "id": "d2511a1e3e5b3655",
-    "tytul": "Nabór wniosków w ramach środków Krajowego Funduszu Szkoleniowego o finansowanie działań na rzecz kształcenia ustawicznego pracowników i pracodawcy",
+    "id": "b602a95960937cbe",
+    "tytul": "WARP – Usługi rozwojowe dla Twojego biznesu",
+    "program": "BUR",
+    "status": "aktywny",
+    "region": "wielkopolskie",
+    "operator": "WARP",
+    "data_od": "2023-12-13",
+    "data_do": "2026-06-02",
+    "dofinansowanie_proc": 70,
+    "kwota_max": 60000,
+    "typ_firmy": "mikro, średnie, małe",
+    "bur": "tak",
+    "nabor_ciagly": true,
+    "wiarygodnosc": "wysoka",
+    "do_3h_od_poznania": "tak",
+    "url": "https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/",
+    "pierwsze_wykrycie": "2026-08-17",
+    "ostatnia_weryfikacja": "2026-08-17",
+    "nowy": true,
+    "zmieniony": false,
+    "content_hash": "df0e8e611cc6e0c8e0069c5e2e53d971d52dd8cb50d7a13ad0bb2bfcff23a007"
+  },
+  {
+    "id": "613a73d92159ce0a",
+    "tytul": "OGŁOSZENIE INFORMACYJNE O NABORZE WNIOSKÓW O PRZYZNANIE ŚRODKÓW Z KRAJOWEGO FUNDUSZU SZKOLENIOWEGO (KFS) NA SFINANSOWANIE KOSZTÓW KSZTAŁCENIA USTAWICZNEGO",
     "program": "KFS",
     "status": "aktywny",
     "region": "kujawsko-pomorskie",
-    "operator": "PUP Tuchola",
-    "data_od": "2026-08-17",
-    "data_do": "2026-08-21",
+    "operator": "PUP Toruń",
+    "data_od": "2026-07-31",
+    "data_do": "2026-08-17",
     "dofinansowanie_proc": null,
     "kwota_max": null,
     "typ_firmy": "do weryfikacji",
     "bur": "nieokreślone",
+    "nabor_ciagly": false,
     "wiarygodnosc": "wysoka",
     "do_3h_od_poznania": "tak",
-    "url": "https://tuchola.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/nabor-wnioskow-w-ramach-srodkow-krajowego-funduszu-szkoleniowego-o-finansowanie-dzialan-na-rzecz-ksztalcenia-ustawicznego-pracownikow-i-pracodawcy-skopiuj-?p_r_p_assetEntryId=65836124",
-    "pierwsze_wykrycie": "2026-07-30",
+    "url": "https://torun.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/przedluzenie-terminu-ogloszenie-informacyjne-o-naborze-wnioskow-o-przyznanie-srodkow-z-krajowego-funduszu-szkoleniowego-kfs-na-sfinansowanie-kosztow-ksztalcenia-ustawicznego?p_r_p_assetEntryId=66407451",
+    "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
-    "nowy": false,
+    "nowy": true,
     "zmieniony": false,
-    "content_hash": "55200cafee7143d4029d565699c6bf9fb4f05e566d9b7a9f668186441059570b"
+    "content_hash": "7250443502805010ebdb22c1559d2acb747aec8ddf51d8cfe0e04ee93aeeab70"
+  },
+  {
+    "id": "575374fc0df74182",
+    "tytul": "V Nabór wniosków z Krajowego Funduszu Szkoleniowego 2026",
+    "program": "KFS",
+    "status": "aktywny",
+    "region": "wielkopolskie",
+    "operator": "PUP Turek",
+    "data_od": "2026-08-12",
+    "data_do": "2026-08-18",
+    "dofinansowanie_proc": null,
+    "kwota_max": null,
+    "typ_firmy": "średnie",
+    "bur": "nieokreślone",
+    "nabor_ciagly": false,
+    "wiarygodnosc": "wysoka",
+    "do_3h_od_poznania": "tak",
+    "url": "https://turek.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/iii-nabor-wnioskow-o-przyznanie-srodkow-krajowego-funduszu-szkoleniowego?p_r_p_assetEntryId=63327101",
+    "pierwsze_wykrycie": "2026-08-17",
+    "ostatnia_weryfikacja": "2026-08-17",
+    "nowy": true,
+    "zmieniony": false,
+    "content_hash": "3423fd7cc53d57d55638bc07c4f0e2aff3ce3106e095867688784d85bba777d7"
   },
   {
     "id": "595489f5401b097e",
@@ -40,8 +87,9 @@
     "pierwsze_wykrycie": "2026-08-16",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "ef2c9b106bf4234d38d89562da3f4acd28fa41f7eb3bd73874b1c6826007f3e8"
+    "zmieniony": true,
+    "content_hash": "099b253ace4db5b313c8316a039a2d4b77d55ffeb3d5b4f844ee58c058dcefc6",
+    "nabor_ciagly": false
   },
   {
     "id": "dd2e9702ad77d2e1",
@@ -62,8 +110,9 @@
     "pierwsze_wykrycie": "2026-07-30",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "836c208364cc5ce33be339906c3b30f029025fbc8fc384bad56174926815234c"
+    "zmieniony": true,
+    "content_hash": "e98d73501d3d5a75f036a15b1662f5bc5ca609526ae68d46a1f6edb6a5f7bfaa",
+    "nabor_ciagly": false
   },
   {
     "id": "899dfee90308ed91",
@@ -84,8 +133,32 @@
     "pierwsze_wykrycie": "2026-07-30",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "d086dac3fe4aec56bb2dc2312488cf5907dc12f3803536a9bb7ddf7e1ecfdd80"
+    "zmieniony": true,
+    "content_hash": "17d1767be1214b0e4f9c5a5903c97c32fa66b575f231ac74959485dc0a4f2fed",
+    "nabor_ciagly": false
+  },
+  {
+    "id": "d2511a1e3e5b3655",
+    "tytul": "Nabór wniosków w ramach środków Krajowego Funduszu Szkoleniowego o finansowanie działań na rzecz kształcenia ustawicznego pracowników i pracodawcy",
+    "program": "KFS",
+    "status": "aktywny",
+    "region": "kujawsko-pomorskie",
+    "operator": "PUP Tuchola",
+    "data_od": "2026-08-17",
+    "data_do": "2026-08-21",
+    "dofinansowanie_proc": null,
+    "kwota_max": null,
+    "typ_firmy": "do weryfikacji",
+    "bur": "nieokreślone",
+    "wiarygodnosc": "wysoka",
+    "do_3h_od_poznania": "tak",
+    "url": "https://tuchola.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/nabor-wnioskow-w-ramach-srodkow-krajowego-funduszu-szkoleniowego-o-finansowanie-dzialan-na-rzecz-ksztalcenia-ustawicznego-pracownikow-i-pracodawcy-skopiuj-?p_r_p_assetEntryId=65836124",
+    "pierwsze_wykrycie": "2026-07-30",
+    "ostatnia_weryfikacja": "2026-08-17",
+    "nowy": false,
+    "zmieniony": true,
+    "content_hash": "5d8eb77c1fda2679705abdd134767175c2a0c6868799bb2fda30ab5da29d1654",
+    "nabor_ciagly": false
   },
   {
     "id": "b0508a57bba59fc2",
@@ -106,8 +179,9 @@
     "pierwsze_wykrycie": "2026-08-03",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "ead76df28acbb2400a24d11ffac79b998d90a0cf13d61c346a35eebd63ea9133"
+    "zmieniony": true,
+    "content_hash": "71fd42719a47554f47f4a0faf7f302fe810befbe13ba97b9829727f8307c279b",
+    "nabor_ciagly": false
   },
   {
     "id": "1ca3271daecaa068",
@@ -128,8 +202,9 @@
     "pierwsze_wykrycie": "2026-07-30",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "700bac24b8b5e7bed32444985f977c8717a7f6f055633dea77e91c11e8cdd9d7"
+    "zmieniony": true,
+    "content_hash": "c5376b1a97613c7659edb8d2dce5224565d70be2301dd54c11894da088d4e5ee",
+    "nabor_ciagly": false
   },
   {
     "id": "ddbab6d5151da401",
@@ -139,7 +214,7 @@
     "region": "wielkopolskie",
     "operator": "PUP Chodzież",
     "data_od": "2026-08-24",
-    "data_do": "2026-08-24",
+    "data_do": "2026-08-28",
     "dofinansowanie_proc": null,
     "kwota_max": null,
     "typ_firmy": "do weryfikacji",
@@ -150,30 +225,9 @@
     "pierwsze_wykrycie": "2026-08-10",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "22a26fbafe3aad5ba6750b139f98bdb2bb55e83d2b20253ceb8180af673aad85"
-  },
-  {
-    "id": "844faf61a2e5296a",
-    "tytul": "II Nabór wniosków na dofinansowanie szkoleń z Krajowego Funduszu Szkoleniowego",
-    "program": "KFS",
-    "status": "aktywny",
-    "region": "wielkopolskie",
-    "operator": "PUP Września",
-    "data_od": "2025-12-08",
-    "data_do": "2026-08-27",
-    "dofinansowanie_proc": null,
-    "kwota_max": null,
-    "typ_firmy": "duże",
-    "bur": "nieokreślone",
-    "wiarygodnosc": "wysoka",
-    "do_3h_od_poznania": "tak",
-    "url": "https://wrzesnia.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/nabor-wnioskow-na-dofinansowanie-szkolen-z-krajowego-funduszu-szkoleniowego-skopiuj-?p_r_p_assetEntryId=67843039",
-    "pierwsze_wykrycie": "2026-08-13",
-    "ostatnia_weryfikacja": "2026-08-17",
-    "nowy": false,
-    "zmieniony": false,
-    "content_hash": "e73f7eeb414b0149764489bae5a68008bfee19f76d0e0e8dcc481dfe0bf73fe6"
+    "zmieniony": true,
+    "content_hash": "c3660edb38137b8a6f92f490b0a1ae8aad102876796b814c84e89955bf864acc",
+    "nabor_ciagly": false
   },
   {
     "id": "23e6a2d5e063536b",
@@ -194,30 +248,9 @@
     "pierwsze_wykrycie": "2026-08-03",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "5f1ba96b8c4ba66bdc60ebdf4ea6bcf711edd91c89ba6ec8f0e432fa08f9dffd"
-  },
-  {
-    "id": "e9daf4ad5b68f104",
-    "tytul": "Ogłoszenie o naborze wniosków o przyznanie środków KFS - III nabór w 2026 r.",
-    "program": "KFS",
-    "status": "zapowiedziany",
-    "region": "kujawsko-pomorskie",
-    "operator": "PUP Rypin",
-    "data_od": "2026-08-31",
-    "data_do": "2026-08-31",
-    "dofinansowanie_proc": null,
-    "kwota_max": null,
-    "typ_firmy": "do weryfikacji",
-    "bur": "tak",
-    "wiarygodnosc": "wysoka",
-    "do_3h_od_poznania": "tak",
-    "url": "https://rypin.praca.gov.pl/-/ogloszenie-o-naborze-wnioskow-o-przyznanie-srodkow-kfs-iii-nabor-w-2026-r.",
-    "pierwsze_wykrycie": "2026-08-13",
-    "ostatnia_weryfikacja": "2026-08-17",
-    "nowy": false,
-    "zmieniony": false,
-    "content_hash": "92111ba7a5ddd7b1640796da4e2e014623e9f13ff31cae0374b7046ca5213b4b"
+    "zmieniony": true,
+    "content_hash": "80be4bef3ea5195e91089bb155ba684509eda93657a04d4715cbd9a8b4b7b939",
+    "nabor_ciagly": false
   },
   {
     "id": "78d3bae8f1a3344c",
@@ -238,8 +271,55 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "2988c68c3073d53d7189ad608e3b32149f999ab2a0d2ac3340ecf288134d4306"
+    "zmieniony": true,
+    "content_hash": "a913c4eced77087a39034f6659ecbc2a2009c4549e311fc28a6dbfe9b8d6d4e0",
+    "nabor_ciagly": false
+  },
+  {
+    "id": "844faf61a2e5296a",
+    "tytul": "II Nabór wniosków na dofinansowanie szkoleń z Krajowego Funduszu Szkoleniowego",
+    "program": "KFS",
+    "status": "zapowiedziany",
+    "region": "wielkopolskie",
+    "operator": "PUP Września",
+    "data_od": "2026-08-27",
+    "data_do": "2026-09-02",
+    "dofinansowanie_proc": null,
+    "kwota_max": null,
+    "typ_firmy": "duże",
+    "bur": "nieokreślone",
+    "wiarygodnosc": "wysoka",
+    "do_3h_od_poznania": "tak",
+    "url": "https://wrzesnia.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/nabor-wnioskow-na-dofinansowanie-szkolen-z-krajowego-funduszu-szkoleniowego-skopiuj-?p_r_p_assetEntryId=67843039",
+    "pierwsze_wykrycie": "2026-08-13",
+    "ostatnia_weryfikacja": "2026-08-17",
+    "nowy": false,
+    "zmieniony": true,
+    "content_hash": "d79a299135a8d84b5c74060b50b83d4e91ccc8a8bd39374275dded4eae029681",
+    "nabor_ciagly": false
+  },
+  {
+    "id": "8e32e74cc5a25073",
+    "tytul": "III nabór wniosków z KFS",
+    "program": "KFS",
+    "status": "zapowiedziany",
+    "region": "wielkopolskie",
+    "operator": "PUP Koło",
+    "data_od": "2026-08-27",
+    "data_do": "2026-09-02",
+    "dofinansowanie_proc": null,
+    "kwota_max": null,
+    "typ_firmy": "do weryfikacji",
+    "bur": "nieokreślone",
+    "wiarygodnosc": "wysoka",
+    "do_3h_od_poznania": "tak",
+    "url": "https://kolo.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/iii-nabor-wnioskow-z-kfs?p_r_p_assetEntryId=67829626",
+    "pierwsze_wykrycie": "2026-08-13",
+    "ostatnia_weryfikacja": "2026-08-17",
+    "nowy": false,
+    "zmieniony": true,
+    "content_hash": "6f2cd2f480a1f2c07f52b7b339970c0608fec20a75310da8f8b01795236bba75",
+    "nabor_ciagly": false
   },
   {
     "id": "26517ee0f559a307",
@@ -260,8 +340,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "a95271a2596573ce508d70f0b4988fe50d2f4b9a83cbfbfbfff50b27437b3c62"
+    "zmieniony": true,
+    "content_hash": "e77a53b7a9bb13a29cf91758379f30f24251132748c6e7cc2ab366f991dbec27",
+    "nabor_ciagly": false
   },
   {
     "id": "a09cc911d45c99f3",
@@ -282,8 +363,9 @@
     "pierwsze_wykrycie": "2026-07-30",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "fb86d5faac2bfdff8db1283b90290654460b805a580f677994926dbd41a3e366"
+    "zmieniony": true,
+    "content_hash": "19a4157a808eb8a3a173ee7e0fd884010c3a460bc83f99b296abf34616d7f28b",
+    "nabor_ciagly": false
   },
   {
     "id": "e7999241bff3b84c",
@@ -304,8 +386,9 @@
     "pierwsze_wykrycie": "2026-08-16",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "fe5e8fcf4be7f296031e0a511026572529244580ab9517dbf9f6706e9e739d52"
+    "zmieniony": true,
+    "content_hash": "73db3c1c81a0d8682803f47aed7aa43cb0a8aa40099c67a1871d1ed29779b6c1",
+    "nabor_ciagly": false
   },
   {
     "id": "51d5ec465fd86717",
@@ -326,8 +409,32 @@
     "pierwsze_wykrycie": "2026-08-13",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "8840173ca1217d6a7e8acc7c70ae132186dd461f2d4f9f38ab9712813e0020a5"
+    "zmieniony": true,
+    "content_hash": "ff3c76f2f9f3bf1282c84f8ce5008f9a1002298123453174af24db200cdd6a04",
+    "nabor_ciagly": false
+  },
+  {
+    "id": "e9daf4ad5b68f104",
+    "tytul": "Ogłoszenie o naborze wniosków o przyznanie środków KFS - III nabór w 2026 r.",
+    "program": "KFS",
+    "status": "zapowiedziany",
+    "region": "kujawsko-pomorskie",
+    "operator": "PUP Rypin",
+    "data_od": "2026-08-31",
+    "data_do": "2026-09-04",
+    "dofinansowanie_proc": null,
+    "kwota_max": null,
+    "typ_firmy": "do weryfikacji",
+    "bur": "tak",
+    "wiarygodnosc": "wysoka",
+    "do_3h_od_poznania": "tak",
+    "url": "https://rypin.praca.gov.pl/-/ogloszenie-o-naborze-wnioskow-o-przyznanie-srodkow-kfs-iii-nabor-w-2026-r.",
+    "pierwsze_wykrycie": "2026-08-13",
+    "ostatnia_weryfikacja": "2026-08-17",
+    "nowy": false,
+    "zmieniony": true,
+    "content_hash": "f58cafcee6bb79c7cf1e50b5f5dc53c3430361d3b4ef2198067a953395657d77",
+    "nabor_ciagly": false
   },
   {
     "id": "e3989f9653a89fbe",
@@ -348,8 +455,9 @@
     "pierwsze_wykrycie": "2026-08-13",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "9d5b46ec80d9e255c9834fb4611e8dc9f8860e0755fa60226899ecb3a31a0ca5"
+    "zmieniony": true,
+    "content_hash": "62ff049793ba3865f7e72f29933c0b74f17a0c5d2ea60dc1e6173ac3d23e2955",
+    "nabor_ciagly": false
   },
   {
     "id": "44aeff4a03ca0d59",
@@ -370,30 +478,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "1e984472c21f454ed199b67382fb78299102fdc5100f9e6b4b3b1086c10e9206"
-  },
-  {
-    "id": "9386c0e6f2b7d995",
-    "tytul": "II nabór wniosków z KFS",
-    "program": "KFS",
-    "status": "aktywny",
-    "region": "wielkopolskie",
-    "operator": "PUP Koło",
-    "data_od": "2026-07-01",
-    "data_do": "2026-11-30",
-    "dofinansowanie_proc": null,
-    "kwota_max": null,
-    "typ_firmy": "do weryfikacji",
-    "bur": "nieokreślone",
-    "wiarygodnosc": "wysoka",
-    "do_3h_od_poznania": "tak",
-    "url": "https://kolo.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/ii-nabor-wnioskow-z-kfs?p_r_p_assetEntryId=65822189",
-    "pierwsze_wykrycie": "2026-07-30",
-    "ostatnia_weryfikacja": "2026-08-17",
-    "nowy": false,
-    "zmieniony": false,
-    "content_hash": "7a979f9b5d24c1c7c7e774f8de835811e3826b1cf30a747d302561a3a7ccfa46"
+    "zmieniony": true,
+    "content_hash": "f94e49ededb807101c8bf04cce979441fce191d2a52162856ea4f2179fbefd4c",
+    "nabor_ciagly": false
   },
   {
     "id": "bad652edda3cf13f",
@@ -414,30 +501,9 @@
     "pierwsze_wykrycie": "2026-08-06",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "9e30a91d93ee86fd65c3fda4aa5c0181e91d88ecd79c9e2da63b12ba9ffe3a11"
-  },
-  {
-    "id": "8e32e74cc5a25073",
-    "tytul": "III nabór wniosków z KFS",
-    "program": "KFS",
-    "status": "zapowiedziany",
-    "region": "wielkopolskie",
-    "operator": "PUP Koło",
-    "data_od": "2026-08-27",
-    "data_do": "2026-12-14",
-    "dofinansowanie_proc": null,
-    "kwota_max": null,
-    "typ_firmy": "do weryfikacji",
-    "bur": "nieokreślone",
-    "wiarygodnosc": "wysoka",
-    "do_3h_od_poznania": "tak",
-    "url": "https://kolo.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/iii-nabor-wnioskow-z-kfs?p_r_p_assetEntryId=67829626",
-    "pierwsze_wykrycie": "2026-08-13",
-    "ostatnia_weryfikacja": "2026-08-17",
-    "nowy": false,
-    "zmieniony": false,
-    "content_hash": "21319894051547187433df5b2ee62db1307d776c8e031073b49052939c933abc"
+    "zmieniony": true,
+    "content_hash": "ea84173b8ca10800beeb0d4e9eb16aa456918fba3fa1717bc12d85b9649ea2e9",
+    "nabor_ciagly": false
   },
   {
     "id": "5bdbadf297aad2bb",
@@ -458,8 +524,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "d874f8cfc6da07c51ff5d7230493b2f7724d5bae55b88ab5e0ce141702632799"
+    "zmieniony": true,
+    "content_hash": "1ff03c98b6b66ff4eb0139b7aebf3394785eaa5881603cea1dabf3daa8107344",
+    "nabor_ciagly": false
   },
   {
     "id": "c8147866e129b2df",
@@ -480,8 +547,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "b9c5d5aefceef8e6d413ed7112af30f6237732ec523ab07ce5be0c256e93d628"
+    "zmieniony": true,
+    "content_hash": "2a13ea4997341934fb35c9c55f5d29c2dd6773c430537c570d5fe24483b92038",
+    "nabor_ciagly": false
   },
   {
     "id": "0a83ba4aeea7662d",
@@ -502,8 +570,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "e8a6d30776f086eb74ef100061d04106b4d7891f4a921bd182c22bda2945b24f"
+    "zmieniony": true,
+    "content_hash": "9506417dbc98e3a9c940e440f9e3d37e77246a087e8fdcbeda59c759c040d168",
+    "nabor_ciagly": false
   },
   {
     "id": "e18319d1e32b0bbe",
@@ -524,8 +593,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "a2f069b76eaee1ccdf82ba314509bb83ceb230c70fd067d0a6631bf6512293f2"
+    "zmieniony": true,
+    "content_hash": "edb7eb2452b50dfe15ede8b9c37851780e59eaf485fd5dc9e2480a981774133c",
+    "nabor_ciagly": false
   },
   {
     "id": "10fbbc6123692e65",
@@ -546,8 +616,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "4befcd3c276e59ecff0039c0463e451bd08b6b4eaf3f95de613d92340771d285"
+    "zmieniony": true,
+    "content_hash": "56b8b872c075a7ee0dde0d0aacbb22a140791cce760973dad222271c7f17c2da",
+    "nabor_ciagly": false
   },
   {
     "id": "0502824a2d83c1e6",
@@ -568,8 +639,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "d3c7ad3e4e8d9b2058050a4ec3b9823229416dce13ee362d76abcc615d7c3d0e"
+    "zmieniony": true,
+    "content_hash": "e28f86d4af1e8ce081d52ec3bebb238ac4c0bdc2cee6f70111d9200b6298dc00",
+    "nabor_ciagly": false
   },
   {
     "id": "d8fb98ec59b63460",
@@ -590,8 +662,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "60b9d60615bccfa11b6164c504cbcd3637efe4471d742c67d4d09ae24e75aad1"
+    "zmieniony": true,
+    "content_hash": "ab818614482e6780c5a1d3a2124bf545765ac39ba05f9e4cc5a27a1a50cf946d",
+    "nabor_ciagly": false
   },
   {
     "id": "85bcb1116844d59a",
@@ -612,8 +685,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "367a4a5d422084d98250579d6cbba544f8500e81bf4c9c5b8278596b8e354fce"
+    "zmieniony": true,
+    "content_hash": "d745676f449fdf3350f805aa0e8a16253fa91fc9b4e8b5a9c0118037f6933e86",
+    "nabor_ciagly": false
   },
   {
     "id": "ee881b0427b01866",
@@ -633,9 +707,10 @@
     "url": "http://ochrona.fundacjainicjatyw.eu/",
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
-    "nowy": true,
-    "zmieniony": false,
-    "content_hash": "a61027e16469d932ca4f7fe854d8ed9acc6aa5e08594c9acc6250ad5509a5dbc"
+    "nowy": false,
+    "zmieniony": true,
+    "content_hash": "e98c618061c92706bf53a0364f2f2aa8315f0e9c5e5af8782bdf9f4a75088928",
+    "nabor_ciagly": false
   },
   {
     "id": "0e02162c86c7d5da",
@@ -656,8 +731,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "6fae6825cea758d33d3e94c6a2d48c794d6af12f0764cf0d23baf0492e331867"
+    "zmieniony": true,
+    "content_hash": "d0962b7def3955b6a1e05685bb6bad15b423ddfdeb70289cc8a767e3f86e2ee6",
+    "nabor_ciagly": false
   },
   {
     "id": "8b44f2aad7307a5c",
@@ -678,8 +754,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "10daae76d5c2175afa30b08b58b9c38ddccd9e7e42e4f5e9bb7ce2fe37b76bfd"
+    "zmieniony": true,
+    "content_hash": "7096671be586fcdc7e717b293cfafed4e54747a4e67fe482dfa65f1eb7156ec2",
+    "nabor_ciagly": false
   },
   {
     "id": "899042410f1fa8f8",
@@ -700,8 +777,9 @@
     "pierwsze_wykrycie": "2026-08-17",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "a8afe1d9be76e2d8f7ecbbe95e2d9af4ac6f350eddac1750b1a4b3aeff739ab3"
+    "zmieniony": true,
+    "content_hash": "6dda5af353afe4f93f4faac89252a827ef74ab764e872a8c06035cc7b8089a24",
+    "nabor_ciagly": false
   },
   {
     "id": "cc6143759d47c100",
@@ -722,8 +800,9 @@
     "pierwsze_wykrycie": "2026-08-10",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "a293c0c4e41d1d8d75f4386b9404d96070942a1d5a890db5fa66cecbe94f9755"
+    "zmieniony": true,
+    "content_hash": "9cab1b0e7136452438bf9d6026b56565f6294a92883ee0831357e6b4b929d17b",
+    "nabor_ciagly": false
   },
   {
     "id": "7e8b4e801fce36d5",
@@ -744,8 +823,9 @@
     "pierwsze_wykrycie": "2026-07-30",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "d448efbfa78358be148c92865e9f3ff46ba2f90cd0f23d8a8ddb19294dea50ab"
+    "zmieniony": true,
+    "content_hash": "edbf3f752700ee9e95b47f16717741ae7d63a56b51e35a10906f3e29cd80af68",
+    "nabor_ciagly": false
   },
   {
     "id": "99cf7fa39526cb0c",
@@ -766,8 +846,9 @@
     "pierwsze_wykrycie": "2026-07-30",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "2cf2fdf75a1fbd1c29a620781b5afd7cd6cc23bcb6685708df380a9f32c9d916"
+    "zmieniony": true,
+    "content_hash": "a6cfb56a9920f6e7f238a5a9f78c284293257a2b8e1dfd531ab321fcfd228327",
+    "nabor_ciagly": false
   },
   {
     "id": "a4e8bbc2768e4291",
@@ -788,7 +869,8 @@
     "pierwsze_wykrycie": "2026-07-30",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "c56fac7a74924cf4b2b64677b5c3ed58de59ac07a2091b4c38e995805ec53933"
+    "zmieniony": true,
+    "content_hash": "aaaf7d27c370425fd69d7541c4ad5a10be1c05da4a94f2e21b8848cd3d2cf629",
+    "nabor_ciagly": false
   }
 ]

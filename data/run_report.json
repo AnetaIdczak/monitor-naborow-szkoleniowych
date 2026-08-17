@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-08-17T06:08:33+00:00",
+  "generated_at": "2026-08-17T07:06:14+00:00",
   "sources_total": 104,
   "sources_ok": 104,
   "sources_failed": 0,
   "candidates_found": 376,
-  "items_verified": 42,
-  "items_total": 36,
-  "new_items": 2,
-  "changed_items": 0,
+  "items_verified": 43,
+  "items_total": 38,
+  "new_items": 3,
+  "changed_items": 35,
   "known_urls_before_run": 36,
   "errors": [
     {
       "source": "warp_uslugi",
       "operator": "WARP",
       "url": "https://uslugi.warp.org.pl:50043/CreditOne/clientzone/",
-      "error": "HTTPSConnectionPool(host='uslugi.warp.org.pl', port=50043): Max retries exceeded with url: /CreditOne/clientzone/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='uslugi.warp.org.pl', port=50043) at 0x7f6d6f0a2490>, 'Connection to uslugi.warp.org.pl timed out. (connect timeout=25)'))"
+      "error": "HTTPSConnectionPool(host='uslugi.warp.org.pl', port=50043): Max retries exceeded with url: /CreditOne/clientzone/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='uslugi.warp.org.pl', port=50043) at 0x7ff0a0d8e490>, 'Connection to uslugi.warp.org.pl timed out. (connect timeout=25)'))"
     },
     {
       "source": "fers_akademia_hr",
