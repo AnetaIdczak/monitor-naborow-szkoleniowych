@@ -9,7 +9,9 @@ wyniki i publikuje czytelny panel.
 - Krajowy Fundusz Szkoleniowy (KFS i rezerwa KFS),
 - Baza Usług Rozwojowych i operatorzy regionalni,
 - regionalne i krajowe nabory Funduszy Europejskich,
-- PARP i programy FERS,
+- PARP i programy FERS (m.in. Akademia HR, GOZ, dostępność i kompetencje sektorowe),
+- wybrane, aktualne programy FENG dla przedsiębiorstw (np. Granty na Eurogranty
+  i nabory akceleracyjne dla startupów),
 - województwa: wielkopolskie, kujawsko-pomorskie, zachodniopomorskie
   i lubuskie,
 - dodatkowy filtr obszaru sprzedażowego do około 3 godzin od Poznania.
@@ -18,7 +20,8 @@ wyniki i publikuje czytelny panel.
 
 1. GitHub Actions uruchamia `python -m src.monitor` w poniedziałek i czwartek.
 2. Skrypt pobiera wyłącznie strony wskazane w `config/sources.csv`.
-3. Wyszukuje odnośniki związane z KFS, BUR, szkoleniami i dofinansowaniem.
+3. Wyszukuje odnośniki związane z KFS, BUR, szkoleniami i dofinansowaniem;
+   wskazane w konfiguracji oficjalne strony krajowych programów sprawdza bezpośrednio.
 4. Odrzuca archiwalne wpisy, priorytety, wyniki i informacje ogólne.
 5. Nadaje wynikom poziom wiarygodności na podstawie tytułu i terminu.
 6. Zapisuje wyniki w `data/nabory.json` i `data/nabory.csv`.
