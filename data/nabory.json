@@ -121,15 +121,15 @@
     "dofinansowanie_proc": null,
     "kwota_max": null,
     "typ_firmy": "do weryfikacji",
-    "bur": "nieokreślone",
+    "bur": "tak",
     "wiarygodnosc": "wysoka",
     "do_3h_od_poznania": "tak",
     "url": "https://brodnica.praca.gov.pl/-/nabor-wnioskow-o-przyznanie-srodkow-z-krajowego-funduszu-szkoleniowego-w-2026-roku",
     "pierwsze_wykrycie": "2026-07-30",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "018970333ae5f540bc3435ee3c82dbe149ef74a58124fc336f8b3112a7db54ce"
+    "zmieniony": true,
+    "content_hash": "700bac24b8b5e7bed32444985f977c8717a7f6f055633dea77e91c11e8cdd9d7"
   },
   {
     "id": "ddbab6d5151da401",
@@ -231,15 +231,15 @@
     "dofinansowanie_proc": 90,
     "kwota_max": null,
     "typ_firmy": "średnie",
-    "bur": "nieokreślone",
+    "bur": "tak",
     "wiarygodnosc": "wysoka",
     "do_3h_od_poznania": "tak",
     "url": "https://police.praca.gov.pl/strona-glowna/-/asset_publisher/7zxSrvoposCI/content/informacja-o-naborze-wnioskow-o-przyznanie-srodkow-z-krajowego-funduszu-szkoleniowego-kfs-na-finansowanie-kosztow-ksztalcenia-ustawicznego-w-2026-r.-1?p_r_p_assetEntryId=67259395",
     "pierwsze_wykrycie": "2026-08-10",
     "ostatnia_weryfikacja": "2026-08-17",
     "nowy": false,
-    "zmieniony": false,
-    "content_hash": "40565826c582b48a31c779027c6a1f0cd24ec5846bb055136acf7ead99bb5cc4"
+    "zmieniony": true,
+    "content_hash": "3088af24f88bd2b526c613e642d62efe39eac7a6efdf7bf4c32f779f881132e2"
   },
   {
     "id": "a09cc911d45c99f3",

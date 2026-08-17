@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-08-17T04:38:53+00:00",
-  "sources_total": 94,
-  "sources_ok": 94,
+  "generated_at": "2026-08-17T05:08:42+00:00",
+  "sources_total": 95,
+  "sources_ok": 95,
   "sources_failed": 0,
-  "candidates_found": 340,
+  "candidates_found": 346,
   "items_verified": 23,
   "items_total": 22,
   "new_items": 0,
-  "changed_items": 0,
+  "changed_items": 2,
   "known_urls_before_run": 22,
   "errors": [
     {
-      "source": "parp_harmonogram",
-      "operator": "PARP",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "HTTPSConnectionPool(host='uslugirozwojowe.parp.gov.pl', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<HTTPSConnection(host='uslugirozwojowe.parp.gov.pl', port=443) at 0x7ff6064e5590>, 'Connection to uslugirozwojowe.parp.gov.pl timed out. (connect timeout=25)'))"
+      "source": "warp_uslugi",
+      "operator": "WARP",
+      "url": "https://uslugi.warp.org.pl:50043/CreditOne/clientzone/",
+      "error": "HTTPSConnectionPool(host='uslugi.warp.org.pl', port=50043): Max retries exceeded with url: /CreditOne/clientzone/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='uslugi.warp.org.pl', port=50043) at 0x7febe00b2210>, 'Connection to uslugi.warp.org.pl timed out. (connect timeout=25)'))"
     }
   ]
 }
