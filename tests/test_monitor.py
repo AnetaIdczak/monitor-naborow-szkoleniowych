@@ -99,6 +99,18 @@ def test_relevant_dates_prefer_application_window_over_publication_date():
     ]
 
 
+def test_relevant_dates_ignore_application_availability_and_training_deadline():
+    text = (
+        "PUP ogłasza nabór wniosków KFS w terminie od dnia 21 sierpnia "
+        "2026 r. do 31 sierpnia 2026 r. Wniosek będzie dostępny od dnia "
+        "17.08.2026 r. Kształcenie może rozpocząć się nie później niż "
+        "do 30.11.2026 r."
+    )
+    assert extract_relevant_dates(text) == [
+        date(2026, 8, 21), date(2026, 8, 31)
+    ]
+
+
 def test_percentage_and_amount_require_funding_context():
     text = (
         "Identyfikator 57377. Spotkanie 8%. "
