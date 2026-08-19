@@ -222,6 +222,18 @@ def test_continuous_recruitment_is_treated_as_an_active_intake():
     assert is_continuous_intake(text)
 
 
+def test_operator_specific_continuous_intake_wording_is_recognised():
+    assert is_continuous_intake(
+        "Nabór ma charakter ciągły do czasu wyczerpania limitu środków."
+    )
+    assert is_continuous_intake(
+        "Nabór do projektu jest ciągły, a alokacja jest ogłaszana kwartalnie."
+    )
+    assert is_continuous_intake(
+        "Nabór wniosków dotyczących kwalifikacji prowadzony jest w trybie ciągłym."
+    )
+
+
 def test_direct_operator_offer_with_active_status_is_kept_without_stale_dates():
     text = (
         "Dofinansowania szkoleń. Status Aktywny. Regionalny Fundusz "
