@@ -566,6 +566,15 @@ def is_continuous_intake(text: str) -> bool:
     return explicit_continuous or allocation_based
 
 
+def has_active_direct_offer(text: str) -> bool:
+    """Recognise a current status published on an operator's own offer page.
+
+    This deliberately applies only to a source configured as a direct official
+    offer page; a generic mention of an active project is not enough.
+    """
+    return bool(re.search(r"\bstatus\s+aktywny\b", simplify(text)))
+
+
 def title_is_intake(title: str) -> bool:
     normalized = simplify(title)
     return (
@@ -611,6 +620,7 @@ def supports_employee_training(title: str, text: str) -> bool:
             "dofinansowanie szkoleń",
             "wsparcie szkoleniow",
             "szkolenia pracownik",
+            "studia podyplomowe",
             "rozwoj kompetencji",
             "ksztalcenie ustawiczne",
         )
@@ -657,6 +667,7 @@ def qualifies_as_current_intake(
     include_business_program: bool = False,
 ) -> tuple[bool, list[date], str]:
     continuous = is_continuous_intake(text)
+    active_direct_offer = direct_program and has_active_direct_offer(text)
     earliest_year = today.year - (5 if direct_program else 1)
     extracted_dates = (
         extract_primary_program_dates(text)
@@ -674,7 +685,12 @@ def qualifies_as_current_intake(
         and dates[-1] >= today
     )
     if (
-        not (title_is_intake(title) or continuous or has_current_official_dates)
+        not (
+            title_is_intake(title)
+            or continuous
+            or active_direct_offer
+            or has_current_official_dates
+        )
         or title_indicates_finished_intake(title)
         or title_has_outdated_year(title, today)
         or not supports_target_business(
@@ -682,9 +698,9 @@ def qualifies_as_current_intake(
         )
     ):
         return False, [], "niska"
-    if dates and dates[-1] < today and not continuous:
+    if dates and dates[-1] < today and not (continuous or active_direct_offer):
         return False, dates, "niska"
-    if continuous:
+    if continuous or active_direct_offer:
         return True, dates, "wysoka"
     if len(dates) >= 2 and dates[-1] >= today:
         return True, dates, "wysoka"
@@ -708,6 +724,7 @@ def content_fingerprint(item: dict) -> str:
         "typ_firmy",
         "bur",
         "nabor_ciagly",
+        "status_operatora",
         "wiarygodnosc",
     )
     payload = json.dumps(
@@ -735,6 +752,12 @@ def build_item(
     if not qualified:
         raise ValueError("Ogłoszenie nie jest aktualnym naborem")
     continuous = is_continuous_intake(text)
+    active_direct_offer = candidate.source.direct and has_active_direct_offer(text)
+    # A card may contain dates from old news below the offer. When the operator
+    # explicitly marks the offer as active but does not publish a current round,
+    # do not present those old dates as its deadline.
+    if active_direct_offer and (not relevant_dates or relevant_dates[-1] < today):
+        relevant_dates = []
     start = relevant_dates[0] if relevant_dates else None
     end = relevant_dates[-1] if len(relevant_dates) > 1 else (
         relevant_dates[0] if relevant_dates else None
@@ -759,7 +782,11 @@ def build_item(
         "id": stable_id(candidate.url),
         "tytul": title,
         "program": classify_program(f"{title} {text[:8000]}", candidate.source),
-        "status": "aktywny" if continuous else determine_status(start, end, today),
+        "status": (
+            "aktywny"
+            if continuous or active_direct_offer
+            else determine_status(start, end, today)
+        ),
         "region": candidate.source.region,
         "operator": candidate.source.operator,
         "data_od": start.isoformat() if start else "",
@@ -774,6 +801,7 @@ def build_item(
             or re.search(r"\bbur\b", normalized)
         ) else "nieokreślone",
         "nabor_ciagly": continuous,
+        "status_operatora": active_direct_offer,
         "wiarygodnosc": confidence,
         "do_3h_od_poznania": drive_area,
         "url": normalize_url(candidate.url),
@@ -849,7 +877,7 @@ def merge_items(
         end = date.fromisoformat(item["data_do"]) if item.get("data_do") else None
         item["status"] = (
             "aktywny"
-            if item.get("nabor_ciagly")
+            if item.get("nabor_ciagly") or item.get("status_operatora")
             else determine_status(start, end, today)
         )
 
