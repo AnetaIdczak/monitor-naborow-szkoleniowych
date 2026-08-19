@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-08-19T08:02:31+00:00",
-  "sources_total": 112,
-  "sources_ok": 109,
+  "generated_at": "2026-08-19T08:09:24+00:00",
+  "sources_total": 111,
+  "sources_ok": 108,
   "sources_failed": 3,
   "candidates_found": 376,
   "items_verified": 43,
-  "items_total": 45,
+  "items_total": 44,
   "new_items": 3,
   "changed_items": 0,
   "known_urls_before_run": 36,
@@ -79,7 +79,11 @@
   ],
   "manual_official_sources_updated": [
     "https://www.lubuskiebony.pl/files/documentation/3191105688/regulamin-naboru-i-uczestnictwa-w-projekcie-wersja-obowiazujaca-od-18-lutego-2026-r.pdf",
+    "https://inkubator.kalisz.pl/finansujemy/dofinansowania-do-szkolen/subregion-kaliski-inwestuje-w-kadry-nowa-edycja-2024/",
+    "http://www.zarr.com.pl/oferta/uslugi-rozwojowe-3/",
+    "https://rozwijamy.eu/strona-glowna/",
     "https://uslugirozwojowe.karrsa.pl/2026/07/02/komunikat-w-sprawie-ograniczenia-naboru-wnioskow/",
-    "http://www.zarr.com.pl/oferta/uslugi-rozwojowe-3/"
+    "https://arrkonin.org.pl/oferta/uslugi-rozwojowe/",
+    "https://kpfp.org.pl/oferta-finansowania/regionalny-fundusz-szkoleniowy/"
   ]
 }
