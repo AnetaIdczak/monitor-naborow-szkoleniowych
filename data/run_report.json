@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-17T07:06:14+00:00",
-  "sources_total": 104,
-  "sources_ok": 104,
-  "sources_failed": 0,
+  "generated_at": "2026-08-19T07:46:08+00:00",
+  "sources_total": 109,
+  "sources_ok": 106,
+  "sources_failed": 3,
   "candidates_found": 376,
   "items_verified": 43,
-  "items_total": 38,
-  "new_items": 3,
-  "changed_items": 35,
+  "items_total": 43,
+  "new_items": 2,
+  "changed_items": 0,
   "known_urls_before_run": 36,
   "errors": [
     {
@@ -76,5 +76,9 @@
       "url": "https://uslugirozwojowe.parp.gov.pl/",
       "error": "Nie udało się odczytać treści programu"
     }
+  ],
+  "manual_official_sources_updated": [
+    "https://uslugirozwojowe.tarr.org.pl/aktualnosci/nabor-wnioskow-na-studia-podyplomowe",
+    "https://kpfp.org.pl/oferta-finansowania/regionalny-fundusz-szkoleniowy/"
   ]
 }
