@@ -1,89 +1,20 @@
 {
-  "generated_at": "2026-08-19T08:09:24+00:00",
-  "sources_total": 111,
-  "sources_ok": 108,
-  "sources_failed": 3,
-  "candidates_found": 376,
-  "items_verified": 43,
-  "items_total": 44,
-  "new_items": 3,
+  "generated_at": "2026-08-19T08:31:05+00:00",
+  "sources_total": 4,
+  "sources_ok": 4,
+  "sources_failed": 0,
+  "candidates_found": 4,
+  "items_verified": 4,
+  "items_total": 34,
+  "new_items": 4,
   "changed_items": 0,
-  "known_urls_before_run": 36,
-  "errors": [
-    {
-      "source": "warp_uslugi",
-      "operator": "WARP",
-      "url": "https://uslugi.warp.org.pl:50043/CreditOne/clientzone/",
-      "error": "HTTPSConnectionPool(host='uslugi.warp.org.pl', port=50043): Max retries exceeded with url: /CreditOne/clientzone/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='uslugi.warp.org.pl', port=50043) at 0x7ff0a0d8e490>, 'Connection to uslugi.warp.org.pl timed out. (connect timeout=25)'))"
-    },
-    {
-      "source": "fers_akademia_hr",
-      "operator": "PARP – Akademia HR",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "fers_trudnosci",
-      "operator": "PARP – wsparcie firm",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "fers_goz",
-      "operator": "PARP – GOZ",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "fers_dostepnosc_eaa",
-      "operator": "PARP – Dostępność EAA",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "fers_dostepnosc_3",
-      "operator": "PARP – Dostępność",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "fers_kompetencje_sektorowe",
-      "operator": "PARP – kompetencje sektorowe",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "fers_kompetencje_sektorowe",
-      "operator": "PARP – kompetencje sektorowe",
-      "url": "https://www.turystyka.darr.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "feng_eurogranty",
-      "operator": "PARP – FENG",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "feng_scale_up_green",
-      "operator": "PARP – FENG",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "feng_spark_4",
-      "operator": "PARP – FENG",
-      "url": "https://uslugirozwojowe.parp.gov.pl/",
-      "error": "Nie udało się odczytać treści programu"
-    }
-  ],
+  "known_urls_before_run": 30,
+  "errors": [],
+  "refresh_scope": "krajowe nabory u operatorów",
   "manual_official_sources_updated": [
-    "https://www.lubuskiebony.pl/files/documentation/3191105688/regulamin-naboru-i-uczestnictwa-w-projekcie-wersja-obowiazujaca-od-18-lutego-2026-r.pdf",
-    "https://inkubator.kalisz.pl/finansujemy/dofinansowania-do-szkolen/subregion-kaliski-inwestuje-w-kadry-nowa-edycja-2024/",
-    "http://www.zarr.com.pl/oferta/uslugi-rozwojowe-3/",
-    "https://rozwijamy.eu/strona-glowna/",
-    "https://uslugirozwojowe.karrsa.pl/2026/07/02/komunikat-w-sprawie-ograniczenia-naboru-wnioskow/",
-    "https://arrkonin.org.pl/oferta/uslugi-rozwojowe/",
-    "https://kpfp.org.pl/oferta-finansowania/regionalny-fundusz-szkoleniowy/"
+    "https://goz.inse.pl/aktualnosci/",
+    "https://dyrektywaeaa.adninstytut.pl/oglaszamy-xvii-runde-naboru-zgloszen-do-projektu/",
+    "https://dyrektywaeaa.pl/rekrutacja/",
+    "https://dyrektywaeaa.certes.pl/rekrutacja/"
   ]
 }
