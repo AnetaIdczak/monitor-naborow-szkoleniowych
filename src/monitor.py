@@ -620,7 +620,6 @@ def supports_employee_training(title: str, text: str) -> bool:
             "dofinansowanie szkoleń",
             "wsparcie szkoleniow",
             "szkolenia pracownik",
-            "studia podyplomowe",
             "rozwoj kompetencji",
             "ksztalcenie ustawiczne",
         )
