@@ -149,7 +149,9 @@ def render_dashboard(items: list[dict], report: dict) -> str:
       .toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
     const formatDate = value => value ? new Date(value+"T12:00:00").toLocaleDateString("pl-PL") : "brak danych";
     const formatTerm = row => row.nabor_ciagly ? "nabór ciągły" :
-      `${{formatDate(row.data_od)}} – ${{formatDate(row.data_do)}}`;
+      (!row.data_od && !row.data_do && row.status === "aktywny")
+        ? "aktywny — termin u operatora"
+        : `${{formatDate(row.data_od)}} – ${{formatDate(row.data_do)}}`;
     const money = value => value ? Number(value).toLocaleString("pl-PL")+" zł" : "—";
     let visible = [];
 
