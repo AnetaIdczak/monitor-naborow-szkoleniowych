@@ -43,6 +43,8 @@ KEYWORDS = (
     "rezerwa kfs",
     "usługi rozwojowe",
     "uslugi rozwojowe",
+    "usług rozwojow",
+    "uslug rozwojow",
     "baza usług rozwojowych",
     "baza uslug rozwojowych",
     "bur",
@@ -64,6 +66,8 @@ STRONG_KEYWORDS = (
     "rezerwa kfs",
     "baza usług rozwojowych",
     "baza uslug rozwojowych",
+    "usług rozwojow",
+    "uslug rozwojow",
     "dofinansowanie szkoleń",
     "dofinansowanie szkolen",
     "kształcenie ustawiczne",
@@ -300,7 +304,10 @@ def extract_candidates(html: str, source: Source) -> list[Candidate]:
             if len(parent_text) <= 700:
                 context = parent_text
         combined = f"{title} {href} {context}"
-        if not is_relevant(combined):
+        # Some regional publishers use a generic link title (for example
+        # "17 sierpnia rusza kolejny nabór"), while the training scope is only
+        # stated on the detail page. Keep it for that verification step.
+        if not (is_relevant(combined) or title_is_intake(title)):
             continue
         if any(item in simplify(title) for item in EXCLUDED_LINK_TEXT):
             continue
@@ -318,7 +325,7 @@ def extract_candidates(html: str, source: Source) -> list[Candidate]:
     return sorted(
         found.values(),
         key=lambda item: (
-            not is_relevant(item.title, strong=True),
+            not (is_relevant(item.title, strong=True) or title_is_intake(item.title)),
             len(item.title),
         ),
     )[:MAX_DETAILS_PER_SOURCE]
@@ -390,8 +397,11 @@ def extract_relevant_dates(text: str) -> list[date]:
     # A date such as "17.08.2026 r." ends a sentence for the generic splitter.
     # Preserve both dates from an explicit application window nevertheless.
     numeric_date = r"[0-3]?\d[.\-/][01]?\d[.\-/]20\d{2}"
+    month_names = "|".join(re.escape(month) for month in MONTHS)
+    date_token = rf"(?:{numeric_date}|[0-3]?\d\s+(?:{month_names})\s+20\d{{2}})"
     range_pattern = re.compile(
-        rf"{numeric_date}\s*(?:r\.)?\s*(?:do(?:\s+dnia)?|[-–])\s*{numeric_date}",
+        rf"{date_token}\s*(?:r\.)?(?:\s+od\s+godz?\.?\s*\d{{1,2}}(?::\d{{2}})?)?"
+        rf"\s*(?:do(?:\s+dnia)?|[-–])\s*(?:godz?\.?\s*\d{{1,2}}(?::\d{{2}})?)?\s*{date_token}",
         re.IGNORECASE,
     )
     range_dates: set[date] = set()
@@ -575,6 +585,8 @@ def supports_employee_training(title: str, text: str) -> bool:
             "baza usług rozwojowych",
             "uslugi rozwojowe",
             "usługi rozwojowe",
+            "uslug rozwojow",
+            "usług rozwojow",
             "dofinansowanie szkolen",
             "dofinansowanie szkoleń",
             "wsparcie szkoleniow",
@@ -736,7 +748,8 @@ def build_item(
         "kwota_max": extract_amount(text),
         "typ_firmy": classify_company_type(text),
         "bur": "tak" if (
-            "baza uslug rozwojowych" in normalized
+            candidate.source.category == "BUR"
+            or "baza uslug rozwojowych" in normalized
             or "baza usług rozwojowych" in normalized
             or re.search(r"\bbur\b", normalized)
         ) else "nieokreślone",
@@ -883,7 +896,9 @@ def run() -> dict:
             listing_response.encoding = (
                 listing_response.encoding or listing_response.apparent_encoding
             )
-            candidates = extract_candidates(listing_response.text, source)
+            # Direct programme pages are the primary official record. Do not
+            # follow their navigation and partner links as separate notices.
+            candidates = [] if source.direct else extract_candidates(listing_response.text, source)
             if source.direct:
                 candidates.insert(
                     0,
