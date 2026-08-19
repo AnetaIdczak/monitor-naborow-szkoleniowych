@@ -129,6 +129,13 @@ def test_employee_training_scope_rejects_individual_education_bon():
     )
 
 
+def test_employee_training_scope_accepts_operator_training_for_company_staff():
+    assert supports_employee_training(
+        "Rekrutacja do projektu operatora",
+        "Program szkoleniowy i doradczy dla firm oraz ich pracowników.",
+    )
+
+
 def test_current_intake_rejects_expired_and_accepts_future():
     expired = (
         "Nabór KFS dla pracodawców trwa od 01.02.2026 do 05.02.2026."
@@ -232,6 +239,9 @@ def test_operator_specific_continuous_intake_wording_is_recognised():
     assert is_continuous_intake(
         "Nabór wniosków dotyczących kwalifikacji prowadzony jest w trybie ciągłym."
     )
+    assert is_continuous_intake(
+        "Rekrutacja do udziału w projekcie ma charakter ciągły."
+    )
 
 
 def test_direct_operator_offer_with_active_status_is_kept_without_stale_dates():
@@ -257,6 +267,15 @@ def test_direct_operator_offer_with_active_status_is_kept_without_stale_dates():
     assert item["data_do"] == ""
     merged, _, _ = merge_items([], [item], today=date(2026, 8, 19))
     assert merged[0]["status"] == "aktywny"
+
+
+def test_direct_operator_recruitment_page_with_application_form_is_active():
+    text = (
+        "Rekrutacja do projektu dla przedsiębiorstw i ich pracowników. "
+        "Program szkoleniowy oraz doradczy. Wypełnij formularz zgłoszeniowy "
+        "na platformie rekrutacyjnej."
+    )
+    assert has_active_direct_offer(text)
 
 
 def test_postgraduate_only_intake_is_rejected():

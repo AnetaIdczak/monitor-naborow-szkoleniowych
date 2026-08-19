@@ -564,6 +564,10 @@ def is_continuous_intake(text: str) -> bool:
             r"\bnabor\b.{0,400}\bprowadzon\w*\s+(?:jest\s+)?w trybie ciag(?:lym|łym)\b",
             normalized,
         )
+        or re.search(
+            r"\brekrutacja\b.{0,400}\b(?:ma charakter|jest)\s+ciag(?:ly|ły)\b",
+            normalized,
+        )
     )
     # Some operators run separate rounds until the allocated budget is spent.
     # Treat this as active only when the official page also explicitly says that
@@ -584,7 +588,30 @@ def has_active_direct_offer(text: str) -> bool:
     This deliberately applies only to a source configured as a direct official
     offer page; a generic mention of an active project is not enough.
     """
-    return bool(re.search(r"\bstatus\s+aktywny\b", simplify(text)))
+    normalized = simplify(text)
+    if re.search(r"\bstatus\s+aktywny\b", normalized):
+        return True
+    # Operator pages do not always expose a separate status badge. A live
+    # application form or current recruitment documentation is equally clear
+    # evidence that the operator accepts applications on this exact page.
+    has_recruitment_action = (
+        "rekrutac" in normalized
+        and any(
+            phrase in normalized
+            for phrase in (
+                "formularz zgloszeniowy",
+                "formularz rekrutacyjny",
+                "zglos sie do projektu",
+                "zglos siebie",
+                "platformie rekrutacyjnej",
+                "dokumentacja rekrutacyjna",
+            )
+        )
+    )
+    return has_recruitment_action and not any(
+        phrase in normalized
+        for phrase in ("zakonczenie naboru", "zakonczony nabor", "wstrzymanie nabor")
+    )
 
 
 def title_is_intake(title: str) -> bool:
@@ -630,8 +657,12 @@ def supports_employee_training(title: str, text: str) -> bool:
             "usług rozwojow",
             "dofinansowanie szkolen",
             "dofinansowanie szkoleń",
+            "wsparcia szkoleniow",
+            "program szkoleniowy",
+            "szkoleniowo-doradcz",
             "wsparcie szkoleniow",
             "szkolenia pracownik",
+            "szkoleni",
             "rozwoj kompetencji",
             "ksztalcenie ustawiczne",
         )

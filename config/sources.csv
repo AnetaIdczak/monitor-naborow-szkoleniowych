@@ -1,21 +1,12 @@
 id,category,region,operator,url,enabled,direct,direct_title,business_program
-fe_nabory,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuropejskie.gov.pl/strony/skorzystaj/nabory/,true
-fe_harmonogramy,krajowe,Polska,Portal Funduszy Europejskich,https://funduszeeuropejskie.gov.pl/nabory-wnioskow/harmonogramy-naborow-fe/,true
-parp_harmonogram,krajowe,Polska,PARP,https://www.parp.gov.pl/harmonogram-naborow,true
-bur_dofinansowania,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/,true
-bur_aktualnosci,BUR,Polska,PARP BUR,https://serwis-uslugirozwojowe.parp.gov.pl/component/site/site/aktualnosci-i-artykuly-bur/,true
 warp_uslugi,BUR,wielkopolskie,WARP,https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/,true,true,WARP – Usługi rozwojowe dla Twojego biznesu
 arr_konin_bur,BUR,wielkopolskie,ARR Konin,https://arrkonin.org.pl/oferta/uslugi-rozwojowe/,true,true,ARR Konin – Usługi rozwojowe dla przedsiębiorców
 kip_kalisz_bur,BUR,wielkopolskie,Kaliski Inkubator Przedsiębiorczości,https://inkubator.kalisz.pl/finansujemy/dofinansowania-do-szkolen/subregion-kaliski-inwestuje-w-kadry-nowa-edycja-2024/,true,true,Subregion kaliski inwestuje w kadry
 fripww_pila_bur,BUR,wielkopolskie,Fundusz Rozwoju i Promocji Województwa Wielkopolskiego,https://rozwijamy.eu/strona-glowna/,true,true,Rekrutacja – Usługi rozwojowe w subregionie pilskim
-fers_akademia_hr,krajowe,Polska,PARP – Akademia HR,https://fers.parp.gov.pl/component/grants/grants/akademia-hr-oferta-dla-przedsiebiorcow,true,true,Akademia HR – oferta dla przedsiębiorców
-fers_trudnosci,krajowe,Polska,PARP – wsparcie firm,https://fers.parp.gov.pl/component/grants/grants/wsparcie-firm-w-okresowych-trudnosciach---oferta-dla-przedsiebiorcow,true,true,Wsparcie firm w okresowych trudnościach – oferta dla przedsiębiorców
-fers_goz,krajowe,Polska,PARP – GOZ,https://fers.parp.gov.pl/component/grants/grants/goz---to-sie-oplaca---oferta-dla-przedsiebiorcow,true,true,GOZ – to się opłaca – oferta dla przedsiębiorców
-fers_dostepnosc_eaa,krajowe,Polska,PARP – Dostępność EAA,https://fers.parp.gov.pl/component/grants/grants/dostepnosc-dyrektywa-eaa---oferta-dla-przedsiebiorcow,true,true,Dostępność Dyrektywa EAA – oferta dla przedsiębiorców
-fers_dostepnosc_3,krajowe,Polska,PARP – Dostępność,https://fers.parp.gov.pl/component/grants/grants/dostepnosc-szansa-na-rozwoj-3---oferta-dla-przedsiebiorcow,true,true,Dostępność szansą na rozwój 3 – oferta dla przedsiębiorców
-fers_kompetencje_sektorowe,krajowe,Polska,PARP – kompetencje sektorowe,https://fers.parp.gov.pl/component/grants/grants/kluczowe-kompetencje-dla-sektorow---oferta-dla-przedsiebiorcow,true,true,Kluczowe kompetencje dla sektorów – oferta dla przedsiębiorców
-feng_scale_up_green,krajowe,Polska,PARP – FENG,https://feng.parp.gov.pl/component/grants/grants/startup-booster-poland---Scale-Up-Green,true,true,Startup Booster Poland – Scale Up Green,true
-feng_spark_4,krajowe,Polska,PARP – FENG,https://feng.parp.gov.pl/component/grants/grants/lodzka-specjalna-strefa-ekonomiczna-lsse,true,true,Spark 4.0 – edycja Rethink,true
+inse_goz,FERS,Polska,Instytut Nauk Społeczno-Ekonomicznych,https://goz.inse.pl/aktualnosci/,true,true,GOZ – Nowe Perspektywy dla Biznesu – nabór ciągły
+adn_eaa,FERS,Polska,Instytut ADN,https://dyrektywaeaa.adninstytut.pl/,true
+sense_eaa,FERS,Polska,Sense Consulting,https://dyrektywaeaa.pl/rekrutacja/,true,true,I-D-EAA Academy – rekrutacja
+certes_eaa,FERS,Polska,CERTES,https://dyrektywaeaa.certes.pl/rekrutacja/,true,true,Dyrektywa EAA – nowe możliwości dla biznesu – rekrutacja
 wup_poznan,regionalne,wielkopolskie,WUP Poznań,https://wuppoznan.praca.gov.pl/strona-glowna,true
 fe_wielkopolska,regionalne,wielkopolskie,Fundusze Europejskie dla Wielkopolski,https://wrpo.wielkopolskie.pl/nabory,true
 poznan,KFS,wielkopolskie,PUP Poznań,https://poznan.praca.gov.pl/strona-glowna,true
