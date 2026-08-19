@@ -130,6 +130,8 @@
     const slug = value => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"")
       .toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
     const formatDate = value => value ? new Date(value+"T12:00:00").toLocaleDateString("pl-PL") : "brak danych";
+    const formatTerm = row => row.nabor_ciagly ? "nabór ciągły" :
+      `${formatDate(row.data_od)} – ${formatDate(row.data_do)}`;
     const money = value => value ? Number(value).toLocaleString("pl-PL")+" zł" : "—";
     let visible = [];
 
@@ -158,7 +160,7 @@
           ${row.zmieniony ? '<br><span class="badge zapowiedziany">zmieniony</span>' : ""}</td>
         <td><span class="badge ${slug(row.status)}">${esc(row.status)}</span></td>
         <td>${esc(row.program)}</td><td>${esc(row.region)}</td><td>${esc(row.operator)}</td>
-        <td>${formatDate(row.data_od)} – ${formatDate(row.data_do)}</td>
+        <td>${formatTerm(row)}</td>
         <td>${esc(row.wiarygodnosc || "do weryfikacji")}</td>
         <td>${row.dofinansowanie_proc ? esc(row.dofinansowanie_proc)+"% · " : ""}${money(row.kwota_max)}</td>
         <td>${esc(row.typ_firmy)}</td><td>${esc(row.bur)}</td>
