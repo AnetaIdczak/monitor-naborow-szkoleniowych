@@ -47,6 +47,14 @@ def test_extract_candidates_selects_relevant_links():
     ]
 
 
+def test_extract_candidates_keeps_generic_intake_title_for_detail_verification():
+    html = '<main><a href="/nabor">17 sierpnia rusza kolejny nabór dla firm</a></main>'
+    results = extract_candidates(html, SOURCE)
+    assert [item.title for item in results] == [
+        "17 sierpnia rusza kolejny nabór dla firm"
+    ]
+
+
 def test_extract_polish_dates_amount_and_percentage():
     text = (
         "Nabór trwa od 8.06.2026 do 12 czerwca 2026 r. "
@@ -135,6 +143,34 @@ def test_current_intake_rejects_expired_and_accepts_future():
     assert accepted is True
     assert dates[-1] == date(2026, 8, 5)
     assert confidence == "wysoka"
+
+
+def test_arr_konin_regional_business_intake_is_detected():
+    text = (
+        "Przedsiębiorcy mogą ubiegać się o dofinansowanie usług rozwojowych "
+        "dla siebie oraz swoich pracowników w Bazie Usług Rozwojowych. "
+        "Nabór wniosków będzie prowadzony od 17 sierpnia 2026 r. od godz. 8:00 "
+        "do 24 sierpnia 2026 r. do godz. 15:00. Dofinansowanie do 80%."
+    )
+    accepted, dates, confidence = qualifies_as_current_intake(
+        "ARR Konin – Usługi rozwojowe dla przedsiębiorców", text,
+        today=date(2026, 8, 19),
+        direct_program=True,
+    )
+    assert accepted is True
+    assert dates == [date(2026, 8, 17), date(2026, 8, 24)]
+    assert confidence == "wysoka"
+    arr_source = Source(
+        id="arr", category="BUR", region="wielkopolskie", operator="ARR Konin",
+        url="https://arrkonin.org.pl/nabor", enabled=True, direct=True,
+        direct_title="ARR Konin – Usługi rozwojowe dla przedsiębiorców",
+    )
+    item = build_item(
+        Candidate(arr_source.direct_title, arr_source.url, arr_source),
+        text,
+        today=date(2026, 8, 19),
+    )
+    assert item["bur"] == "tak"
 
 
 def test_continuous_warp_intake_is_active_even_when_old_start_date_is_present():
