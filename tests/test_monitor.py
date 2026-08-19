@@ -11,6 +11,7 @@ from src.monitor import (
     extract_relevant_dates,
     extract_percentage,
     extract_primary_program_dates,
+    has_active_direct_offer,
     is_continuous_intake,
     merge_items,
     normalize_url,
@@ -219,6 +220,45 @@ def test_continuous_recruitment_is_treated_as_an_active_intake():
         "rozwojowych w Bazie Usług Rozwojowych dla przedsiębiorstw i ich pracowników."
     )
     assert is_continuous_intake(text)
+
+
+def test_direct_operator_offer_with_active_status_is_kept_without_stale_dates():
+    text = (
+        "Dofinansowania szkoleń. Status Aktywny. Regionalny Fundusz "
+        "Szkoleniowy II wspiera przedsiębiorców w usługach rozwojowych "
+        "zarejestrowanych w Bazie Usług Rozwojowych. Aktualność 6 maja 2024 r."
+    )
+    source = Source(
+        id="kpfp", category="BUR", region="kujawsko-pomorskie",
+        operator="Kujawsko-Pomorski Fundusz Pożyczkowy",
+        url="https://kpfp.org.pl/rfs-ii", enabled=True, direct=True,
+    )
+    assert has_active_direct_offer(text)
+    item = build_item(
+        Candidate("Regionalny Fundusz Szkoleniowy II – aktywna oferta", source.url, source),
+        text,
+        today=date(2026, 8, 19),
+    )
+    assert item["status"] == "aktywny"
+    assert item["status_operatora"] is True
+    assert item["data_od"] == ""
+    assert item["data_do"] == ""
+    merged, _, _ = merge_items([], [item], today=date(2026, 8, 19))
+    assert merged[0]["status"] == "aktywny"
+
+
+def test_direct_future_postgraduate_intake_is_accepted_as_training():
+    text = (
+        "25 sierpnia 2026 r. wznowiony zostaje nabór wniosków aplikacyjnych "
+        "na studia podyplomowe dla sektora MMŚP i dużych przedsiębiorstw."
+    )
+    accepted, dates, confidence = qualifies_as_current_intake(
+        "RFS II – nabór na studia podyplomowe", text,
+        today=date(2026, 8, 19), direct_program=True,
+    )
+    assert accepted is True
+    assert dates == [date(2026, 8, 25)]
+    assert confidence == "wysoka"
 
 
 def test_merge_keeps_a_continuous_intake_active_after_its_last_page_update():
