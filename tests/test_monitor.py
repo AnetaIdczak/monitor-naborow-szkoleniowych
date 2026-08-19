@@ -20,6 +20,7 @@ from src.monitor import (
     title_indicates_finished_intake,
     title_is_intake,
 )
+from src.render import render_dashboard
 
 
 SOURCE = Source(
@@ -345,3 +346,15 @@ def test_normalize_url_removes_tracking_and_fragment():
     assert normalize_url(
         "HTTPS://Example.com//nabor?utm_source=x&id=2#details"
     ) == "https://example.com/nabor?id=2"
+
+
+def test_dashboard_displays_a_continuous_intake_without_historical_dates():
+    page = render_dashboard(
+        [{
+            "tytul": "WARP – Usługi rozwojowe dla Twojego biznesu",
+            "status": "aktywny",
+            "nabor_ciagly": True,
+        }],
+        {},
+    )
+    assert 'row.nabor_ciagly ? "nabór ciągły"' in page
