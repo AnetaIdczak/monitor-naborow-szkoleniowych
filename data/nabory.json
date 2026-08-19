@@ -538,8 +538,8 @@
     "status": "aktywny",
     "region": "zachodniopomorskie",
     "operator": "PUP Szczecin",
-    "data_od": "2026-08-17",
-    "data_do": "2026-11-30",
+    "data_od": "2026-08-21",
+    "data_do": "2026-08-31",
     "dofinansowanie_proc": null,
     "kwota_max": null,
     "typ_firmy": "duże",
@@ -548,10 +548,10 @@
     "do_3h_od_poznania": "tak",
     "url": "https://szczecin.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/informacja-o-planowanym-ii-naborze-wnioskow-o-dofinansowanie-kosztow-ksztalcenia-ustawicznego-ze-srodkow-krajowego-funduszu-szkoleniowego?p_r_p_assetEntryId=67217087",
     "pierwsze_wykrycie": "2026-08-06",
-    "ostatnia_weryfikacja": "2026-08-17",
+    "ostatnia_weryfikacja": "2026-08-19",
     "nowy": false,
     "zmieniony": true,
-    "content_hash": "ea84173b8ca10800beeb0d4e9eb16aa456918fba3fa1717bc12d85b9649ea2e9",
+    "content_hash": "ca773970c99aebad2cb3ec4cb6439571e86551daae13d900f6c143ec66f56b9a",
     "nabor_ciagly": false
   },
   {
