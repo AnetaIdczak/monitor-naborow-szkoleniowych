@@ -247,7 +247,7 @@ def test_direct_operator_offer_with_active_status_is_kept_without_stale_dates():
     assert merged[0]["status"] == "aktywny"
 
 
-def test_direct_future_postgraduate_intake_is_accepted_as_training():
+def test_postgraduate_only_intake_is_rejected():
     text = (
         "25 sierpnia 2026 r. wznowiony zostaje nabór wniosków aplikacyjnych "
         "na studia podyplomowe dla sektora MMŚP i dużych przedsiębiorstw."
@@ -256,9 +256,9 @@ def test_direct_future_postgraduate_intake_is_accepted_as_training():
         "RFS II – nabór na studia podyplomowe", text,
         today=date(2026, 8, 19), direct_program=True,
     )
-    assert accepted is True
-    assert dates == [date(2026, 8, 25)]
-    assert confidence == "wysoka"
+    assert accepted is False
+    assert dates == []
+    assert confidence == "niska"
 
 
 def test_merge_keeps_a_continuous_intake_active_after_its_last_page_update():
