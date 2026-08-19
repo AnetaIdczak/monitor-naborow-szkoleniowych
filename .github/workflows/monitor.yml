@@ -3,7 +3,7 @@ name: Monitor naborów
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 6 * * 1,4"
+    - cron: "0 7 * * 1,3,5"
       timezone: "Europe/Warsaw"
 
 permissions:
