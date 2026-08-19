@@ -199,6 +199,28 @@ def test_continuous_warp_intake_is_active_even_when_old_start_date_is_present():
     assert item["program"] == "BUR"
 
 
+def test_allocation_based_intake_is_active_only_when_official_page_says_it_runs():
+    text = (
+        "NABÓR TRWA. Nabór rozpoczął się 21.07.2026 r. i będzie trwał do "
+        "wyczerpania alokacji środków. Dofinansowanie usług rozwojowych dla "
+        "mikro, małych i średnich przedsiębiorstw oraz ich pracowników."
+    )
+    assert is_continuous_intake(text)
+    accepted, _, confidence = qualifies_as_current_intake(
+        "Subregion kaliski inwestuje w kadry", text, today=date(2026, 8, 19)
+    )
+    assert accepted is True
+    assert confidence == "wysoka"
+
+
+def test_continuous_recruitment_is_treated_as_an_active_intake():
+    text = (
+        "Rekrutacja prowadzona jest w trybie ciągłym. Dofinansowanie usług "
+        "rozwojowych w Bazie Usług Rozwojowych dla przedsiębiorstw i ich pracowników."
+    )
+    assert is_continuous_intake(text)
+
+
 def test_merge_keeps_a_continuous_intake_active_after_its_last_page_update():
     source = Source(
         id="warp", category="BUR", region="wielkopolskie", operator="WARP",
