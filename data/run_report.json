@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-19T07:53:09+00:00",
-  "sources_total": 108,
-  "sources_ok": 105,
+  "generated_at": "2026-08-19T08:02:31+00:00",
+  "sources_total": 112,
+  "sources_ok": 109,
   "sources_failed": 3,
   "candidates_found": 376,
   "items_verified": 43,
-  "items_total": 42,
-  "new_items": 1,
+  "items_total": 45,
+  "new_items": 3,
   "changed_items": 0,
   "known_urls_before_run": 36,
   "errors": [
@@ -78,6 +78,8 @@
     }
   ],
   "manual_official_sources_updated": [
-    "https://kpfp.org.pl/oferta-finansowania/regionalny-fundusz-szkoleniowy/"
+    "https://www.lubuskiebony.pl/files/documentation/3191105688/regulamin-naboru-i-uczestnictwa-w-projekcie-wersja-obowiazujaca-od-18-lutego-2026-r.pdf",
+    "https://uslugirozwojowe.karrsa.pl/2026/07/02/komunikat-w-sprawie-ograniczenia-naboru-wnioskow/",
+    "http://www.zarr.com.pl/oferta/uslugi-rozwojowe-3/"
   ]
 }

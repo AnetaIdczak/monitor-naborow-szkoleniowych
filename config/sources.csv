@@ -74,6 +74,9 @@ wloclawek,KFS,kujawsko-pomorskie,PUP Włocławek,https://wloclawek.praca.gov.pl/
 znin,KFS,kujawsko-pomorskie,PUP Żnin,https://znin.praca.gov.pl/strona-glowna,true
 wup_szczecin,regionalne,zachodniopomorskie,WUP Szczecin,https://www.wup.pl/pl/projekty_wlasne/zachodniopomorskie-bony-szkoleniowe/aktualnoci,true
 fe_zachodniopomorskie,regionalne,zachodniopomorskie,Fundusze Europejskie dla Pomorza Zachodniego,https://funduszeue.wzp.pl/nabory,true
+karr_bur,BUR,zachodniopomorskie,Koszalińska Agencja Rozwoju Regionalnego,https://uslugirozwojowe.karrsa.pl/2026/07/02/komunikat-w-sprawie-ograniczenia-naboru-wnioskow/,true,true,KARR – nabór ciągły kwalifikacji dla pracowników MŚP
+pfp_fur3_bur,BUR,zachodniopomorskie,Polska Fundacja Przedsiębiorczości,https://www.fur.pfp.com.pl/,true
+zarr_bur,BUR,zachodniopomorskie,Zachodniopomorska Agencja Rozwoju Regionalnego,http://www.zarr.com.pl/oferta/uslugi-rozwojowe-3/,true,true,ZARR – usługi rozwojowe dla MMŚP
 bialogard,KFS,zachodniopomorskie,PUP Białogard,https://bialogard.praca.gov.pl/strona-glowna,true
 choszczno,KFS,zachodniopomorskie,PUP Choszczno,https://choszczno.praca.gov.pl/strona-glowna,true
 drawsko,KFS,zachodniopomorskie,PUP Drawsko Pomorskie,https://drawskopomorskie.praca.gov.pl/strona-glowna,true
@@ -95,6 +98,7 @@ swidwin,KFS,zachodniopomorskie,PUP Świdwin,https://swidwin.praca.gov.pl/strona-
 walcz,KFS,zachodniopomorskie,PUP Wałcz,https://walcz.praca.gov.pl/strona-glowna,true
 wup_zielona,regionalne,lubuskie,WUP Zielona Góra,https://wupzielonagora.praca.gov.pl/strona-glowna,true
 fe_lubuskie,regionalne,lubuskie,Fundusze Europejskie dla Lubuskiego,https://funduszeue.lubuskie.pl/nabory,true
+lubuskie_bony_bur,BUR,lubuskie,Zachodnia Izba Przemysłowo-Handlowa / Agencja Rozwoju Regionalnego S.A.,https://www.lubuskiebony.pl/files/documentation/3191105688/regulamin-naboru-i-uczestnictwa-w-projekcie-wersja-obowiazujaca-od-18-lutego-2026-r.pdf,true,true,Lubuskie Bony Rozwojowe – szkolenia i doradztwo dla firm
 gorzow,KFS,lubuskie,PUP Gorzów Wielkopolski,https://gorzow.praca.gov.pl/strona-glowna,true
 krosno,KFS,lubuskie,PUP Krosno Odrzańskie,https://krosnoodrzanskie.praca.gov.pl/strona-glowna,true
 miedzyrzecz,KFS,lubuskie,PUP Międzyrzecz,https://miedzyrzecz.praca.gov.pl/strona-glowna,true

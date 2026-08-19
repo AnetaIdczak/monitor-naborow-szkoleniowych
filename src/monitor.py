@@ -553,6 +553,18 @@ def is_continuous_intake(text: str) -> bool:
             "rekrutacja jest prowadzona w trybie ciagłym",
         )
     )
+    # Operators use a few additional, equally explicit formulations on their
+    # official programme pages and regulations.
+    explicit_continuous = explicit_continuous or bool(
+        re.search(
+            r"\bnabor\b.{0,400}\b(?:ma charakter|jest)\s+ciag(?:ly|ły)\b",
+            normalized,
+        )
+        or re.search(
+            r"\bnabor\b.{0,400}\bprowadzon\w*\s+(?:jest\s+)?w trybie ciag(?:lym|łym)\b",
+            normalized,
+        )
+    )
     # Some operators run separate rounds until the allocated budget is spent.
     # Treat this as active only when the official page also explicitly says that
     # the intake is currently running.
