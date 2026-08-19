@@ -533,7 +533,7 @@ def determine_status(start: date | None, end: date | None, today: date) -> str:
 
 def is_continuous_intake(text: str) -> bool:
     normalized = simplify(text)
-    return any(
+    explicit_continuous = any(
         phrase in normalized
         for phrase in (
             "nabor ciagly",
@@ -542,8 +542,28 @@ def is_continuous_intake(text: str) -> bool:
             "nabor jest realizowany w trybie ciagłym",
             "nabor prowadzony w trybie ciaglym",
             "nabor prowadzony w trybie ciagłym",
+            "rekrutacja prowadzona w trybie ciaglym",
+            "rekrutacja prowadzona w trybie ciągłym",
+            "rekrutacja prowadzona w trybie ciagłym",
+            "rekrutacja prowadzona jest w trybie ciaglym",
+            "rekrutacja prowadzona jest w trybie ciągłym",
+            "rekrutacja prowadzona jest w trybie ciagłym",
+            "rekrutacja jest prowadzona w trybie ciaglym",
+            "rekrutacja jest prowadzona w trybie ciągłym",
+            "rekrutacja jest prowadzona w trybie ciagłym",
         )
     )
+    # Some operators run separate rounds until the allocated budget is spent.
+    # Treat this as active only when the official page also explicitly says that
+    # the intake is currently running.
+    allocation_based = (
+        "do wyczerpania alokacji" in normalized
+        and any(
+            phrase in normalized
+            for phrase in ("nabor trwa", "nabor otwarty", "trwajacy nabor")
+        )
+    )
+    return explicit_continuous or allocation_based
 
 
 def title_is_intake(title: str) -> bool:
