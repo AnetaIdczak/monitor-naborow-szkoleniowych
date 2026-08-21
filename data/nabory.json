@@ -915,5 +915,29 @@
     "data_od": "2026-08-24",
     "data_do": "2026-08-28",
     "url": "https://swiecie.praca.gov.pl/"
+  },
+  {
+    "id": "c0f0c38c49488a99",
+    "tytul": "Menadżer HR – nabór dla pracodawców i kadry HR",
+    "program": "FERS",
+    "status": "zapowiedziany",
+    "region": "Polska",
+    "operator": "SCREP – Centrum Rozwoju Ekonomicznego Pasłęka",
+    "data_od": "2026-09-23",
+    "data_do": "2026-09-27",
+    "dofinansowanie_proc": 80,
+    "kwota_max": null,
+    "typ_firmy": "przedsiębiorcy zatrudniający pracowników",
+    "bur": "tak",
+    "nabor_ciagly": false,
+    "status_operatora": false,
+    "wiarygodnosc": "wysoka",
+    "do_3h_od_poznania": "nie",
+    "url": "https://menadzerhr.pl/rekrutacja/",
+    "pierwsze_wykrycie": "2026-08-21",
+    "ostatnia_weryfikacja": "2026-08-21",
+    "nowy": true,
+    "zmieniony": false,
+    "manual": true
   }
 ]
