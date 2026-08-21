@@ -884,11 +884,16 @@ def merge_items(
     failed = {simplify(value) for value in failed_operators}
     existing_by_id = {item["id"]: dict(item) for item in existing}
     # A working source is authoritative: old, unconfirmed and completed entries
-    # must disappear. Entries stay only for a source that failed this run.
+    # must disappear. Explicitly verified manual records stay until their own
+    # application window closes; this covers notices published only in an
+    # official regional summary.
     merged = {
         item["id"]: dict(item)
         for item in existing
-        if simplify(item.get("operator", "")) in failed
+        if (
+            simplify(item.get("operator", "")) in failed
+            or item.get("manual")
+        )
         and item.get("status") != "zakończony"
     }
     new_count = 0
