@@ -151,7 +151,7 @@
     "region": "kujawsko-pomorskie",
     "operator": "PUP Nakło nad Notecią",
     "data_od": "2026-08-10",
-    "data_do": "2026-08-21",
+    "data_do": "2026-08-31",
     "dofinansowanie_proc": null,
     "kwota_max": null,
     "typ_firmy": "do weryfikacji",
@@ -164,7 +164,7 @@
     "pierwsze_wykrycie": "2026-08-21",
     "ostatnia_weryfikacja": "2026-08-21",
     "nowy": true,
-    "zmieniony": false,
+    "zmieniony": true,
     "content_hash": "7207c4b85813944573f7538186d6ecdd7f765000099173cbca37c301201864bb"
   },
   {
@@ -243,11 +243,11 @@
     "id": "5a1fac6774ea482d",
     "tytul": "II OGŁOSZENIE O NABORZE WNIOSKÓW O PRZYZNANIE ŚRODKÓW...",
     "program": "KFS",
-    "status": "aktywny",
+    "status": "zapowiedziany",
     "region": "lubuskie",
     "operator": "PUP Słubice",
-    "data_od": "2025-11-25",
-    "data_do": "2026-08-26",
+    "data_od": "2026-08-26",
+    "data_do": "2026-09-04",
     "dofinansowanie_proc": null,
     "kwota_max": null,
     "typ_firmy": "do weryfikacji",
@@ -260,7 +260,7 @@
     "pierwsze_wykrycie": "2026-08-21",
     "ostatnia_weryfikacja": "2026-08-21",
     "nowy": true,
-    "zmieniony": false,
+    "zmieniony": true,
     "content_hash": "b2d4d393a3ce2592addf32cd5f750b8e59c890ad039f5bc74529881605241dd4"
   },
   {
