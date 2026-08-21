@@ -486,3 +486,20 @@ def test_merge_keeps_explicitly_verified_manual_item_until_window_closes():
     merged, _, _ = merge_items([manual], [], today=date(2026, 8, 25))
     assert len(merged) == 1
     assert merged[0]["status"] == "aktywny"
+
+
+def test_merge_does_not_overwrite_a_manual_verified_window():
+    manual = build_item(
+        Candidate("Nabór KFS", "https://test.praca.gov.pl/-/manual-window", SOURCE),
+        "Nabór trwa od 02.09.2026 do 08.09.2026.",
+        today=date(2026, 8, 1),
+    )
+    automatic = build_item(
+        Candidate("Nabór KFS", "https://test.praca.gov.pl/-/manual-window", SOURCE),
+        "Nabór trwa od 25.11.2025 do 08.09.2026.",
+        today=date(2026, 8, 1),
+    )
+    manual["manual"] = True
+    merged, _, _ = merge_items([manual], [automatic], today=date(2026, 8, 21))
+    assert merged[0]["data_od"] == "2026-09-02"
+    assert merged[0]["data_do"] == "2026-09-08"
