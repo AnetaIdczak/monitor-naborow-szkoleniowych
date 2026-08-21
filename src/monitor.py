@@ -884,11 +884,16 @@ def merge_items(
     failed = {simplify(value) for value in failed_operators}
     existing_by_id = {item["id"]: dict(item) for item in existing}
     # A working source is authoritative: old, unconfirmed and completed entries
-    # must disappear. Entries stay only for a source that failed this run.
+    # must disappear. Explicitly verified manual records stay until their own
+    # application window closes; this covers notices published only in an
+    # official regional summary.
     merged = {
         item["id"]: dict(item)
         for item in existing
-        if simplify(item.get("operator", "")) in failed
+        if (
+            simplify(item.get("operator", "")) in failed
+            or item.get("manual")
+        )
         and item.get("status") != "zakończony"
     }
     new_count = 0
@@ -900,6 +905,13 @@ def merge_items(
             item["zmieniony"] = False
             merged[item["id"]] = item
             new_count += 1
+            continue
+        if previous.get("manual"):
+            # A specific, checked notice is more reliable than a generic
+            # listing page that may contain publication or archive dates.
+            previous["nowy"] = False
+            previous["zmieniony"] = False
+            merged[item["id"]] = previous
             continue
         changed = previous.get("content_hash") != item.get("content_hash")
         first_seen = previous.get("pierwsze_wykrycie") or item["pierwsze_wykrycie"]
