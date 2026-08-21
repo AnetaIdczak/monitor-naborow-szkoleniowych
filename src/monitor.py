@@ -906,6 +906,13 @@ def merge_items(
             merged[item["id"]] = item
             new_count += 1
             continue
+        if previous.get("manual"):
+            # A specific, checked notice is more reliable than a generic
+            # listing page that may contain publication or archive dates.
+            previous["nowy"] = False
+            previous["zmieniony"] = False
+            merged[item["id"]] = previous
+            continue
         changed = previous.get("content_hash") != item.get("content_hash")
         first_seen = previous.get("pierwsze_wykrycie") or item["pierwsze_wykrycie"]
         previous.update(item)
