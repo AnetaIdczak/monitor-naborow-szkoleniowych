@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-08-19T08:49:26+00:00",
-  "sources_total": 4,
-  "sources_ok": 4,
+  "generated_at": "2026-08-21T06:13:16+00:00",
+  "sources_total": 102,
+  "sources_ok": 102,
   "sources_failed": 0,
-  "candidates_found": 4,
-  "items_verified": 4,
-  "items_total": 34,
-  "new_items": 4,
-  "changed_items": 1,
-  "known_urls_before_run": 30,
-  "errors": [],
-  "refresh_scope": "krajowe nabory u operatorów",
-  "manual_official_sources_updated": [
-    "https://goz.inse.pl/aktualnosci/",
-    "https://dyrektywaeaa.adninstytut.pl/oglaszamy-xvii-runde-naboru-zgloszen-do-projektu/",
-    "https://dyrektywaeaa.pl/rekrutacja/",
-    "https://dyrektywaeaa.certes.pl/rekrutacja/"
+  "candidates_found": 491,
+  "items_verified": 38,
+  "items_total": 37,
+  "new_items": 13,
+  "changed_items": 19,
+  "known_urls_before_run": 34,
+  "errors": [
+    {
+      "source": "zlotow",
+      "operator": "PUP Złotów",
+      "url": "https://pup.zlotow.ibip.pl/public/?id=216400",
+      "error": "HTTPSConnectionPool(host='pup.zlotow.ibip.pl', port=443): Max retries exceeded with url: /public/?id=216400 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))"
+    }
   ]
 }
