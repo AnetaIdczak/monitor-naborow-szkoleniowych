@@ -111,6 +111,17 @@ def test_relevant_dates_ignore_application_availability_and_training_deadline():
     ]
 
 
+def test_relevant_dates_keep_window_written_as_start_and_end():
+    text = (
+        "Nabór rozpocznie się w dniu 26.08.2026 r. i zakończy się "
+        "w dniu 04.09.2026 r. Wnioski złożone po terminie nie będą "
+        "rozpatrywane. Artykuł opublikowano 25.11.2025 r."
+    )
+    assert extract_relevant_dates(text) == [
+        date(2026, 8, 26), date(2026, 9, 4)
+    ]
+
+
 def test_percentage_and_amount_require_funding_context():
     text = (
         "Identyfikator 57377. Spotkanie 8%. "
@@ -463,3 +474,15 @@ def test_dashboard_displays_a_continuous_intake_without_historical_dates():
         {},
     )
     assert 'row.nabor_ciagly ? "nabór ciągły"' in page
+
+
+def test_merge_keeps_explicitly_verified_manual_item_until_window_closes():
+    manual = build_item(
+        Candidate("Nabór KFS", "https://test.praca.gov.pl/-/manual", SOURCE),
+        "Nabór trwa od 24.08.2026 do 31.08.2026.",
+        today=date(2026, 8, 1),
+    )
+    manual["manual"] = True
+    merged, _, _ = merge_items([manual], [], today=date(2026, 8, 25))
+    assert len(merged) == 1
+    assert merged[0]["status"] == "aktywny"
