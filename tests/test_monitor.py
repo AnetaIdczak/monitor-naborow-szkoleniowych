@@ -111,6 +111,17 @@ def test_relevant_dates_ignore_application_availability_and_training_deadline():
     ]
 
 
+
+def test_relevant_dates_keep_window_written_as_start_and_end():
+    text = (
+        "Nabór rozpocznie się w dniu 26.08.2026 r. i zakończy się "
+        "w dniu 04.09.2026 r. Wnioski złożone po terminie nie będą "
+        "rozpatrywane. Artykuł opublikowano 25.11.2025 r."
+    )
+    assert extract_relevant_dates(text) == [
+        date(2026, 8, 26), date(2026, 9, 4)
+    ]
+
 def test_percentage_and_amount_require_funding_context():
     text = (
         "Identyfikator 57377. Spotkanie 8%. "
