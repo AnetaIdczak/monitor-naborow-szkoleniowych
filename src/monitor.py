@@ -401,7 +401,7 @@ def extract_relevant_dates(text: str) -> list[date]:
     date_token = rf"(?:{numeric_date}|[0-3]?\d\s+(?:{month_names})\s+20\d{{2}})"
     range_pattern = re.compile(
         rf"{date_token}\s*(?:r\.)?(?:\s+od\s+godz?\.?\s*\d{{1,2}}(?::\d{{2}})?)?"
-        rf"\s*(?:do(?:\s+dnia)?|[-–])\s*(?:godz?\.?\s*\d{{1,2}}(?::\d{{2}})?)?\s*{date_token}",
+        rf"\s*(?:do(?:\s+dnia)?|[-–]|(?:i|oraz)\s+(?:zakończ\w*|zakoncz\w*)\s+się(?:\s+w\s+dniu)?)\s*(?:godz?\.?\s*\d{{1,2}}(?::\d{{2}})?)?\s*{date_token}",
         re.IGNORECASE,
     )
     range_dates: set[date] = set()
