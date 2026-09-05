@@ -936,5 +936,30 @@
     "nowy": false,
     "zmieniony": false,
     "content_hash": "7fc086c6a01de996f81b6af2dbde8b356a09a4aff0f2e352f7687f0b4d7ba588"
+  },
+  {
+    "id": "tarr-rfs2-20260915",
+    "tytul": "RFS II – wznowienie naboru usług rozwojowych dla przedsiębiorców",
+    "program": "BUR",
+    "status": "zapowiedziany",
+    "region": "kujawsko-pomorskie",
+    "operator": "Toruńska Agencja Rozwoju Regionalnego",
+    "data_od": "2026-09-15",
+    "data_do": "",
+    "dofinansowanie_proc": null,
+    "kwota_max": null,
+    "typ_firmy": "do weryfikacji",
+    "bur": "tak",
+    "nabor_ciagly": false,
+    "status_operatora": false,
+    "wiarygodnosc": "wysoka",
+    "do_3h_od_poznania": "tak",
+    "url": "https://uslugirozwojowe.tarr.org.pl/aktualnosci/wznowienie-naboru-wnioskow-0",
+    "pierwsze_wykrycie": "2026-09-05",
+    "ostatnia_weryfikacja": "2026-09-05",
+    "nowy": true,
+    "zmieniony": false,
+    "content_hash": "manual-tarr-rfs2-20260915",
+    "manual": true
   }
 ]
