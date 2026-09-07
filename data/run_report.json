@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-09-04T09:39:01+00:00",
-  "sources_total": 101,
-  "sources_ok": 101,
+  "generated_at": "2026-09-07T10:16:50+00:00",
+  "sources_total": 102,
+  "sources_ok": 102,
   "sources_failed": 0,
-  "candidates_found": 483,
-  "items_verified": 39,
-  "items_total": 39,
+  "candidates_found": 484,
+  "items_verified": 36,
+  "items_total": 36,
   "new_items": 3,
   "changed_items": 0,
   "known_urls_before_run": 40,
@@ -15,6 +15,12 @@
       "operator": "PUP Złotów",
       "url": "https://pup.zlotow.ibip.pl/public/?id=216400",
       "error": "HTTPSConnectionPool(host='pup.zlotow.ibip.pl', port=443): Max retries exceeded with url: /public/?id=216400 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))"
+    },
+    {
+      "source": "tarr_rfs2_bur",
+      "operator": "Toruńska Agencja Rozwoju Regionalnego",
+      "url": "https://uslugirozwojowe.tarr.org.pl/aktualnosci/wznowienie-naboru-wnioskow-0",
+      "error": "Nie udało się odczytać treści programu"
     }
   ]
 }
