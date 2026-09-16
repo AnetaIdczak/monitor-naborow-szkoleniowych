@@ -1,26 +1,20 @@
 {
-  "generated_at": "2026-09-14T10:44:30+00:00",
+  "generated_at": "2026-09-16T09:59:58+00:00",
   "sources_total": 102,
-  "sources_ok": 100,
-  "sources_failed": 2,
-  "candidates_found": 465,
-  "items_verified": 34,
-  "items_total": 36,
-  "new_items": 6,
-  "changed_items": 0,
-  "known_urls_before_run": 39,
+  "sources_ok": 101,
+  "sources_failed": 1,
+  "candidates_found": 475,
+  "items_verified": 32,
+  "items_total": 32,
+  "new_items": 2,
+  "changed_items": 2,
+  "known_urls_before_run": 36,
   "errors": [
     {
       "source": "warp_uslugi",
       "operator": "WARP",
       "url": "https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/",
       "error": "403 Client Error: Forbidden for url: https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/"
-    },
-    {
-      "source": "inse_goz",
-      "operator": "Instytut Nauk Społeczno-Ekonomicznych",
-      "url": "https://goz.inse.pl/aktualnosci/",
-      "error": "HTTPSConnectionPool(host='goz.inse.pl', port=443): Max retries exceeded with url: /aktualnosci/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='goz.inse.pl', port=443) at 0x7fa83e8591d0>, 'Connection to goz.inse.pl timed out. (connect timeout=25)'))"
     },
     {
       "source": "zlotow",
@@ -33,18 +27,6 @@
       "operator": "Toruńska Agencja Rozwoju Regionalnego",
       "url": "https://uslugirozwojowe.tarr.org.pl/aktualnosci/wznowienie-naboru-wnioskow-0",
       "error": "Nie udało się odczytać treści programu"
-    },
-    {
-      "source": "fe_zachodniopomorskie",
-      "operator": "Fundusze Europejskie dla Pomorza Zachodniego",
-      "url": "https://www.ewt.gov.pl/strony/o-programach/programy-interreg-2021-2027/program-interreg-brandenburgia-polska-2021-2027/",
-      "error": "HTTPSConnectionPool(host='www.ewt.gov.pl', port=443): Max retries exceeded with url: /strony/o-programach/programy-interreg-2021-2027/program-interreg-brandenburgia-polska-2021-2027/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.ewt.gov.pl', port=443) at 0x7fa83e85b750>, 'Connection to w"
-    },
-    {
-      "source": "fe_zachodniopomorskie",
-      "operator": "Fundusze Europejskie dla Pomorza Zachodniego",
-      "url": "https://www.ewt.gov.pl/strony/o-programach/programy-interreg-2021-2027/program-interreg-vi-a-meklemburgia-pomorze-przedniebrandenburgia-polska-2021-2027/",
-      "error": "HTTPSConnectionPool(host='www.ewt.gov.pl', port=443): Max retries exceeded with url: /strony/o-programach/programy-interreg-2021-2027/program-interreg-vi-a-meklemburgia-pomorze-przedniebrandenburgia-polska-2021-2027/ (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.ewt.gov.pl', port=443) at"
     }
   ]
 }
