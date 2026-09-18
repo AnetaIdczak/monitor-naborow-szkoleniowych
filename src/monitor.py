@@ -700,6 +700,22 @@ def supports_target_business(title: str, text: str, *, include_business_program:
     return business_signal and funding_signal
 
 
+def is_self_employment_only_intake(text: str) -> bool:
+    """Exclude rounds explicitly limited to self-employed people.
+
+    The monitor is for training/development funding for company employees and
+    management, so an operator's dedicated self-employment round is tracked as
+    a source but not displayed as an eligible offer.
+    """
+    normalized = simplify(text)
+    return bool(
+        re.search(
+            r"(?:nabor|rekrutac).{0,180}(?:wylacznie|dedykowan\\w*).{0,100}samozatrudnion",
+            normalized,
+        )
+    )
+
+
 def qualifies_as_current_intake(
     title: str,
     text: str,
@@ -710,6 +726,8 @@ def qualifies_as_current_intake(
 ) -> tuple[bool, list[date], str]:
     continuous = is_continuous_intake(text)
     active_direct_offer = direct_program and has_active_direct_offer(text)
+    if is_self_employment_only_intake(text):
+        return False, [], "niska"
     earliest_year = today.year - (5 if direct_program else 1)
     extracted_dates = (
         extract_primary_program_dates(text)
