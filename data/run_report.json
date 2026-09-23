@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-09-21T10:45:24+00:00",
+  "generated_at": "2026-09-23T10:00:33+00:00",
   "sources_total": 103,
   "sources_ok": 102,
   "sources_failed": 1,
-  "candidates_found": 481,
-  "items_verified": 29,
-  "items_total": 30,
+  "candidates_found": 480,
+  "items_verified": 28,
+  "items_total": 29,
   "new_items": 2,
-  "changed_items": 0,
-  "known_urls_before_run": 33,
+  "changed_items": 1,
+  "known_urls_before_run": 30,
   "errors": [
     {
       "source": "warp_uslugi",
