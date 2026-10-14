@@ -187,7 +187,7 @@
     "url": "https://www.wup.pl/pl/projekty_wlasne/zachodniopomorskie-bony-szkoleniowe/aktualnoci/xiii-nabor-do-projektu-zachodniopomorskie-bony-szkoleniowe/",
     "pierwsze_wykrycie": "2026-10-14",
     "ostatnia_weryfikacja": "2026-10-14",
-    "nowy": true,
+    "nowy": false,
     "zmieniony": false,
     "content_hash": "884ae3b9c70c901db7b70a9b1a726df4f981ec72238220269c892ebdc33b06cf"
   },
@@ -259,7 +259,7 @@
     "url": "https://gorzow.praca.gov.pl/strona-glowna/-/asset_publisher/Qat7ebECUfDp/content/informacja-o-planowanym-naborze-wnioskow-o-srodki-kfs-w-2026-.?p_r_p_assetEntryId=69980658",
     "pierwsze_wykrycie": "2026-10-14",
     "ostatnia_weryfikacja": "2026-10-14",
-    "nowy": true,
+    "nowy": false,
     "zmieniony": false,
     "content_hash": "8fed510af7e9749a7554f75b614460aa59a25cacd062d440b1f534eb9552d320"
   },
@@ -283,7 +283,7 @@
     "url": "https://wabrzezno.praca.gov.pl/strona-glowna/-/asset_publisher/XHhVFBv4flIq/content/iii-nabor-wnioskow-o-przyznanie-srodkow-kfs-na-finansowanie-kosztow-ksztalcenia-ustawicznego?p_r_p_assetEntryId=69974282",
     "pierwsze_wykrycie": "2026-10-14",
     "ostatnia_weryfikacja": "2026-10-14",
-    "nowy": true,
+    "nowy": false,
     "zmieniony": false,
     "content_hash": "bd810621f4914edda2eb0ff1b465bf3d749a5fd27e09e317c44f6af8818316be"
   },
@@ -355,7 +355,7 @@
     "url": "https://pleszew.praca.gov.pl/-/nabor-wnioskow-o-przyznanie-srodkow-krajowego-funduszu-szkoleniowego-kfs-na-finansowanie-kosztow-ksztalcenia-ustawicznego-4",
     "pierwsze_wykrycie": "2026-10-14",
     "ostatnia_weryfikacja": "2026-10-14",
-    "nowy": true,
+    "nowy": false,
     "zmieniony": false,
     "content_hash": "8ea6ce882464e7988b215e0c85e8b533fbf4f5fe9a91d5053feb4b4baeb7bdc8"
   },
