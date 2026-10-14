@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-09T11:58:35+00:00",
+  "generated_at": "2026-10-14T09:53:05+00:00",
   "sources_total": 103,
   "sources_ok": 102,
   "sources_failed": 1,
-  "candidates_found": 438,
-  "items_verified": 26,
-  "items_total": 28,
-  "new_items": 0,
+  "candidates_found": 440,
+  "items_verified": 22,
+  "items_total": 24,
+  "new_items": 4,
   "changed_items": 0,
   "known_urls_before_run": 28,
   "errors": [
