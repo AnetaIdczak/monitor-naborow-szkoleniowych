@@ -13,6 +13,7 @@ from src.monitor import (
     extract_primary_program_dates,
     has_active_direct_offer,
     is_continuous_intake,
+    is_suspended_intake,
     merge_items,
     normalize_url,
     qualifies_as_current_intake,
@@ -265,6 +266,26 @@ def test_operator_specific_continuous_intake_wording_is_recognised():
     assert is_continuous_intake(
         "Rekrutacja do udziału w projekcie ma charakter ciągły."
     )
+
+
+def test_suspended_intake_overrides_continuous_wording_on_operator_page():
+    text = (
+        "Nabór do projektu jest ciągły. Wstrzymujemy nabór wniosków od "
+        "1 października 2026 r. Dofinansowanie usług rozwojowych dla MŚP."
+    )
+    assert is_suspended_intake(text)
+    assert qualifies_as_current_intake(
+        "ZARR – usługi rozwojowe dla MMŚP", text, today=date(2026, 10, 14),
+        direct_program=True,
+    )[0] is False
+
+
+def test_resumed_intake_is_not_hidden_by_an_older_suspension_message():
+    text = (
+        "Wznawiamy nabór wniosków od 15 października 2026 r. Wstrzymanie "
+        "naboru obowiązywało we wrześniu. Dofinansowanie usług rozwojowych dla MŚP."
+    )
+    assert is_suspended_intake(text) is False
 
 
 def test_direct_operator_offer_with_active_status_is_kept_without_stale_dates():

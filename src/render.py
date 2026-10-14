@@ -152,6 +152,12 @@ def render_dashboard(items: list[dict], report: dict) -> str:
       (!row.data_od && !row.data_do && row.status === "aktywny")
         ? "aktywny — termin u operatora"
         : `${{formatDate(row.data_od)}} – ${{formatDate(row.data_do)}}`;
+    const warsawToday = () => new Intl.DateTimeFormat("en-CA", {{
+      timeZone: "Europe/Warsaw", year: "numeric", month: "2-digit", day: "2-digit"
+    }}).format(new Date()).split("/").reverse().join("-");
+    const isExpiredOrdinaryIntake = row => Boolean(
+      row.data_do && row.data_do < warsawToday() && !row.nabor_ciagly && !row.status_operatora
+    );
     const money = value => value ? Number(value).toLocaleString("pl-PL")+" zł" : "—";
     let visible = [];
 
@@ -166,7 +172,8 @@ def render_dashboard(items: list[dict], report: dict) -> str:
       visible = DATA.filter(row => {{
         const haystack = [row.tytul,row.operator,row.region,row.program,row.typ_firmy]
           .join(" ").toLocaleLowerCase("pl");
-        return (!query || haystack.includes(query))
+        return !isExpiredOrdinaryIntake(row)
+          && (!query || haystack.includes(query))
           && (!$("region").value || row.region === $("region").value)
           && (!$("program").value || row.program === $("program").value)
           && (!$("status").value || row.status === $("status").value)

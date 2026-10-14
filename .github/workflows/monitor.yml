@@ -2,6 +2,12 @@ name: Monitor naborów
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "config/**"
+      - "src/**"
+      - ".github/workflows/monitor.yml"
   schedule:
     - cron: "0 7 * * 1,3,5"
       timezone: "Europe/Warsaw"
@@ -66,7 +72,16 @@ jobs:
           git config user.email "monitor-naborow[bot]@users.noreply.github.com"
           git add data docs
           git commit -m "Aktualizacja bazy naborów"
-          git push
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Ponawiam zapis danych (próba $attempt)..."
+            git pull --rebase origin main || { git rebase --abort || true; }
+            sleep 3
+          done
+          echo "::warning::Nie udało się zapisać danych w repozytorium; publikuję bieżący panel z tego uruchomienia."
+          exit 0
 
       # Commity wykonane przez GITHUB_TOKEN nie uruchamiają kolejnego workflow.
       # Publikujemy więc panel w tym samym przebiegu, zaraz po odświeżeniu danych.
