@@ -582,6 +582,39 @@ def is_continuous_intake(text: str) -> bool:
     return explicit_continuous or allocation_based
 
 
+def is_suspended_intake(text: str) -> bool:
+    """Return True when the official page currently announces a suspension.
+
+    Operator pages often retain older news, so a later announcement that the
+    recruitment has resumed takes precedence over an older suspension note.
+    """
+    normalized = simplify(text)
+    suspended_at = [
+        position
+        for phrase in (
+            "wstrzymujemy nabor",
+            "wstrzymanie nabor",
+            "nabor zostal wstrzymany",
+            "nabor zostaje wstrzymany",
+            "nabor jest wstrzymany",
+        )
+        if (position := normalized.find(phrase)) >= 0
+    ]
+    resumed_at = [
+        position
+        for phrase in (
+            "wznawiamy nabor",
+            "wznowienie nabor",
+            "nabor zostal wznowiony",
+            "nabor zostaje wznowiony",
+        )
+        if (position := normalized.find(phrase)) >= 0
+    ]
+    return bool(suspended_at) and (
+        not resumed_at or min(suspended_at) < min(resumed_at)
+    )
+
+
 def has_active_direct_offer(text: str) -> bool:
     """Recognise a current status published on an operator's own offer page.
 
@@ -610,7 +643,13 @@ def has_active_direct_offer(text: str) -> bool:
     )
     return has_recruitment_action and not any(
         phrase in normalized
-        for phrase in ("zakonczenie naboru", "zakonczony nabor", "wstrzymanie nabor")
+        for phrase in (
+            "zakonczenie naboru",
+            "zakonczony nabor",
+            "wstrzymanie nabor",
+            "wstrzymujemy nabor",
+            "nabor jest wstrzymany",
+        )
     )
 
 
@@ -710,7 +749,7 @@ def is_self_employment_only_intake(text: str) -> bool:
     normalized = simplify(text)
     return bool(
         re.search(
-            r"(?:nabor|rekrutac).{0,180}(?:wylacznie|dedykowan\\w*).{0,100}samozatrudnion",
+            r"(?:nabor|rekrutac).{0,180}(?:wylacznie|dedykowan\w*).{0,100}samozatrudnion",
             normalized,
         )
     )
@@ -724,6 +763,8 @@ def qualifies_as_current_intake(
     direct_program: bool = False,
     include_business_program: bool = False,
 ) -> tuple[bool, list[date], str]:
+    if is_suspended_intake(text):
+        return False, [], "niska"
     continuous = is_continuous_intake(text)
     active_direct_offer = direct_program and has_active_direct_offer(text)
     if is_self_employment_only_intake(text):
