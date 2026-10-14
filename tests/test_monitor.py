@@ -280,6 +280,18 @@ def test_suspended_intake_overrides_continuous_wording_on_operator_page():
     )[0] is False
 
 
+def test_suspended_intake_recognises_karr_wording():
+    text = (
+        "Nabór wniosków do projektu zostaje zawieszony z powodu przekroczenia "
+        "alokacji. Dofinansowanie usług rozwojowych dla pracowników MŚP."
+    )
+    assert is_suspended_intake(text)
+    assert qualifies_as_current_intake(
+        "KARR – nabór kwalifikacji dla pracowników MŚP", text,
+        today=date(2026, 10, 14), direct_program=True,
+    )[0] is False
+
+
 def test_resumed_intake_is_not_hidden_by_an_older_suspension_message():
     text = (
         "Wznawiamy nabór wniosków od 15 października 2026 r. Wstrzymanie "
