@@ -597,9 +597,21 @@ def is_suspended_intake(text: str) -> bool:
             "nabor zostal wstrzymany",
             "nabor zostaje wstrzymany",
             "nabor jest wstrzymany",
+            "zawieszamy nabor",
+            "zawieszenie nabor",
+            "nabor zostal zawieszony",
+            "nabor zostaje zawieszony",
+            "nabor jest zawieszony",
         )
         if (position := normalized.find(phrase)) >= 0
     ]
+    suspended_at.extend(
+        match.start()
+        for match in re.finditer(
+            r"\bnabor\b.{0,120}\b(?:wstrzym\w*|zawieszon\w*)",
+            normalized,
+        )
+    )
     resumed_at = [
         position
         for phrase in (
@@ -649,6 +661,9 @@ def has_active_direct_offer(text: str) -> bool:
             "wstrzymanie nabor",
             "wstrzymujemy nabor",
             "nabor jest wstrzymany",
+            "zawieszenie nabor",
+            "zawieszamy nabor",
+            "nabor jest zawieszony",
         )
     )
 
