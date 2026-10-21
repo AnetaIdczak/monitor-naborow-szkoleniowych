@@ -1,20 +1,26 @@
 {
-  "generated_at": "2026-10-19T10:49:17+00:00",
+  "generated_at": "2026-10-21T10:12:04+00:00",
   "sources_total": 103,
   "sources_ok": 102,
   "sources_failed": 1,
-  "candidates_found": 437,
-  "items_verified": 19,
-  "items_total": 21,
-  "new_items": 0,
-  "changed_items": 1,
-  "known_urls_before_run": 23,
+  "candidates_found": 433,
+  "items_verified": 17,
+  "items_total": 20,
+  "new_items": 1,
+  "changed_items": 0,
+  "known_urls_before_run": 21,
   "errors": [
     {
       "source": "warp_uslugi",
       "operator": "WARP",
       "url": "https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/",
       "error": "403 Client Error: Forbidden for url: https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/"
+    },
+    {
+      "source": "krotoszyn",
+      "operator": "PUP Krotoszyn",
+      "url": "https://krotoszyn.praca.gov.pl/strona-glowna/-/asset_publisher/iJVVz1sSGThI/content/nabor-kfs?p_r_p_assetEntryId=60712025",
+      "error": "HTTPSConnectionPool(host='krotoszyn.praca.gov.pl', port=443): Max retries exceeded with url: /strona-glowna/-/asset_publisher/iJVVz1sSGThI/content/nabor-kfs?p_r_p_assetEntryId=60712025 (Caused by ConnectTimeoutError(<HTTPSConnection(host='krotoszyn.praca.gov.pl', port=443) at 0x7efef473f610>, 'Conne"
     },
     {
       "source": "zlotow",
