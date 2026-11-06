@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-04T14:24:11+00:00",
+  "generated_at": "2026-11-06T14:15:17+00:00",
   "sources_total": 103,
   "sources_ok": 102,
   "sources_failed": 1,
   "candidates_found": 436,
-  "items_verified": 26,
-  "items_total": 28,
-  "new_items": 3,
+  "items_verified": 23,
+  "items_total": 25,
+  "new_items": 1,
   "changed_items": 0,
-  "known_urls_before_run": 26,
+  "known_urls_before_run": 28,
   "errors": [
     {
       "source": "warp_uslugi",
@@ -20,7 +20,7 @@
       "source": "zlotow",
       "operator": "PUP Złotów",
       "url": "https://pup.zlotow.ibip.pl/public/?id=216400",
-      "error": "HTTPSConnectionPool(host='pup.zlotow.ibip.pl', port=443): Max retries exceeded with url: /public/?id=216400 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))"
+      "error": "HTTPSConnectionPool(host='pup.zlotow.ibip.pl', port=443): Max retries exceeded with url: /public/?id=216400 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1035)')))"
     },
     {
       "source": "tarr_rfs2_bur",
