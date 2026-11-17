@@ -1,21 +1,15 @@
 {
-  "generated_at": "2026-11-16T15:40:27+00:00",
-  "sources_total": 103,
-  "sources_ok": 102,
-  "sources_failed": 1,
-  "candidates_found": 431,
-  "items_verified": 18,
+  "generated_at": "2026-11-17T12:33:15+00:00",
+  "sources_total": 111,
+  "sources_ok": 111,
+  "sources_failed": 0,
+  "candidates_found": 466,
+  "items_verified": 19,
   "items_total": 20,
-  "new_items": 0,
+  "new_items": 1,
   "changed_items": 0,
   "known_urls_before_run": 20,
   "errors": [
-    {
-      "source": "warp_uslugi",
-      "operator": "WARP",
-      "url": "https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/",
-      "error": "403 Client Error: Forbidden for url: https://warp.org.pl/dotacje/przedsiebiorca/uslugi-rozwojowe-dla-twojego-biznesu/wazne-informacje-ub/"
-    },
     {
       "source": "zlotow",
       "operator": "PUP Złotów",
