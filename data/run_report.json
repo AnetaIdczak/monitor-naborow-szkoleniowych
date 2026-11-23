@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-20T15:27:04+00:00",
+  "generated_at": "2026-11-23T18:05:06+00:00",
   "sources_total": 111,
   "sources_ok": 111,
   "sources_failed": 0,
-  "candidates_found": 465,
-  "items_verified": 19,
-  "items_total": 20,
+  "candidates_found": 461,
+  "items_verified": 17,
+  "items_total": 18,
   "new_items": 0,
   "changed_items": 0,
-  "known_urls_before_run": 21,
+  "known_urls_before_run": 20,
   "errors": [
     {
       "source": "zlotow",
@@ -33,6 +33,12 @@
       "operator": "Fundusze Europejskie dla Pomorza Zachodniego",
       "url": "https://www.ewt.gov.pl/strony/o-programach/programy-interreg-2021-2027/program-interreg-vi-a-meklemburgia-pomorze-przedniebrandenburgia-polska-2021-2027/",
       "error": "403 Client Error: Forbidden for url: https://www.ewt.gov.pl/strony/o-programach/programy-interreg-2021-2027/program-interreg-vi-a-meklemburgia-pomorze-przedniebrandenburgia-polska-2021-2027/"
+    },
+    {
+      "source": "slaskie_bcp_psf",
+      "operator": "Bielskie Centrum Przedsiębiorczości",
+      "url": "https://fbur.bcp.org.pl/",
+      "error": "503 Server Error: Service Unavailable for url: https://fbur.bcp.org.pl/"
     }
   ]
 }
