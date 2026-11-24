@@ -110,3 +110,29 @@ slaskie_lok_psf,BUR,śląskie,Liga Obrony Kraju,https://projekt05-15.lok.edu.pl/
 slaskie_arr_czestochowa_psf,BUR,śląskie,Agencja Rozwoju Regionalnego w Częstochowie S.A.,https://www.arr.czestochowa.pl/,true,false,,false
 slaskie_bcp_psf,BUR,śląskie,Bielskie Centrum Przedsiębiorczości,https://bur.bcp.org.pl/,true,false,,false
 slaskie_inkubator_psf,BUR,śląskie,Śląski Inkubator Przedsiębiorczości,https://inkubatorsl.pl/projekty/aktualne/kadry-przyszlosci-uslugi-rozwojowe-dla-przedsiebiorcow-psf/,true,false,,false
+wm_kai_info_bur,BUR,warmińsko-mazurskie,Krajowa Agencja Informacyjna INFO,https://operator-msp.kai-info.eu/,true,true,Usługi rozwojowe dla przyszłości Warmii i Mazur,false
+wm_instytutbs_bur,BUR,warmińsko-mazurskie,Instytut Badawczo-Szkoleniowy,https://operator-msp.instytutbs.eu/,true,true,Adaptacja – Usługi rozwojowe dla MŚP,false
+wm_screp_fur3,BUR,warmińsko-mazurskie,Stowarzyszenie Centrum Rozwoju Ekonomicznego Pasłęka,https://fur3.pl/aktualnosci/,true,false,,false
+wm_techpal_bur,BUR,warmińsko-mazurskie,TECHPAL,https://operator.techpal.com.pl/,true,true,Klucz do usług rozwojowych dla MŚP,false
+wm_inspire_bur,BUR,warmińsko-mazurskie,Inspire Consulting,https://www.kompetentnyregion.pl/,true,false,,false
+wup_olsztyn,regionalne,warmińsko-mazurskie,WUP Olsztyn,https://wupolsztyn.praca.gov.pl/nabory,true
+wm_bartoszyce,KFS,warmińsko-mazurskie,PUP Bartoszyce,https://bartoszyce.praca.gov.pl/strona-glowna,true
+wm_braniewo,KFS,warmińsko-mazurskie,PUP Braniewo,https://braniewo.praca.gov.pl/strona-glowna,true
+wm_dzialdowo,KFS,warmińsko-mazurskie,PUP Działdowo,https://dzialdowo.praca.gov.pl/strona-glowna,true
+wm_elblag,KFS,warmińsko-mazurskie,PUP Elbląg,https://elblag.praca.gov.pl/strona-glowna,true
+wm_elk,KFS,warmińsko-mazurskie,PUP Ełk,https://elk.praca.gov.pl/strona-glowna,true
+wm_gizycko,KFS,warmińsko-mazurskie,PUP Giżycko,https://gizycko.praca.gov.pl/strona-glowna,true
+wm_goldap,KFS,warmińsko-mazurskie,PUP Gołdap,https://goldap.praca.gov.pl/strona-glowna,true
+wm_ilawa,KFS,warmińsko-mazurskie,PUP Iława,https://ilawa.praca.gov.pl/strona-glowna,true
+wm_ketrzyn,KFS,warmińsko-mazurskie,PUP Kętrzyn,https://ketrzyn.praca.gov.pl/strona-glowna,true
+wm_lidzbark,KFS,warmińsko-mazurskie,PUP Lidzbark Warmiński,https://lidzbarkwarminski.praca.gov.pl/strona-glowna,true
+wm_mragowo,KFS,warmińsko-mazurskie,PUP Mrągowo,https://mragowo.praca.gov.pl/strona-glowna,true
+wm_nidzica,KFS,warmińsko-mazurskie,PUP Nidzica,https://nidzica.praca.gov.pl/strona-glowna,true
+wm_nowemiasto,KFS,warmińsko-mazurskie,PUP Nowe Miasto Lubawskie,https://nowemiastolubawskie.praca.gov.pl/strona-glowna,true
+wm_olecko,KFS,warmińsko-mazurskie,PUP Olecko,https://olecko.praca.gov.pl/,true
+wm_uppo_olsztyn,KFS,warmińsko-mazurskie,Urząd Pracy Powiatu Olsztyńskiego,https://psz.praca.gov.pl/web/urzad-pracy-powiatu-olsztynskiego/strona-glowna,true
+wm_mup_olsztyn,KFS,warmińsko-mazurskie,Miejski Urząd Pracy w Olsztynie,https://mupolsztyn.praca.gov.pl/strona-glowna,true
+wm_ostroda,KFS,warmińsko-mazurskie,PUP Ostróda,https://ostroda.praca.gov.pl/strona-glowna,true
+wm_pisz,KFS,warmińsko-mazurskie,PUP Pisz,https://pisz.praca.gov.pl/strona-glowna,true
+wm_szczytno,KFS,warmińsko-mazurskie,PUP Szczytno,https://szczytno.praca.gov.pl/,true
+wm_wegorzewo,KFS,warmińsko-mazurskie,PUP Węgorzewo,https://wegorzewo.praca.gov.pl/,true
