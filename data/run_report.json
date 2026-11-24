@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-11-23T18:05:06+00:00",
-  "sources_total": 111,
-  "sources_ok": 111,
+  "generated_at": "2026-11-24T12:20:29+00:00",
+  "sources_total": 137,
+  "sources_ok": 137,
   "sources_failed": 0,
-  "candidates_found": 461,
-  "items_verified": 17,
-  "items_total": 18,
-  "new_items": 0,
+  "candidates_found": 582,
+  "items_verified": 23,
+  "items_total": 24,
+  "new_items": 7,
   "changed_items": 0,
-  "known_urls_before_run": 20,
+  "known_urls_before_run": 18,
   "errors": [
     {
       "source": "zlotow",
