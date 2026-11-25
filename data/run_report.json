@@ -1,20 +1,26 @@
 {
-  "generated_at": "2026-11-24T12:20:29+00:00",
+  "generated_at": "2026-11-25T17:14:56+00:00",
   "sources_total": 137,
-  "sources_ok": 137,
-  "sources_failed": 0,
-  "candidates_found": 582,
-  "items_verified": 23,
-  "items_total": 24,
-  "new_items": 7,
+  "sources_ok": 136,
+  "sources_failed": 1,
+  "candidates_found": 575,
+  "items_verified": 21,
+  "items_total": 22,
+  "new_items": 0,
   "changed_items": 0,
-  "known_urls_before_run": 18,
+  "known_urls_before_run": 24,
   "errors": [
     {
       "source": "zlotow",
       "operator": "PUP Złotów",
       "url": "https://pup.zlotow.ibip.pl/public/?id=216400",
       "error": "HTTPSConnectionPool(host='pup.zlotow.ibip.pl', port=443): Max retries exceeded with url: /public/?id=216400 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1035)')))"
+    },
+    {
+      "source": "fe_kujawsko",
+      "operator": "Fundusze Europejskie dla Kujaw i Pomorza",
+      "url": "https://funduszeue.kujawsko-pomorskie.pl/nabory/",
+      "error": "HTTPSConnectionPool(host='funduszeue.kujawsko-pomorskie.pl', port=443): Max retries exceeded with url: /nabory/ (Caused by NameResolutionError(\"HTTPSConnection(host='funduszeue.kujawsko-pomorskie.pl', port=443): Failed to resolve 'funduszeue.kujawsko-pomorskie.pl' ([Errno -3] Temporary failure in na"
     },
     {
       "source": "tarr_rfs2_bur",
@@ -33,12 +39,6 @@
       "operator": "Fundusze Europejskie dla Pomorza Zachodniego",
       "url": "https://www.ewt.gov.pl/strony/o-programach/programy-interreg-2021-2027/program-interreg-vi-a-meklemburgia-pomorze-przedniebrandenburgia-polska-2021-2027/",
       "error": "403 Client Error: Forbidden for url: https://www.ewt.gov.pl/strony/o-programach/programy-interreg-2021-2027/program-interreg-vi-a-meklemburgia-pomorze-przedniebrandenburgia-polska-2021-2027/"
-    },
-    {
-      "source": "slaskie_bcp_psf",
-      "operator": "Bielskie Centrum Przedsiębiorczości",
-      "url": "https://fbur.bcp.org.pl/",
-      "error": "503 Server Error: Service Unavailable for url: https://fbur.bcp.org.pl/"
     }
   ]
 }
